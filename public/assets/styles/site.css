@@ -1,0 +1,61 @@
+body {
+  overflow-x: hidden; }
+
+[ui-sref] {
+  cursor: pointer; }
+
+.cursive {
+  font-family: 'Pacifico', cursive; }
+
+.h-full-width {
+  width: 100%;
+  width: 100vw; }
+
+.h-center {
+  text-align: center; }
+
+.h-no-margins {
+  margin: 0; }
+
+.h-no-padding {
+  padding: 0; }
+
+.h-full-height {
+  height: 100%; }
+
+.nacarat-content {
+  min-height: calc(100vh - 128px);
+  background-color: lightgoldenrodyellow; }
+
+.nacarat-toolbar__action-buttons {
+  font-weight: bold; }
+  .nacarat-toolbar__action-buttons:hover {
+    background-color: #c62828 !important; }
+  .nacarat-toolbar__action-buttons--is-active {
+    background-color: #c62828 !important; }
+
+.nacarat-toolbar__logo--text {
+  font-size: 1.75rem;
+  padding: 0 8px; }
+
+.nacarat-toolbar__logo--image {
+  height: 3rem;
+  width: 3rem; }
+
+.daily-deal-card__product-image {
+  min-height: 8rem;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center top; }
+
+.search-input-container {
+  background-color: white !important;
+  border-radius: 33px;
+  padding: 0 1rem; }
+  .search-input-container md-input-container {
+    margin-top: .25rem;
+    margin-bottom: .25rem; }
+    .search-input-container md-input-container md-icon {
+      color: rgba(0, 0, 0, 0.84); }
+    .search-input-container md-input-container label {
+      font-size: 14px; }

@@ -1,0 +1,7 @@
+@import 'variables';
+@import 'base';
+@import 'helpers';
+//include app component styling
+@import 'public/assets/layouts/layout';
+@import 'public/app/Home/home';
+@import 'public/app/search/search';

@@ -1,0 +1,38 @@
+.nacarat-content {
+    min-height: calc(100vh - 128px);
+    background-color: lightgoldenrodyellow;
+}
+
+.nacarat-toolbar__action-buttons {
+    font-weight: bold;
+
+    &:hover {
+        background-color: $g-primary-color-hue-2 !important;
+    }
+    &--is-active{
+      background-color: $g-primary-color-hue-2 !important;
+    }
+}
+
+.nacarat-toolbar__logo--text {
+    font-size: 1.75rem;
+    padding: 0 8px;
+}
+
+.nacarat-toolbar__logo--image {
+    height: 3rem;
+    width: 3rem;
+}
+// &.inverse {
+//     background-color: white;
+//     color: black;
+//
+//     .toolbar-action {
+//         color: rgba(0, 0, 0, .84);
+//
+//         &:hover {
+//             background-color: white;
+//             color: #b71c1c;
+//         }
+//     }
+// }

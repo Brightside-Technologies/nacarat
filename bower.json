@@ -1,0 +1,37 @@
+{
+  "name": "Nacarat",
+  "description": "Nacarat app.",
+  "main": "index.html",
+  "authors": [
+    "Diego Bernal"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.6.3",
+    "angular-material": "^1.1.1",
+    "underscore": "^1.8.3",
+    "angular-ui-router": "0.3.1",
+    "moment": "^2.17.1",
+    "angular-resource": "^1.6.3"
+  },
+  "overrides": {
+    "angular-material": {
+      "main": [
+        "angular-material.js",
+        "angular-material.css",
+        "layouts/angular-material.layout-attributes.css",
+        "layouts/angular-material.layouts.css",
+        "layouts/angular-material.layouts.ie_fixes.css"
+      ]
+    }
+  }
+}

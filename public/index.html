@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<!-- define angular app -->
+<html lang="en" ng-app="Nacarat">
+
+<head>
+    <meta name="viewport" content="width=device-width, height=device-height, maximum-scale=1, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css" />
+    <!-- inject:css -->
+    <link rel="stylesheet" href="/public/assets/libs/bower_components/angular-material.css">
+    <link rel="stylesheet" href="/public/assets/libs/bower_components/angular-material.layout-attributes.css">
+    <link rel="stylesheet" href="/public/assets/libs/bower_components/angular-material.layouts.css">
+    <link rel="stylesheet" href="/public/assets/libs/bower_components/angular-material.layouts.ie_fixes.css">
+    <!-- endinject -->
+    <link rel="stylesheet" href="public/assets/styles/site.css">
+    <script src="https://use.fontawesome.com/3aae8a1f4c.js"></script>
+</head>
+
+<body class="h-full-height h-full-width">
+    <div ui-view="public" layout>
+        <!--Inject public layout for loading Login page, Register page, etc-->
+    </div>
+    <div ui-view="private" layout>
+        <!--Inject main layout for loading all other secured files-->
+    </div>
+    <!-- inject:js -->
+    <script src="/public/assets/libs/bower_components/angular.js"></script>
+    <script src="/public/assets/libs/bower_components/angular-animate.js"></script>
+    <script src="/public/assets/libs/bower_components/angular-aria.js"></script>
+    <script src="/public/assets/libs/bower_components/angular-material.js"></script>
+    <script src="/public/assets/libs/bower_components/angular-messages.js"></script>
+    <script src="/public/assets/libs/bower_components/angular-ui-router.js"></script>
+    <script src="/public/assets/libs/bower_components/angular-resource.js"></script>
+    <script src="/public/assets/libs/bower_components/underscore.js"></script>
+    <!-- endinject -->
+    <!-- inject:appfiles:js -->
+    <script src="/public/app/nacarat.module.js"></script>
+    <script src="/public/app/nacarat.routes.js"></script>
+    <script src="/public/app/Search/search.module.js"></script>
+    <script src="/public/app/Search/search.controller.js"></script>
+    <script src="/public/app/Home/home.module.js"></script>
+    <script src="/public/app/Home/home.controller.js"></script>
+    <script src="/public/app/AboutUs/about.module.js"></script>
+    <script src="/public/app/AboutUs/about.controller.js"></script>
+    <script src="/public/app/FAQ/faq.module.js"></script>
+    <script src="/public/app/FAQ/faq.controller.js"></script>
+    <script src="/public/app/Subscribe/subscribe.module.js"></script>
+    <script src="/public/app/Subscribe/subscribe.controller.js"></script>
+    <!-- endinject -->
+    <script src="/public/assets/services/nacarat.services.module.js"></script>
+    <script src="/public/assets/services/daily-deals.service.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,5 @@
+{
+  "name": "Nacarat",
+  "description": "Nacarat app",
+  "addons": ["mongolab"]
+}
