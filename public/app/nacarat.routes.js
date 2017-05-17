@@ -33,6 +33,15 @@
                     }
                 }
             })
+            // .state('public.search', {
+            //     url: '/search',
+            //     views: {
+            //         '@public': {
+            //             templateUrl: 'public/app/Search/search.html',
+            //             controller: 'SearchController as vm'
+            //         }
+            //     }
+            // })
             .state('public.about', {
                 url: '/about',
                 views: {

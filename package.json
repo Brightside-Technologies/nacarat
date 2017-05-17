@@ -9,7 +9,7 @@
     },
     "main": "server/server.js",
     "scripts": {
-        "start": "node server/server.js"
+        "start": "nodemon server/server.js"
     },
     "author": "Diego Bernal",
     "license": "MIT",
