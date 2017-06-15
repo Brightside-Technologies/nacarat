@@ -58,7 +58,7 @@ gulp.task('bower', ['bower:copy'], function() {
 //****** Serve app *********//
 var server = {
     host: 'localhost',
-    port: '8001'
+    port: '3001'
 }
 
 gulp.task('webserver', function() {

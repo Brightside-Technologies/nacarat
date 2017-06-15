@@ -6,28 +6,19 @@
         .factory('ProductsService', ProductsService);
 
     ProductsService.$inject = [
-        '$resource'
+        '$resource',
         '$http'
     ];
 
     function ProductsService($resource, $http) {
-      var url = "localhost:3000";
-
-      // var service = this;
-      // service.query = function(){
-      //   return $http({
-      //     method: 'GET',
-      //     url:url + '/products'
-      //   })
-      // }
 
         //TODO: Define url in app.constant()
-        var url = "localhost:3000";
+        var url = "https://radwdeqv2h.execute-api.us-east-1.amazonaws.com/dev";
         var ProductsResource = $resource(url + '/products/:productId', {
             productId: '@productId'
         }, {
             query: {
-                //isArray: true
+                isArray: false
             }
         });
 
