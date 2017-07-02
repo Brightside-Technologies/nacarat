@@ -6,13 +6,17 @@ var webserver = require('gulp-webserver');
 var open = require('opn');
 var inject = require('gulp-inject');
 var angularFileSort = require('gulp-angular-filesort');
+var execSync = require('child_process').execSync;
+var path = require('path');
 
+//TODO: json-server should take in a .json file to dynamically serve data stores
 
 var DEV_PATHS = {
     BOWER: "public/assets/libs/bower_components",
     INDEX: "public/index.html",
     SASS: "public/assets/styles/scss/site.scss",
     STYLES: "public/assets/styles",
+    DATA_STORE: path.join(process.cwd(), "public/assets/data"),
     SERVER: {
         DIR: "./server",
         FILE: "server/server.file"
@@ -54,6 +58,21 @@ gulp.task('bower:inject', function() {
 gulp.task('bower', ['bower:copy'], function() {
     console.log('Bower files synced');
 })
+
+//***** run json-server *******//
+gulp.task('json-server', function(){
+  var args = process.argv;
+  var indexOfFileNameArg = -1;
+  var dataFile = "";
+
+  if(args.indexOf('--file') >= 0){
+    indexOfFileNameArg = args.indexOf('--file') + 1;
+    dataFile = "/" + args[indexOfFileNameArg];
+  }
+  execSync('json-server ' + DEV_PATHS.DATA_STORE + dataFile, {cwd: process.cwd(), stdio: [0, 1, 2]});
+
+})
+//******************************//
 
 //****** Serve app *********//
 var server = {
