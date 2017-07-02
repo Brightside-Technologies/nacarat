@@ -1,6 +1,9 @@
+.daily-deal-card{
+  height: 20rem;
+  // max-height: 75%;
+}
+
 .daily-deal-card__product-image {
-    min-height: 8rem;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center top;
+    height: 75%;
+    // max-height:50%;
 }

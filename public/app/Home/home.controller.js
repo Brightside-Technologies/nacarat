@@ -19,15 +19,11 @@
 
         function init() {
 
-          // ProductsService.query()
-          // .then(function(response){
-          //   console.log('response', response);
-          // })
-
           ProductsService.query({},
           function success(response) {
               console.log('response', response);
-              vm.dailyDeals = response;
+              vm.dailyDeals = response.data;
+              console.log('vm.dailyDeals', vm.dailyDeals);
           },
           function error(e) {
               console.error(e);

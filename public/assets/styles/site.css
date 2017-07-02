@@ -8,24 +8,31 @@ body {
   font-family: 'Pacifico', cursive; }
 
 .h-full-width {
-  width: 100%;
-  width: 100vw; }
+  width: 100% !important;
+  width: 100vw !important; }
 
 .h-center {
-  text-align: center; }
+  text-align: center !important; }
 
 .h-no-margins {
-  margin: 0; }
+  margin: 0 !important; }
 
 .h-no-padding {
-  padding: 0; }
+  padding: 0 !important; }
 
 .h-full-height {
-  height: 100%; }
+  height: 100% !important; }
+
+.h-no-vertical-padding {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important; }
+
+.h-no-horizontal-padding {
+  padding-left: 0 !important;
+  padding-right: 0 !important; }
 
 .nacarat-content {
-  min-height: calc(100vh - 128px);
-  background-color: lightgoldenrodyellow; }
+  min-height: calc(100vh - 128px); }
 
 .nacarat-toolbar__action-buttons {
   font-weight: bold; }
@@ -42,11 +49,11 @@ body {
   height: 3rem;
   width: 3rem; }
 
+.daily-deal-card {
+  height: 20rem; }
+
 .daily-deal-card__product-image {
-  min-height: 8rem;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center top; }
+  height: 75%; }
 
 .search-input-container {
   background-color: white !important;

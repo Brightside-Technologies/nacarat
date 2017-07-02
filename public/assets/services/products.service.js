@@ -11,16 +11,23 @@
     ];
 
     function ProductsService($resource, $http) {
-
         //TODO: Define url in app.constant()
-        var url = "https://radwdeqv2h.execute-api.us-east-1.amazonaws.com/dev";
-        var ProductsResource = $resource(url + '/products/:productId', {
+
+        // var baseUrl = "https://radwdeqv2h.execute-api.us-east-1.amazonaws.com/dev";
+        // var url = baseUrl + '/products/:productId'
+        var baseUrl = "http://127.0.0.1:3000";
+        var url = baseUrl + '/products/:productId'
+
+        // $resource(url + '/products/:productId')
+        var ProductsResource = $resource(url,
+          {
             productId: '@productId'
-        }, {
-            query: {
-                isArray: false
-            }
-        });
+          },
+          {
+              query: {
+                  isArray: false
+              }
+          });
 
         return ProductsResource;
     }

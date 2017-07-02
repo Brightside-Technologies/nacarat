@@ -1,21 +1,22 @@
 {
-    "name": "Nacarat",
-    "version": "1.0.0",
-    "description": "Nacarat app.",
-    "engines": {
-        "node": "6.0.0",
-        "npm": "3.8.6"
-    },
-    "author": "Diego Bernal",
-    "license": "MIT",
-    "devDependencies": {
-        "del": "^2.2.2",
-        "gulp": "^3.9.1",
-        "gulp-angular-filesort": "^1.1.1",
-        "gulp-inject": "^4.1.0",
-        "gulp-sass": "^2.3.2",
-        "gulp-webserver": "^0.9.1",
-        "main-bower-files": "^2.13.1",
-        "opn": "^4.0.2"
-    }
+  "name": "Nacarat",
+  "version": "1.0.0",
+  "description": "Nacarat app.",
+  "engines": {
+    "node": "6.0.0",
+    "npm": "3.8.6"
+  },
+  "author": "Diego Bernal",
+  "license": "MIT",
+  "devDependencies": {
+    "del": "^2.2.2",
+    "firebase-server": "^0.10.1",
+    "gulp": "^3.9.1",
+    "gulp-angular-filesort": "^1.1.1",
+    "gulp-inject": "^4.1.0",
+    "gulp-sass": "^2.3.2",
+    "gulp-webserver": "^0.9.1",
+    "main-bower-files": "^2.13.1",
+    "opn": "^4.0.2"
+  }
 }
