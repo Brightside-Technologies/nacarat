@@ -7,6 +7,7 @@
             'ui.router',
             'ngResource',
             'Home',
+            'Products',
             'Subscribe',
             'FAQ',
             'About',

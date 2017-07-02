@@ -1,6 +1,6 @@
-<h3 class="md-headline h-center cursive">Daily Deals</h3>
+<h3 class="md-headline h-center cursive">Product Details</h3>
 <div layout="row" flex-xs="100" flex-sm="100" layout-xs="column" layout-wrap flex-offset-gt-md="10" flex-gt-md="80">
-    <md-card ui-sref="public.product-details({id:id})" ng-repeat="(id, deal) in vm.dailyDeals" flex-xs="100" flex="20" class="daily-deal-card">
+    <md-card ng-repeat="(id, deal) in vm.dailyDeals" flex-xs="100" flex="20" class="daily-deal-card">
         <img ng-src="{{::deal.images[0]}}" class="md-card-image daily-deal-card__product-image" alt="{{::deal.productName}}">
         <md-card-title class="h-no-vertical-padding">
           <md-card-title-text>

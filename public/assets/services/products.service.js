@@ -26,6 +26,12 @@
           {
               query: {
                   isArray: false
+              },
+              get: {
+                transfromResponse: function(response){
+                  console.log("Get response",response);
+
+                }
               }
           });
 
