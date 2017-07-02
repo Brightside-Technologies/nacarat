@@ -69,6 +69,24 @@
                     }
                 }
             })
+            .state('public.products', {
+                url: '/products',
+                views: {
+                    '@public': {
+                        templateUrl: 'public/app/Products/products/products.html',
+                        controller: 'ProductsController as vm'
+                    }
+                }
+            })
+            .state('public.product-details', {
+                url: '/product-details/:id',
+                views: {
+                    '@public': {
+                        templateUrl: 'public/app/Products/product-details/product-details.html',
+                        controller: 'ProductDetailsController as vm'
+                    }
+                }
+            })
             // .state('public.login', {
             //     url: '/login',
             //     views: {
