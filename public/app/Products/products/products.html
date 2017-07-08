@@ -6,7 +6,7 @@
           <md-card-title-text>
             <span class="md-subhead h-no-padding">
               {{::deal.productName}} &ndash;
-              <strong><s>{{::deal.quantity}}</s></strong>
+              <strong><s>{{::deal.price | currency:"$"}}</s></strong>
               <strong md-colors="{color: 'red-500'}">{{::deal.dailyDealPrice | currency:"$"}}</strong>
             </span>
           </md-card-title-text>

@@ -55,6 +55,31 @@ body {
 .daily-deal-card__product-image {
   height: 75%; }
 
+.demo {
+  background-color: #cce5f6;
+  color: #555;
+  height: 100%;
+  min-height: 5rem;
+  padding: 2rem 3rem; }
+  .demo__card {
+    background-color: #fcfcfc;
+    padding: 1rem 1rem 3rem;
+    text-align: center; }
+  .demo__title small {
+    display: block;
+    font-size: 70%; }
+  .demo__slides {
+    margin-bottom: 3rem;
+    margin-top: 2rem;
+    height: 20rem; }
+  .demo__slide {
+    height: 100%;
+    text-align: center;
+    width: 100%; }
+    .demo__slide .slide__image {
+      width: 100%;
+      height: 100%; }
+
 .search-input-container {
   background-color: white !important;
   border-radius: 33px;

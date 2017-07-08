@@ -4,6 +4,7 @@
     angular
         .module('Nacarat', [
             'ngMaterial',
+            'bc.Flickity',
             'ui.router',
             'ngResource',
             'Home',
@@ -22,7 +23,7 @@
                 '800': '#C62828',
                 '900': '#B71C1C',
                 'contrastDefaultColor': 'light'
-            })
+            });
 
             $mdThemingProvider.definePalette('nacarat', nacarat);
 

@@ -25,7 +25,7 @@
           },
           function error(e) {
               console.error(e);
-          })
+          });
         }
     }
 })();
