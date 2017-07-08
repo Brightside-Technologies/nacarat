@@ -2,4 +2,4 @@
 `gulp serve`
 
 ## launch json-server
-`gulp json-server --f filename`
+`gulp json-server --file filename`

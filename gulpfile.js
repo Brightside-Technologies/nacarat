@@ -16,7 +16,7 @@ var _ = require("underscore");
 
 var DEV_PATHS = {
     BOWER_DIR: "bower_components",
-    BOWER: "public/assets/libs/bower_components",
+    BOWER: "public/assets/libs/bower",
     INDEX: "public/index.html",
     SASS: "public/assets/styles/scss/site.scss",
     STYLES: "public/assets/styles",
