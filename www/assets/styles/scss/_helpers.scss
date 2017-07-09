@@ -28,3 +28,24 @@
   padding-left: 0 !important;
   padding-right: 0 !important;
 }
+
+.h-horizontal-padding{
+  padding-left: 15px !important;
+  padding-right: 15px !important;
+}
+
+.h-image-fill {
+  //background: url() center no-repeat;
+  background-repeat: no-repeat;
+  background-position: center;
+  overflow: hidden;
+  background-size: cover;
+}
+
+.h-image-contain {
+  //background: url() center no-repeat;
+  background-repeat: no-repeat;
+  background-position: center;
+  overflow: hidden;
+  background-size: contain;
+}

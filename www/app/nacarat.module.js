@@ -7,6 +7,7 @@
             'bc.Flickity',
             'ui.router',
             'ngResource',
+            'Layouts',
             'Login',
             'Home',
             'Products',

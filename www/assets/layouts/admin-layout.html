@@ -1,16 +1,60 @@
-<div layout="column" layout-fill ng-cloak>
+<div layout="column" layout-fill ng-cloak ng-controller="AdminLayoutController as vm" class="admin-layout">
     <md-toolbar class="nacarat-toolbar">
-        <div class="md-toolbar-tools" layout>
-            <div class="nacarat-toolbar__logo-wrapper" ui-sref=".home" layout layout-align="center start">
-                <img class="nacarat-toolbar__logo--image md-user-avatar" src="www/assets/img/angular.png" />
-                <span layout-padding class="cursive nacarat-toolbar__logo--text">Shop Local</span>
-            </div>
+        <div class="md-toolbar-tools" layout layout-align="start center">
+          <div class="nacarat-toolbar__logo-wrapper" layout>
+              <img class="nacarat-toolbar__logo--image md-user-avatar" ui-sref=".home" src="www/assets/img/angular.png" />
+              <span layout-padding class="cursive nacarat-toolbar__logo--text" ui-sref=".home">Shop Local</span>
+          </div>
             <!-- fill up the space between left and right area -->
             <span flex></span>
-            <md-button class="nacarat-toolbar__action-buttons">Logout</md-button>
+            <md-button class="nacarat-toolbar__action-buttons md-icon-button" ng-click="vm.toggleSidenav()">
+              <md-icon>menu</md-icon>
+            </md-button>
         </div>
     </md-toolbar>
-    <md-content layout-padding layout-wrap class="nacarat-content h-no-padding" ng-class="{'gradient' : $state.current.data.hasGradient}">
+    <md-sidenav class="md-whiteframe-4dp md-sidenav-right" md-component-id="admin-sidenav">
+        <div layout class="sidenav__header h-image-contain" layout-align="center center">
+
+          <md-menu md-position-mode="target-right target" md-offset="0 50">
+          <md-button layout layout-padding ng-click="$mdMenu.open($event)">
+            <img class="sidenav__header-avatar h-horizontal-padding" ng-src="{{vm.user.picture || 'www/assets/img/user.png'}}" />
+            <span md-colors="{color: 'grey-A100'}">Diego Bernal </span>
+            <md-icon md-colors="{color: 'grey-A100'}">keyboard_arrow_down</md-icon>
+          </md-button>
+          <md-menu-content width="4">
+            <md-menu-item>
+              <md-button ng-click=null>
+                  <div layout="row" flex>
+                    <p flex>Logout</p>
+                    <md-icon md-menu-align-target style="margin: auto 3px auto 0;">exit_to_app</md-icon>
+                  </div>
+              </md-button>
+            </md-menu-item>
+          </md-menu-content>
+        </md-menu>
+
+
+        </div>
+        <md-list>
+            <md-list-item ng-click=null>
+              <md-icon>store</md-icon>
+              <p>Profile</p>
+            </md-list-item>
+            <md-list-item ng-click=null>
+              <md-icon>shopping_cart</md-icon>
+              <p>Inventory</p>
+            </md-list-item>
+            <md-list-item ng-click=null>
+              <md-icon>track_changes</md-icon>
+              <p>Deliveries</p>
+            </md-list-item>
+            <md-list-item ng-click=null>
+              <md-icon>settings</md-icon>
+              <p>Settings</p>
+            </md-list-item>
+        </md-list>
+    </md-sidenav>
+    <md-content layout-padding layout-wrap class="nacarat-content admin-layout__content h-no-padding">
         <div ui-view layout="column" flex="100" class="full-height"></div>
     </md-content>
 </div>

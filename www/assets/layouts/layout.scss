@@ -1,6 +1,21 @@
 .nacarat-content {
     min-height: calc(100vh - 128px);
-    // background-color: lightgoldenrodyellow;
+}
+
+.login-layout__content{
+  height: calc(100vh - 64px);
+  background: url("../../assets/img/23.png") center no-repeat;
+}
+
+.sidenav__header{
+  min-height: 10rem;
+  background: url("../../assets/img/9.png") center no-repeat;
+}
+
+.sidenav__header-avatar{
+  height: 2.5rem;
+  width: 2.5rem;
+  border-radius: 50%;
 }
 
 .nacarat-toolbar__action-buttons {
