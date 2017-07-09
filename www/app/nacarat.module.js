@@ -14,7 +14,7 @@
             'Subscribe',
             'FAQ',
             'About',
-            'Admin.Home',
+            'Admin',
             'Nacarat.Services'
         ])
         .constant('config', {
