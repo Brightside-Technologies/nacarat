@@ -1,1 +1,33 @@
 <h3 class="md-headline h-center cursive">Vendor Details</h3>
+<div layout="row" flex-xs="100" flex-sm="100" layout-xs="column" layout-wrap flex-offset-gt-md="10" flex-gt-md="80">
+    <md-card flex-xs="100" flex="20" class="">
+        <img ng-src="{{::vm.vendor.images[0]}}" class="md-card-image" alt="{{::vm.vendor.productName}}">
+        <md-card-title class="h-no-vertical-padding">
+          <md-card-title-text>
+            <span class="md-subhead h-no-padding">
+              <strong>NAME &ndash; {{::vm.vendor.seller.name}}</strong>
+            </span>
+              <span ng-repeat="(id, vendor) in vm.vendor.seller.address" class="md-subhead h-no-padding">
+                <strong>{{id | uppercase}}: {{::vendor}}</strong>
+              </span>
+          </md-card-title-text>
+        </md-card-title>
+        <!-- <md-card-content>
+          <p>
+            The titles of Washed Out's breakthrough song and the first single from Paracosm share the
+            two most important words in Ernest Greene's musical language: feel it. It's a simple request, as well...
+          </p>
+        </md-card-content> -->
+        <md-card-actions layout="row" layout-align="end center">
+          <md-button class="md-icon-button" aria-label="Favorite">
+            <md-icon class="material-icons">favorite</md-icon>
+          </md-button>
+          <md-button class="md-icon-button" aria-label="Settings">
+            <md-icon>menu</md-icon>
+          </md-button>
+          <md-button class="md-icon-button" aria-label="Share">
+            <md-icon>share_arrow</md-icon>
+          </md-button>
+        </md-card-actions>
+      </md-card>
+</div>
