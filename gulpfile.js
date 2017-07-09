@@ -16,11 +16,11 @@ var _ = require("underscore");
 
 var DEV_PATHS = {
     BOWER_DIR: "bower_components",
-    BOWER: "public/assets/libs/bower",
-    INDEX: "public/index.html",
-    SASS: "public/assets/styles/scss/site.scss",
-    STYLES: "public/assets/styles",
-    DATA_STORE: path.join(process.cwd(), "public/assets/data"),
+    BOWER: "www/assets/libs/bower",
+    INDEX: "www/index.html",
+    SASS: "www/assets/styles/scss/site.scss",
+    STYLES: "www/assets/styles",
+    DATA_STORE: path.join(process.cwd(), "www/assets/data"),
 };
 
 
@@ -120,7 +120,7 @@ gulp.task('webserver', function() {
             port: server.port,
             livereload: true,
             directoryListing: false,
-            fallback: 'public/index.html'
+            fallback: 'www/index.html'
         }));
 });
 
@@ -160,11 +160,11 @@ gulp.task('sass', function() {
 
 //****** Build script **********//
 // gulp.task('injectAppFiles', function() {
-//     var gulpSrc = ['public/app/**/*.js', 'public/app/*.js'];
+//     var gulpSrc = ['www/app/**/*.js', 'www/app/*.js'];
 //
 //     return gulp.src(DEV_PATHS.INDEX)
 //         .pipe(inject(gulp.src(gulpSrc, { read: false }), { starttag: '<!-- inject:appfiles:{{ext}} -->' }))
-//         .pipe(gulp.dest('./public'));
+//         .pipe(gulp.dest('./www'));
 // });
 
 
@@ -172,8 +172,8 @@ gulp.task('sass', function() {
 //****** Build script **********//
 
 // var PATHS = {
-//     SRC: ['public/**', 'public/app', 'public/assets', 'public/index.html'],
-//     PUBLIC: "C:/Users/Admin/Desktop/Nacarat/public",
+//     SRC: ['www/**', 'www/app', 'www/assets', 'www/index.html'],
+//     www: "C:/Users/Admin/Desktop/Nacarat/www",
 //     SERVER: {
 //         DIR: "C:/Users/Admin/Desktop/Nacarat/server",
 //         FILE: "C:/Users/Admin/Desktop/Nacarat/server/server.file"
@@ -185,21 +185,21 @@ gulp.task('sass', function() {
 //         .pipe(gulp.dest(PATHS.SERVER.DIR))
 // })
 //
-// gulp.task('build:cleanPublic', ['build:copyServer'], function() {
+// gulp.task('build:cleanwww', ['build:copyServer'], function() {
 //     console.log("DELETE")
 //     del([
-//             PATHS.PUBLIC + '/**',
-//             '!' + PATHS.PUBLIC,
+//             PATHS.www + '/**',
+//             '!' + PATHS.www,
 //             PATHS.SERVER.FILE
 //         ], { force: true })
 //         .then(function(paths) {
-//             console.log('Cleaned "Public" files');
+//             console.log('Cleaned "www" files');
 //         });
 // })
 //
-// gulp.task('build:copyFiles', ['build:cleanPublic'], function() {
+// gulp.task('build:copyFiles', ['build:cleanwww'], function() {
 //     gulp.src(PATHS.SRC)
-//         .pipe(gulp.dest(PATHS.PUBLIC))
+//         .pipe(gulp.dest(PATHS.www))
 // })
 //
 // gulp.task('build', ['build:copyFiles'], function() {

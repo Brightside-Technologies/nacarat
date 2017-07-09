@@ -1,0 +1,16 @@
+<div layout="column" layout-fill ng-cloak>
+    <md-toolbar class="nacarat-toolbar">
+        <div class="md-toolbar-tools" layout>
+            <div class="nacarat-toolbar__logo-wrapper" ui-sref=".home" layout layout-align="center start">
+                <img class="nacarat-toolbar__logo--image md-user-avatar" src="www/assets/img/angular.png" />
+                <span layout-padding class="cursive nacarat-toolbar__logo--text">Shop Local</span>
+            </div>
+            <!-- fill up the space between left and right area -->
+            <span flex></span>
+            <md-button class="nacarat-toolbar__action-buttons">Logout</md-button>
+        </div>
+    </md-toolbar>
+    <md-content layout-padding layout-wrap class="nacarat-content h-no-padding" ng-class="{'gradient' : $state.current.data.hasGradient}">
+        <div ui-view layout="column" flex="100" class="full-height"></div>
+    </md-content>
+</div>
