@@ -79,11 +79,29 @@
                 }
             })
             .state('public.product-details', {
-                url: '/product-details/:id',
+                url: '/product-details/:productId',
                 views: {
                     '@public': {
                         templateUrl: 'public/app/Products/product-details/product-details.html',
                         controller: 'ProductDetailsController as vm'
+                    }
+                }
+            })
+            .state('public.vendor-details', {
+                url: '/vendor-details',
+                views: {
+                    '@public': {
+                        templateUrl: 'public/app/Vendor/vendor-details/vendor-details.html',
+                        controller: 'VendorDetailsController as vm'
+                    }
+                }
+            })
+            .state('public.vendor-list', {
+                url: '/vendor-list',
+                views: {
+                    '@public': {
+                        templateUrl: 'public/app/Vendor/vendor-list/vendor-list.html',
+                        controller: 'VendorListController as vm'
                     }
                 }
             })

@@ -3,38 +3,36 @@
 
     angular
         .module('Nacarat.Services')
-        .factory('ProductsService', ProductsService);
+        .service('ProductsService', ProductsService);
 
     ProductsService.$inject = [
         '$resource',
-        '$http'
+        '$http',
+        'config'
     ];
 
-    function ProductsService($resource, $http) {
-        //TODO: Define url in app.constant()
-
-        // var baseUrl = "https://radwdeqv2h.execute-api.us-east-1.amazonaws.com/dev";
+    function ProductsService($resource, $http, config) {
         // var url = baseUrl + '/products/:productId'
-        var baseUrl = "http://127.0.0.1:3000";
-        var url = baseUrl + '/products/:productId'
+        var baseUrl = config.baseUrl;
 
-        // $resource(url + '/products/:productId')
-        var ProductsResource = $resource(url,
-          {
-            productId: '@productId'
-          },
-          {
-              query: {
-                  isArray: false
-              },
-              get: {
-                transfromResponse: function(response){
-                  console.log("Get response",response);
+        var service = this;
 
-                }
-              }
+        service.query = function(){
+          var url = baseUrl + '/products'
+          return $http({
+            url: url,
+            method: 'GET'
           });
+        }
 
-        return ProductsResource;
+        service.get = function(productId){
+          // var url = baseUrl + '/products/:productId'
+          var url = baseUrl + '/products'
+          return $http({
+            url: url,
+            method: 'GET'
+          });
+        }
+
     }
 })();

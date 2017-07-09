@@ -6,22 +6,23 @@
         .controller('ProductsController', ProductsController);
         ProductsController.$inject = [
             '$state',
-            'DailyDealsService',
+            '$scope',
             'ProductsService'
         ];
-    function ProductsController($state, DailyDealsService, ProductsService) {
+    function ProductsController($state, $scope, ProductsService) {
         var vm = this;
-        vm.dailyDeals = [];
+        vm.products = [];
 
         init();
 
         function init() {
-
-          ProductsService.query({},
-          function success(response) {
+          $scope.getOneTrans = function(productId) {
+              $state.go('main.product', {productId: productId});
+          };
+          ProductsService.query()
+          .then(function success(response) {
               console.log('response', response);
-              vm.dailyDeals = response.data;
-              console.log('vm.dailyDeals', vm.dailyDeals);
+              vm.products = response.data.data;
           },
           function error(e) {
               console.error(e);

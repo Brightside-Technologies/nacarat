@@ -9,11 +9,18 @@
             'ngResource',
             'Home',
             'Products',
+            'Vendor',
             'Subscribe',
             'FAQ',
             'About',
             'Nacarat.Services'
         ])
+        .constant(
+          "config", {
+            // "baseUrl": "https://radwdeqv2h.execute-api.us-east-1.amazonaws.com/dev"
+            "baseUrl": "http://127.0.0.1:3000"
+          }
+        )
         .config(function($mdThemingProvider) {
 
             var nacarat = $mdThemingProvider.extendPalette('orange', {

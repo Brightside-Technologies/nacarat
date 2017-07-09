@@ -6,26 +6,25 @@
         .controller('ProductDetailsController', ProductDetailsController);
         ProductDetailsController.$inject = [
             '$state',
-            'DailyDealsService',
-            'ProductsService'
+            '$stateParams',
+            'ProductsService',
         ];
-    function ProductDetailsController($state, DailyDealsService, ProductsService) {
+    function ProductDetailsController($state, $stateParams, ProductsService) {
+      var productId = $stateParams.productId;
         var vm = this;
-        vm.dailyDeals = [];
+        vm.product = {};
 
         init();
-
         function init() {
+          ProductsService.get(productId)
+           .then(function(product) {
+             console.log("product", product);
 
-          ProductsService.query({},
-          function success(response) {
-              console.log('response', response);
-              vm.dailyDeals = response.data;
-              console.log('vm.dailyDeals', vm.dailyDeals);
-          },
-          function error(e) {
-              console.error(e);
-          });
+               var products = product.data.data;
+               vm.product = products[productId];
+               console.log ("vm.product", vm.product);
+                console.log ("$stateParams", $stateParams);
+           });
         }
     }
 })();
