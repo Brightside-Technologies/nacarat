@@ -83,7 +83,24 @@
                     }
                 }
             })
-
+            .state('public.root.vendor-details', {
+                url: '/vendor-details',
+                views: {
+                    '': {
+                        templateUrl: 'www/app/Public/Vendor/vendor-details/vendor-details.html',
+                        controller: 'VendorDetailsController as vm'
+                    }
+                }
+            })
+            .state('public.root.vendor-list', {
+                url: '/vendor-list',
+                views: {
+                    '': {
+                        templateUrl: 'www/app/Public/Vendor/vendor-list/vendor-list.html',
+                        controller: 'VendorListController as vm'
+                    }
+                }
+            })
 
             /**********************************************/
             /*Private states. Need auth to access these   */
