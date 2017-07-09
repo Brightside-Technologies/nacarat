@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<!-- define angular app -->
+<html lang="en" ng-app="Nacarat">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, height=device-height, maximum-scale=1, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css" />
+    <!-- inject:css -->
+    <link rel="stylesheet" href="www/assets/libs/bower/angular-material/angular-material.css">
+    <link rel="stylesheet" href="www/assets/libs/bower/angular-material/angular-material.layout-attributes.css">
+    <link rel="stylesheet" href="www/assets/libs/bower/angular-material/angular-material.layouts.css">
+    <link rel="stylesheet" href="www/assets/libs/bower/angular-material/angular-material.layouts.ie_fixes.css">
+    <link rel="stylesheet" href="www/assets/libs/bower/flickity/flickity.css">
+    <!-- endinject -->
+    <link rel="stylesheet" href="www/assets/styles/site.css">
+    <script src="https://use.fontawesome.com/3aae8a1f4c.js"></script>
+</head>
+
+<body class="h-full-height h-full-width">
+
+  <div ui-view ng-cloak layout="column" flex="grow">
+      <!--Inject either public named view or admin named view-->
+  </div>
+    <!--LIBS-->
+    <script src="www/assets/libs/bower/angular/angular.js"></script>
+    <script src="www/assets/libs/bower/angular-animate/angular-animate.js"></script>
+    <script src="www/assets/libs/bower/angular-aria/angular-aria.js"></script>
+    <script src="www/assets/libs/bower/angular-material/angular-material.js"></script>
+    <script src="www/assets/libs/bower/angular-messages/angular-messages.js"></script>
+    <script src="www/assets/libs/bower/angular-ui-router/angular-ui-router.js"></script>
+    <script src="www/assets/libs/bower/angular-resource/angular-resource.js"></script>
+    <script src="www/assets/libs/bower/underscore/underscore.js"></script>
+    <script src="www/assets/libs/bower/moment/moment.js"></script>
+    <script src="www/assets/libs/bower/flickity/flickity.pkgd.js"></script>
+    <!-- <script src="/public/assets/libs/bower/flickity-imagesloaded/flickity-imagesloaded.js"></script>
+    <script src="/public/assets/libs/bower/flickity-bg-lazyload/bg-lazyload.js"></script> -->
+    <script src="www/assets/libs/bower/angular-flickity/angular-flickity.js"></script>
+    <!--PUBLIC-->
+    <script src="www/app/nacarat.module.js"></script>
+    <script src="www/app/nacarat.routes.js"></script>
+    <!--PUBLIC.LOGIN-->
+    <script src="www/app/Public/Login/login.controller.js"></script>
+    <!--PUBLIC.SEARCH-->
+    <script src="www/app/Public/Search/search.module.js"></script>
+    <script src="www/app/Public/Search/search.controller.js"></script>
+    <!--PUBLIC.HOME-->
+    <script src="www/app/Public/Home/home.module.js"></script>
+    <script src="www/app/Public/Home/home.controller.js"></script>
+    <!--PUBLIC.PRODUCTS-->
+    <script src="www/app/Public/Products/products.module.js"></script>
+    <script src="www/app/Public/Products/products/products.controller.js"></script>
+    <script src="www/app/Public/Products/product-details/product-details.controller.js"></script>
+    <!--PUBLIC.ABOUT-->
+    <script src="www/app/Public/AboutUs/about.module.js"></script>
+    <script src="www/app/Public/AboutUs/about.controller.js"></script>
+    <!--PUBLIC.FAQ-->
+    <script src="www/app/Public/FAQ/faq.module.js"></script>
+    <script src="www/app/Public/FAQ/faq.controller.js"></script>
+    <!--PUBLIC.SUBSCRIBE-->
+    <script src="www/app/Public/Subscribe/subscribe.module.js"></script>
+    <script src="www/app/Public/Subscribe/subscribe.controller.js"></script>
+    <!--ADMIN-->
+    <script src="www/app/Admin/Home/home.controller.js"></script>
+    <!--NACARAT.SERVICES-->
+    <script src="www/assets/services/nacarat.services.module.js"></script>
+    <script src="www/assets/services/daily-deals.service.js"></script>
+    <script src="www/assets/services/products.service.js"></script>
+</body>
+
+</html>
