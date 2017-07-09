@@ -75,7 +75,7 @@
                 }
             })
             .state('public.root.product-details', {
-                url: '/product-details/:id',
+                url: '/product-details/:productId',
                 views: {
                     '': {
                         templateUrl: 'www/app/Public/Products/product-details/product-details.html',
@@ -84,7 +84,7 @@
                 }
             })
             .state('public.root.vendor-details', {
-                url: '/vendor-details',
+                url: '/vendor-details/:vendorId',
                 views: {
                     '': {
                         templateUrl: 'www/app/Public/Vendor/vendor-details/vendor-details.html',
