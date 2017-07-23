@@ -1,0 +1,76 @@
+<div flex>
+  <md-card flex="60" flex-offset="20">
+    <md-card-title>
+      <md-card-title-text>
+        <span class="md-headline">Basic Information</span>
+      </md-card-title-text>
+    </md-card-title>
+    <md-card-content>
+      <md-list flex>
+        <md-list-item class="md-2-line">
+          <div class="md-list-item-text">
+            <h3>Name</h3>
+            <h3>{{::vm.vendor.vendorName}}</h3>
+          </div>
+          <md-button class="md-icon-button md-secondary" aria-label="Edit Name">
+            <md-icon md-colors="{color: 'orange-500'}" aria-hidden="true">edit</md-icon>
+          </md-button>
+        </md-list-item>
+        <md-list-item class="md-2-line md-long-text">
+          <div class="md-list-item-text">
+            <h3>About Us</h3>
+            <p>
+              {{::vm.vendor.about}}
+            </p>
+          </div>
+          <md-button class="md-icon-button md-secondary"aria-label="Edit About">
+            <md-icon md-colors="{color: 'orange-500'}" aria-hidden="true">edit</md-icon>
+          </md-button>
+        </md-list-item>
+      </md-list>
+    </md-card-content>
+    <md-card-title>
+      <md-card-title-text>
+        <span class="md-headline">Contact Information</span>
+      </md-card-title-text>
+    </md-card-title>
+    <md-card-content>
+      <md-list>
+        <md-list-item class="md-2-line" ng-repeat="contact in vm.vendor.contactInformation track by $index">
+          <md-icon class="md-avatar-icon">{{::contact.icon}}</md-icon>
+          <div class="md-list-item-text">
+            <h3> {{ ::contact.value }} </h3>
+            <p> {{ ::contact.type }} </p>
+          </div>
+          <md-button class="md-icon-button md-secondary" aria-label="{{'Edit ' + contact.type}}">
+            <md-icon md-colors="{color: 'orange-500'}" aria-hidden="true">edit</md-icon>
+          </md-button>
+          <md-button class="md-icon-button md-secondary" aria-label="{{'Delete ' + contact.type}}" ng-click="vm.showDeleteContactInfo($event, contact)">
+            <md-icon md-colors="{color: 'red-500'}" aria-hidden="true">clear</md-icon>
+          </md-button>
+        </md-list-item>
+      </md-list>
+    </md-card-content>
+    <md-card-title>
+      <md-card-title-text>
+        <span class="md-headline">Social Media</span>
+      </md-card-title-text>
+    </md-card-title>
+    <md-card-content>
+      <md-list>
+        <md-list-item class="md-2-line noright" ng-repeat="social in vm.vendor.socialMedias track by $index">
+          <md-icon class="fa fa-lg md-avatar-icon fa-{{social.type | lowercase}} {{social.type | lowercase}}-icon" aria-hidden="true"></md-icon>
+          <div class="md-list-item-text">
+            <p><a href="{{::social.url}}">{{::social.description}}</a></p>
+          </div>
+          <md-button class="md-icon-button md-secondary" aria-label="{{'Edit ' + social.type}}">
+            <md-icon md-colors="{color: 'orange-500'}" aria-hidden="true">edit</md-icon>
+          </md-button>
+          <md-button class="md-icon-button md-secondary" aria-label="{{'Delete ' + social.type}}" ng-click="vm.showDeleteSocial($event, social)">
+            <md-icon md-colors="{color: 'red-500'}" aria-hidden="true">clear</md-icon>
+          </md-button>
+        </md-list-item>
+      </md-list>
+    </md-card-content>
+  </md-card>
+</div>

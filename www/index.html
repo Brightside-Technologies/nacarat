@@ -21,7 +21,6 @@
 </head>
 
 <body class="h-full-height h-full-width">
-
   <div ui-view ng-cloak layout="column" flex="grow">
       <!--Inject either public named view or admin named view-->
   </div>
@@ -31,6 +30,7 @@
     <script src="www/assets/libs/bower/angular-aria/angular-aria.js"></script>
     <script src="www/assets/libs/bower/angular-material/angular-material.js"></script>
     <script src="www/assets/libs/bower/angular-messages/angular-messages.js"></script>
+    <script src="www/assets/libs/bower/angular-sanitize/angular-sanitize.js"></script>
     <script src="www/assets/libs/bower/angular-ui-router/angular-ui-router.js"></script>
     <script src="www/assets/libs/bower/angular-resource/angular-resource.js"></script>
     <script src="www/assets/libs/bower/underscore/underscore.js"></script>
@@ -72,22 +72,26 @@
     <script src="www/assets/layouts/admin-layout.controller.js"></script>
     <!--ADMIN-->
     <script src="www/app/Admin/Admin.module.js"></script>
-    <!--ADMIN.Home-->
+    <!--ADMIN.HOME-->
     <script src="www/app/Admin/Home/home.module.js"></script>
     <script src="www/app/Admin/Home/home.controller.js"></script>
-    <!--ADMIN.Delivery-->
+    <!--ADMIN.DELIVERY-->
     <script src="www/app/Admin/Delivery/delivery.module.js"></script>
-    <!--ADMIN.Inventory-->
+    <!--ADMIN.INVENTORY-->
     <script src="www/app/Admin/Inventory/inventory.module.js"></script>
-    <!--ADMIN.Profile-->
+    <!--ADMIN.PROFILE-->
     <script src="www/app/Admin/Profile/profile.module.js"></script>
-    <!--ADMIN.Settings-->
+    <script src="www/app/Admin/Profile/profile.controller.js"></script>
+    <!--ADMIN.SETTINGS-->
     <script src="www/app/Admin/Settings/settings.module.js"></script>
     <!--NACARAT.SERVICES-->
     <script src="www/assets/services/nacarat.services.module.js"></script>
     <script src="www/assets/services/daily-deals.service.js"></script>
     <script src="www/assets/services/products.service.js"></script>
-    <script src="www/assets/services/vendor.service.js"></script>
+    <script src="www/assets/services/vendors.service.js"></script>
+    <!--NACARAT.HELPERS-->
+    <script src="www/assets/helpers/helpers.module.js"></script>
+    <script src="www/assets/helpers/dialog.helper.js"></script>
 </body>
 
 </html>

@@ -1,16 +1,16 @@
 (function() {
-    'use strict';
+  'use strict';
 
-    angular
-        .module('Layouts')
-        .controller('AdminLayoutController', AdminLayoutController);
+  angular
+    .module('Layouts')
+    .controller('AdminLayoutController', AdminLayoutController);
 
-    AdminLayoutController.$inject = ['$mdSidenav'];
+  AdminLayoutController.$inject = ['$mdSidenav'];
 
-    function AdminLayoutController($mdSidenav) {
-        var vm = this;
-        vm.toggleSidenav = function(){
-          $mdSidenav('admin-sidenav').toggle();
-        }
+  function AdminLayoutController($mdSidenav) {
+    var vm = this;
+    vm.toggleSidenav = function() {
+      $mdSidenav('admin-sidenav').toggle();
     }
+  }
 })();

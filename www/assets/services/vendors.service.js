@@ -12,9 +12,7 @@
     ];
 
     function VendorService($resource, $http, config) {
-      // var url = baseUrl + '/products/:vendorId'
       var baseUrl = config.baseUrl;
-
       var service = this;
 
       service.query = function(){
@@ -26,7 +24,7 @@
       }
 
       service.get = function(vendorId){
-        // var url = baseUrl + '/products/:vendorId'
+        // var url = baseUrl + '/vendors/:vendorId'
         var url = baseUrl + '/vendors'
         return $http({
           url: url,

@@ -151,6 +151,15 @@
                           controller: 'AdminHomeController as vm'
                       }
                   }
+              })
+              .state('admin.root.profile', {
+                  url: '/profile',
+                  views: {
+                      '': {
+                          templateUrl: 'www/app/Admin/Profile/profile.html',
+                          controller: 'ProfileController as vm'
+                      }
+                  }
               });
     }
 
