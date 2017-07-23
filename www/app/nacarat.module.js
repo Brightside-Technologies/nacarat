@@ -9,6 +9,7 @@
       'ngMaterial',
       'bc.Flickity',
       'Layouts',
+      'md.data.table',
       'Login',
       'Home',
       'Products',
