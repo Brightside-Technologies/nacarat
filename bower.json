@@ -29,7 +29,8 @@
     "flickity": "^2.0.8",
     "flickity-imagesloaded": "^2.0.0",
     "flickity-bg-lazyload": "^1.0.0",
-    "angular-sanitize": "^1.6.5"
+    "angular-sanitize": "^1.6.5",
+    "angular-material-data-table": "^0.10.10"
   },
   "overrides": {
     "angular-material": {

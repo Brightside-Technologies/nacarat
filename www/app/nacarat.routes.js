@@ -160,6 +160,15 @@
                           controller: 'ProfileController as vm'
                       }
                   }
+              })
+              .state('admin.root.inventory', {
+                  url: '/inventory',
+                  views: {
+                      '': {
+                          templateUrl: 'www/app/Admin/Inventory/inventory/inventory.html',
+                          controller: 'InventoryController as vm'
+                      }
+                  }
               });
     }
 
