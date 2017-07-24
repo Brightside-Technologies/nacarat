@@ -1,4 +1,4 @@
-<div flex>
+<div flex ng-cloak>
   <md-card flex="60" flex-offset="20">
     <md-card-title>
       <md-card-title-text>
@@ -36,7 +36,7 @@
     </md-card-title>
     <md-card-content>
       <md-list>
-        <md-list-item class="md-2-line" ng-repeat="contact in vm.vendor.contactInformation track by $index">
+        <md-list-item ng-if="vm.vendor.contactInformation" class="md-2-line" ng-repeat="contact in vm.vendor.contactInformation track by $index">
           <md-icon class="md-avatar-icon">{{::contact.icon}}</md-icon>
           <div class="md-list-item-text">
             <h3> {{ ::contact.value }} </h3>
@@ -49,6 +49,11 @@
             <md-icon md-colors="{color: 'red-500'}" aria-hidden="true">clear</md-icon>
           </md-button>
         </md-list-item>
+        <md-list-item ng-if="!vm.vendor.contactInformation">
+          <div class="md-list-item-text">
+            No contact Information on record
+          </div>
+        </md-list-item>
       </md-list>
     </md-card-content>
     <md-card-title>
@@ -58,17 +63,22 @@
     </md-card-title>
     <md-card-content>
       <md-list>
-        <md-list-item class="md-2-line noright" ng-repeat="social in vm.vendor.socialMedias track by $index">
+        <md-list-item ng-if="vm.vendor.socialMedias" class="md-2-line noright" ng-repeat="social in vm.vendor.socialMedias track by $index">
           <md-icon class="fa fa-lg md-avatar-icon fa-{{social.type | lowercase}} {{social.type | lowercase}}-icon" aria-hidden="true"></md-icon>
           <div class="md-list-item-text">
             <p><a href="{{::social.url}}">{{::social.description}}</a></p>
           </div>
-          <md-button class="md-icon-button md-secondary" aria-label="{{'Edit ' + social.type}}">
+          <md-button class="md-icon-button md-secondary" aria-label="{{'Edit ' + social.type}}" ng-click="vm.showUpdateSocialMedia($event, social)">
             <md-icon md-colors="{color: 'orange-500'}" aria-hidden="true">edit</md-icon>
           </md-button>
-          <md-button class="md-icon-button md-secondary" aria-label="{{'Delete ' + social.type}}" ng-click="vm.showDeleteSocial($event, social)">
+          <md-button class="md-icon-button md-secondary" aria-label="{{'Delete ' + social.type}}" ng-click="vm.showDeleteSocialMedia($event, social)">
             <md-icon md-colors="{color: 'red-500'}" aria-hidden="true">clear</md-icon>
           </md-button>
+        </md-list-item>
+        <md-list-item ng-if="!vm.vendor.socialMedias">
+          <div class="md-list-item-text">
+            No social media entries on record
+          </div>
         </md-list-item>
       </md-list>
     </md-card-content>

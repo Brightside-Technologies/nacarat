@@ -18,7 +18,8 @@
       'About',
       'Admin',
       'Nacarat.Helpers',
-      'Nacarat.Services'
+      'Nacarat.Services',
+      'Nacarat.Directives'
     ])
     .constant('config', {
       // "baseUrl": "https://radwdeqv2h.execute-api.us-east-1.amazonaws.com/dev"
@@ -55,7 +56,7 @@
           if (sidenav && $mdSidenav('admin-sidenav').isOpen()) {
             $mdSidenav('admin-sidenav').close();
           }
-        })
+        });
 
     });
 

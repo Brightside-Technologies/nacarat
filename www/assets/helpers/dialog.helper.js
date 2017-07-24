@@ -25,7 +25,7 @@
         locals: options.locals,
         multiple: options.multiple
       });
-    }
+    };
 
     service.showConfirm = function(options) {
       $mdDialog.show(
@@ -47,7 +47,6 @@
     };
 
     service.hide = function() {
-      $state.get($state.current.name).data.dialog = false;
       $mdDialog.hide();
     };
 
