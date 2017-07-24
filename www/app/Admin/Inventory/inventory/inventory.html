@@ -1,0 +1,32 @@
+<h3 class="md-headline h-center cursive">Inventory</h3>
+<md-toolbar class="md-table-toolbar md-default">
+  <div class="md-toolbar-tools">
+    <span>Product List</span>
+  </div>
+</md-toolbar>
+
+<!-- exact table from live demo -->
+<md-table-container>
+  <table md-table md-row-select multiple md-progress="promise">
+    <thead md-head md-order="query.order" md-on-reorder="getInventory">
+      <tr md-row>
+        <th md-column md-order-by="productName"><span>Product Name</span></th>
+        <th md-column md-numeric md-order-by="price"><span>Price</span></th>
+        <th md-column md-numeric>Quantity</th>
+        <th md-column md-numeric>Daily Deal Price</th>
+        <th md-column md-numeric>Seller</th>
+      </tr>
+    </thead>
+    <tbody md-body>
+      <tr md-row md-select="products" md-select-id="name" md-auto-select ng-repeat="products in vm.inventory">
+        <td md-cell>{{products.productName}}</td>
+        <td md-cell>{{products.price}}</td>
+        <td md-cell>{{products.quantity}}</td>
+        <td md-cell>{{products.dailyDealPrice}}</td>
+        <td md-cell>{{products.seller.name}}</td>
+      </tr>
+    </tbody>
+  </table>
+</md-table-container>
+
+<md-table-pagination md-limit="query.limit" md-limit-options="[5, 10, 15]" md-page="query.page" md-total="{{products.count}}" md-on-paginate="getInventory" md-page-select></md-table-pagination>
