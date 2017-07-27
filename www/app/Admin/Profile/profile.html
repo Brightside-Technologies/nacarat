@@ -23,7 +23,7 @@
               {{::vm.vendor.about}}
             </p>
           </div>
-          <md-button class="md-icon-button md-secondary"aria-label="Edit About">
+          <md-button class="md-icon-button md-secondary"aria-label="Edit About" ng-click="vm.showUpdateAboutUs($event, vm.vendor)">
             <md-icon md-colors="{color: 'orange-500'}" aria-hidden="true">edit</md-icon>
           </md-button>
         </md-list-item>
@@ -42,7 +42,7 @@
             <h3> {{ ::contact.value }} </h3>
             <p> {{ ::contact.type }} </p>
           </div>
-          <md-button class="md-icon-button md-secondary" aria-label="{{'Edit ' + contact.type}}">
+          <md-button class="md-icon-button md-secondary" aria-label="{{'Edit ' + contact.type}}" ng-click="vm.showUpdateContactInfo($event, contact)">
             <md-icon md-colors="{color: 'orange-500'}" aria-hidden="true">edit</md-icon>
           </md-button>
           <md-button class="md-icon-button md-secondary" aria-label="{{'Delete ' + contact.type}}" ng-click="vm.showDeleteContactInfo($event, contact)">

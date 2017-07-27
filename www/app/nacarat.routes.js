@@ -25,7 +25,7 @@
                 abstract: true,
                 views: {
                     'public': {
-                        templateUrl: 'www/assets/layouts/main-layout.html'
+                        templateUrl: 'www/assets/layouts/home-layout.html'
                     }
                 }
             })
