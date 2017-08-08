@@ -66,7 +66,7 @@
                 }
             })
             .state('public.root.products', {
-                url: '/products',
+                url: '/products?q',
                 views: {
                     '': {
                         templateUrl: 'www/app/Public/Products/products/products.html',

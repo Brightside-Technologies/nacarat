@@ -1,12 +1,11 @@
 <section flex="column" class="demo" data-ng-controller="HomeController as vm">
-
-    <!-- <h1 class="demo__title">
+  <!-- <h1 class="demo__title">
       {{ vm.projectName }}
       <small>{{ vm.demoDetail }}</small>
     </h1> -->
 
-    <div class="demo__card" flex="column">
-      <!-- <button ng-click="vm.goToFirst()">
+  <div class="demo__card" flex="column">
+    <!-- <button ng-click="vm.goToFirst()">
         Go to first slide
       </button>
 
@@ -14,13 +13,12 @@
         Go to last slide
       </button> -->
 
-      <div class="demo__slides" bc-flickity="{{ vm.flickityOptions }}" bc-flickity-id="{{ vm.flickityId }}">
-        <figure class="demo__slide" data-ng-repeat="slide in vm.slides track by $index">
-          <h1>{{::slide.text}}</h1>
-          <img class="slide__image" flex data-flickity-lazyload="{{ ::slide.image }}" alt="" />
-        </figure>
-      </div>
-
+    <div class="demo__slides" bc-flickity="{{vm.flickityOptions}}" bc-flickity-id="{{vm.flickityId}}">
+      <figure class="demo__slide" data-ng-repeat="slide in vm.slides track by $index">
+        <h1>{{::slide.text}}</h1>
+        <img class="slide__image" flex data-flickity-lazyload="{{::slide.image}}" alt="" />
+      </figure>
     </div>
 
-  </section>
+  </div>
+</section>

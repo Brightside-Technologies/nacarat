@@ -135,3 +135,6 @@ body {
 .instagram-icon {
   background-color: #000 !important;
   color: white !important; }
+
+search-bar .md-whiteframe-z1 {
+  box-shadow: none !important; }

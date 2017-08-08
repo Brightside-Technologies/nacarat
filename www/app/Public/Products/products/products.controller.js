@@ -6,23 +6,21 @@
         .controller('ProductsController', ProductsController);
         ProductsController.$inject = [
             '$state',
-            '$scope',
+            '$stateParams',
             'ProductsService'
         ];
-    function ProductsController($state, $scope, ProductsService) {
+    function ProductsController($state, $stateParams, ProductsService) {
         var vm = this;
         vm.products = [];
 
         init();
 
         function init() {
-          $scope.getOneTrans = function(productId) {
-              $state.go('main.product', {productId: productId});
-          };
-          ProductsService.query()
+          ProductsService
+          .queryBySuggestion($stateParams.q)
           .then(function success(response) {
               console.log('response', response);
-              vm.products = response.data.data;
+              vm.products = response.data;
           },
           function error(e) {
               console.error(e);

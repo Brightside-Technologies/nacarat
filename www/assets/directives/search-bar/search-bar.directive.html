@@ -1,0 +1,21 @@
+<div class="search-input-container h-no-vertical-padding" flex>
+  <!-- <md-input-container class="md-block h-no-padding" flex> -->
+    <md-autocomplete
+    md-no-cache="true"
+    md-selected-item="vm.selectedItem"
+    md-search-text="vm.searchText"
+    md-selected-item-change="vm.itemSelected(item)"
+    md-items="item in vm.throttledSearchSuggestions(vm.searchText)"
+    md-item-text="item.text"
+    md-min-length="3"
+    placeholder="Find products locally">
+      <md-item-template>
+        <span md-highlight-text="vm.searchText" md-highlight-flags="^i">{{item.text}}</span>
+      </md-item-template>
+      <md-not-found>
+        No items found "{{vm.searchText}}".
+      </md-not-found>
+    </md-autocomplete>
+    <!-- <validation-message input-name="vm.form.address" field-name="'Address'"></validation-message> -->
+  <!-- </md-input-container> -->
+</div>
