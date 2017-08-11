@@ -30,11 +30,11 @@
             },
             function error(errorResponse) {
               console.log('errorResponse', errorResponse);
+              return [];
             })
       }
 
       function itemSelected(item) {
-        console.log("ITEM SELECTED", item);
         if (item) {
           // TODO: save search text in cookie to keep after research
           // TODO: add resolve at 'public.root.products' ?!?.

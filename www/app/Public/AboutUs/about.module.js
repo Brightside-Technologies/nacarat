@@ -2,5 +2,5 @@
     'use strict';
 
     angular
-        .module('About', []);
+        .module('Public.About', []);
 })();

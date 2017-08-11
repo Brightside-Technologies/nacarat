@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('Vendor')
+        .module('Public.Vendor')
         .controller('VendorDetailsController', VendorDetailsController);
         VendorDetailsController.$inject = [
             '$state',

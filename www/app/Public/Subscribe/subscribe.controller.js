@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('Subscribe')
+        .module('Public.Subscribe')
         .controller('SubscribeController', SubscribeController);
 
     function SubscribeController() {

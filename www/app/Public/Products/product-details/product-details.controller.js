@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('Products')
+        .module('Public.Products')
         .controller('ProductDetailsController', ProductDetailsController);
         ProductDetailsController.$inject = [
             '$state',

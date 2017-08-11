@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('Admin', [
+        .module('Nacarat.Admin', [
           'Admin.Home',
           'Admin.Delivery',
           'Admin.Inventory',

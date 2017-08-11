@@ -9,21 +9,13 @@
       'ngMaterial',
       'bc.Flickity',
       'md.data.table',
-      'Layouts',
-      'Login',
-      'Home',
-      'Products',
-      'Vendor',
-      'Subscribe',
-      'FAQ',
-      'About',
-      'Admin',
+      'Nacarat.Admin',
+      'Nacarat.Public',
       'Nacarat.Helpers',
       'Nacarat.Services',
       'Nacarat.Directives'
     ])
     .constant('config', {
-      // "baseUrl": "https://radwdeqv2h.execute-api.us-east-1.amazonaws.com/dev"
       "baseUrl": "http://127.0.0.1:3000"
     })
     .config(function($mdThemingProvider) {

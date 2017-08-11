@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('Home')
+        .module('Public.Home')
         .controller('HomeController', HomeController);
 
     HomeController.$inject = [

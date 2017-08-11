@@ -3,3 +3,22 @@ search-bar {
     box-shadow: none !important;
   }
 }
+
+.search-input-container {
+    background-color: white !important;
+    border-radius: 33px;
+    padding: 0 1rem;
+
+    md-input-container {
+        margin-top: .25rem;
+        margin-bottom: .25rem;
+
+        md-icon {
+            color: rgba(0,0,0,.84);
+        }
+
+        label {
+            font-size: 14px;
+        }
+    }
+}

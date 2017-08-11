@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('FAQ')
+        .module('Public.FAQ')
         .controller('FAQController', FAQController);
 
     function FAQController() {

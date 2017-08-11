@@ -2,5 +2,5 @@
     'use strict';
 
     angular
-        .module('Home', []);
+        .module('Public.Home', []);
 })();

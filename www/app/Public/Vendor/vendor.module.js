@@ -2,5 +2,5 @@
     'use strict';
 
     angular
-        .module('Vendor', []);
+        .module('Public.Vendor', []);
 })();
