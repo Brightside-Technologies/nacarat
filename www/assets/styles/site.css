@@ -20,6 +20,9 @@ body {
 .h-no-margins {
   margin: 0 !important; }
 
+.h-margins-5 {
+  margin: 5px !important; }
+
 .h-no-padding {
   padding: 0 !important; }
 
@@ -138,3 +141,36 @@ search-bar .md-whiteframe-z1 {
       color: rgba(0, 0, 0, 0.84); }
     .search-input-container md-input-container label {
       font-size: 14px; }
+
+.login-card {
+  width: 350px;
+  height: 500px;
+  background: inherit;
+  position: absolute;
+  overflow: hidden;
+  top: 50%;
+  left: 50%;
+  margin-left: -175px;
+  margin-top: -250px;
+  border-radius: 8px;
+  color: rgba(255, 255, 255, 0.8); }
+  .login-card input {
+    background-color: rgba(255, 255, 255, 0.75); }
+  .login-card .btn-facebook {
+    background-color: #3b5998;
+    color: rgba(255, 255, 255, 0.75); }
+    .login-card .btn-facebook:hover {
+      background-color: #2d4373 !important; }
+
+.login-card:before {
+  width: 400px;
+  height: 550px;
+  content: "";
+  position: absolute;
+  top: -25px;
+  left: -25px;
+  bottom: 0;
+  right: 0;
+  background: inherit;
+  box-shadow: inset 0 0 0 200px rgba(0, 0, 0, 0.3);
+  filter: blur(10px); }

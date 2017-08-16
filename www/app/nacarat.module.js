@@ -16,7 +16,7 @@
       'Nacarat.Directives'
     ])
     .constant('config', {
-      "baseUrl": "http://127.0.0.1:3000"
+      "baseUrl": "https://my-json-server.typicode.com/go-diego/datastore"
     })
     .config(function($mdThemingProvider) {
 

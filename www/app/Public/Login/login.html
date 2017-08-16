@@ -1,19 +1,26 @@
 <div layout>
-  <md-card flex-offset="30" flex="40">
+  <md-card flex-offset="30" flex="40" class="login-card">
+    <md-card-title>
+      <md-card-title-text layout layout-align="center" flex>
+        <span class="md-display-1 cursive">Welcome</span>
+      </md-card-title-text>
+    </md-card-title>
     <md-card-content>
       <form name="form" layout="column">
-        <md-input-container class="md-block" flex-gt-xs>
+        <md-input-container md-no-float class="md-block" flex-gt-xs>
           <label>Username</label>
           <input ng-model="vm.credentials.username">
         </md-input-container>
-        <md-input-container class="md-block" flex-gt-xs>
+        <md-input-container md-no-float class="md-block" flex-gt-xs>
           <label>Password</label>
           <input type="password" ng-model="vm.credentials.password">
         </md-input-container>
       </form>
     </md-card-content>
-    <md-card-actions layout="row" layout-align="center center">
-      <md-button class="md-primary md-raised" ng-click="vm.login()">Login</md-button>
+    <md-card-actions layout="column" layout-align="center center" layout-margin>
+      <md-button flex="100" class="md-primary md-raised h-full-width h-margins-5" ng-click="vm.login()">Login</md-button>
+      <md-button flex="100" class="md-raised btn-facebook h-full-width h-margins-5" ng-click="vm.login()">Login with Facebook</md-button>
+      <md-button class="h-full-width h-margins-5">Register</md-button>
     </md-card-actions>
   </md-card>
   <md-card>

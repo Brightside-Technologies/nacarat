@@ -1,0 +1,39 @@
+.login-card {
+  width: 350px;
+  height: 500px;
+  background: inherit;
+  position: absolute;
+  overflow: hidden;
+  top: 50%;
+  left: 50%;
+  margin-left: -175px;
+  margin-top: -250px;
+  border-radius: 8px;
+  color: rgba(255,255,255,0.8);
+
+  input {
+    background-color: rgba(255,255,255,0.75);
+  }
+
+  .btn-facebook {
+    background-color: $g-facebook-blue;
+    color: rgba(255,255,255,0.75);
+    &:hover{
+      background-color: darken($g-facebook-blue, 10%) !important;
+    }
+  }
+}
+
+.login-card:before {
+  width: 400px;
+  height: 550px;
+  content: "";
+  position: absolute;
+  top: -25px;
+  left: -25px;
+  bottom: 0;
+  right: 0;
+  background: inherit;
+  box-shadow: inset 0 0 0 200px rgba(0,0,0,0.3);
+  filter: blur(10px);
+}
