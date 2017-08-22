@@ -120,7 +120,8 @@ gulp.task('webserver', function() {
             port: server.port,
             livereload: true,
             directoryListing: false,
-            fallback: 'www/index.html'
+            fallback: './www/index.html',
+            path: process.cwd()
         }));
 });
 

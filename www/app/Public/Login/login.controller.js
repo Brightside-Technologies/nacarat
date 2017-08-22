@@ -1,24 +1,14 @@
-(function() {
-    'use strict';
+export default function LoginController($state) {
+  var vm = this;
+  vm.login = login;
 
-    angular
-        .module('Public.Login', [])
-        .controller('LoginController', LoginController);
+  init();
 
-    LoginController.$inject = ['$state'];
+  function init() {
 
-    function LoginController($state) {
-        var vm = this;
-        vm.login = login;
+  }
 
-        init();
-
-        function init() {
-
-        }
-
-        function login(){
-          $state.go('admin.root.home');
-        }
-    }
-})();
+  function login() {
+    $state.go('admin.root.home');
+  }
+}

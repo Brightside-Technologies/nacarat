@@ -1,15 +1,4 @@
-(function() {
-    'use strict';
-
-    angular
-        .module('Public.Home')
-        .controller('HomeController', HomeController);
-
-    HomeController.$inject = [
-        '$state'
-    ];
-
-    function HomeController($state) {
+export default function HomeController($state) {
         var vm = this;
         vm.flickityId = 'flickityId';
         vm.slides = [
@@ -46,4 +35,3 @@
         function init() {
         }
     }
-})();
