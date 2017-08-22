@@ -2,8 +2,8 @@
 @import 'base';
 @import 'helpers';
 //include app component styling
-@import 'www/assets/layouts/layout';
-@import 'www/app/Public//Home/home';
-@import 'www/app/Admin/Profile/profile';
-@import 'www/assets/directives/search-bar/search-bar';
-@import 'www/app/Public/Login/login';
+@import './assets/layouts/layout';
+@import './app/Public//Home/home';
+@import './app/Admin/Profile/profile';
+@import './assets/directives/search-bar/search-bar';
+@import './app/Public/Login/login';

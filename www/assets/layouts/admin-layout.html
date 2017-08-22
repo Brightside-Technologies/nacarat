@@ -1,7 +1,7 @@
 <md-toolbar class="nacarat-toolbar h-horizontal-padding">
   <div class="md-toolbar-tools" layout layout-align="start center">
     <div class="nacarat-toolbar__logo-wrapper" layout>
-      <img class="nacarat-toolbar__logo--image md-user-avatar" ui-sref=".home" src="www/assets/img/angular.png" />
+      <img class="nacarat-toolbar__logo--image md-user-avatar" ui-sref=".home" src="./assets/img/angular.png" />
       <span layout-padding class="cursive nacarat-toolbar__logo--text" ui-sref=".home">Shop Local</span>
     </div>
     <!-- fill up the space between left and right area -->
@@ -15,7 +15,7 @@
   <div layout class="sidenav__header h-image-contain" layout-align="center center">
     <md-menu md-position-mode="target-right target" md-offset="0 50">
       <md-button layout layout-padding ng-click="$mdMenu.open($event)">
-        <img class="sidenav__header-avatar h-horizontal-padding" ng-src="{{vm.user.picture || 'www/assets/img/user.png'}}" />
+        <img class="sidenav__header-avatar h-horizontal-padding" ng-src="{{vm.user.picture || './assets/img/user.png'}}" />
         <span md-colors="{color: 'grey-A100'}">Diego Bernal </span>
         <md-icon md-colors="{color: 'grey-A100'}">keyboard_arrow_down</md-icon>
       </md-button>

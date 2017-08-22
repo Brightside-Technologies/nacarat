@@ -24,7 +24,7 @@
         abstract: true,
         views: {
           'public': {
-            templateUrl: 'www/assets/layouts/main-layout.html'
+            templateUrl: './assets/layouts/main-layout.html'
           }
         }
       })
@@ -32,7 +32,7 @@
         url: '/',
         views: {
           '': {
-            templateUrl: 'www/app/Public/Home/home.html',
+            templateUrl: './app/Public/Home/home.html',
             controller: 'HomeController as vm'
           }
         }
@@ -41,7 +41,7 @@
         url: '/about',
         views: {
           '': {
-            templateUrl: 'www/app/Public/AboutUs/about.html',
+            templateUrl: './app/Public/AboutUs/about.html',
             controller: 'AboutController as vm'
           }
         }
@@ -50,7 +50,7 @@
         url: '/subscribe',
         views: {
           '': {
-            templateUrl: 'www/app/Public/Subscribe/subscribe.html',
+            templateUrl: './app/Public/Subscribe/subscribe.html',
             controller: 'SubscribeController as vm'
           }
         }
@@ -59,7 +59,7 @@
         url: '/faq',
         views: {
           '': {
-            templateUrl: 'www/app/Public/FAQ/faq.html',
+            templateUrl: './app/Public/FAQ/faq.html',
             controller: 'FAQController as vm'
           }
         }
@@ -68,7 +68,7 @@
         url: '/products?q',
         views: {
           '': {
-            templateUrl: 'www/app/Public/Products/products/products.html',
+            templateUrl: './app/Public/Products/products/products.html',
             controller: 'ProductsController as vm'
           }
         }
@@ -77,7 +77,7 @@
         url: '/product-details/:productId',
         views: {
           '': {
-            templateUrl: 'www/app/Public/Products/product-details/product-details.html',
+            templateUrl: './app/Public/Products/product-details/product-details.html',
             controller: 'ProductDetailsController as vm'
           }
         }
@@ -86,7 +86,7 @@
         url: '/vendor-details/:vendorId',
         views: {
           '': {
-            templateUrl: 'www/app/Public/Vendor/vendor-details/vendor-details.html',
+            templateUrl: './app/Public/Vendor/vendor-details/vendor-details.html',
             controller: 'VendorDetailsController as vm'
           }
         }
@@ -95,7 +95,7 @@
         url: '/vendor-list',
         views: {
           '': {
-            templateUrl: 'www/app/Public/Vendor/vendor-list/vendor-list.html',
+            templateUrl: './app/Public/Vendor/vendor-list/vendor-list.html',
             controller: 'VendorListController as vm'
           }
         }
@@ -106,13 +106,13 @@
       .state('login', {
         url: '',
         abstract: true,
-        templateUrl: 'www/assets/layouts/login-layout.html'
+        templateUrl: './assets/layouts/login-layout.html'
       })
       .state('login.root', {
         url: '/login',
         views: {
           '': {
-            templateUrl: 'www/app/Public/Login/login.html',
+            templateUrl: './app/Public/Login/login.html',
             controller: 'LoginController as vm'
           }
         }
@@ -130,7 +130,7 @@
         abstract: true,
         views: {
           'admin': {
-            templateUrl: 'www/assets/layouts/admin-layout.html',
+            templateUrl: './assets/layouts/admin-layout.html',
             controller: function($state, $mdSidenav) {
               //TEMP controller just to get logout to work
               var vm = this;
@@ -149,7 +149,7 @@
         url: '',
         views: {
           '': {
-            templateUrl: 'www/app/Admin/Home/home.html',
+            templateUrl: './app/Admin/Home/home.html',
             controller: 'AdminHomeController as vm'
           }
         }
@@ -158,7 +158,7 @@
         url: '/profile',
         views: {
           '': {
-            templateUrl: 'www/app/Admin/Profile/profile.html',
+            templateUrl: './app/Admin/Profile/profile.html',
             controller: 'ProfileController as vm'
           }
         }
@@ -167,7 +167,7 @@
         url: '/inventory',
         views: {
           '': {
-            templateUrl: 'www/app/Admin/Inventory/inventory/inventory.html',
+            templateUrl: './app/Admin/Inventory/inventory/inventory.html',
             controller: 'InventoryController as vm'
           }
         }
