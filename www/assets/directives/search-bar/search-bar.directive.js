@@ -6,7 +6,7 @@
   function SearchBarDirective() {
     return {
       restrict: 'E',
-      templateUrl: 'www/assets/directives/search-bar/search-bar.directive.html',
+      templateUrl: './assets/directives/search-bar/search-bar.directive.html',
       controller: SearchBarController,
       controllerAs: 'vm',
       bindToController: true

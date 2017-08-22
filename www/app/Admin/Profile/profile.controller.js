@@ -54,7 +54,7 @@
       };
       var opts = {};
       opts.controller = 'UpdateSocialMediaController';
-      opts.templateUrl = 'www/assets/templates/dialog-form.tmpl.html';
+      opts.templateUrl = './assets/templates/dialog-form.tmpl.html';
       opts.target = ev;
       opts.openFrom = angular.element(ev.toElement);
       opts.closeTo = angular.element(ev.toElement);
@@ -118,7 +118,7 @@
       };
       var opts = {};
       opts.controller = 'UpdateSocialMediaController';
-      opts.templateUrl = 'www/assets/templates/dialog-form.tmpl.html';
+      opts.templateUrl = './assets/templates/dialog-form.tmpl.html';
       opts.target = ev;
       opts.openFrom = angular.element(ev.toElement);
       opts.closeTo = angular.element(ev.toElement);
@@ -160,7 +160,7 @@
 
       var opts = {};
       opts.controller = controller;
-      opts.templateUrl = 'www/assets/templates/dialog-form.tmpl.html';
+      opts.templateUrl = './assets/templates/dialog-form.tmpl.html';
       opts.target = ev;
       opts.openFrom = angular.element(ev.toElement);
       opts.closeTo = angular.element(ev.toElement);

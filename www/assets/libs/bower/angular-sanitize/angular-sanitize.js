@@ -761,7 +761,7 @@ angular.module('ngSanitize').filter('linky', ['$sanitize', function($sanitize) {
     while ((match = raw.match(LINKY_URL_REGEXP))) {
       // We can not end in these as they are sometimes found at the end of the sentence
       url = match[0];
-      // if we did not match ftp/http/www/mailto then assume mailto
+      // if we did not match ftp/http/./mailto then assume mailto
       if (!match[2] && !match[4]) {
         url = (match[3] ? 'http://' : 'mailto:') + url;
       }
