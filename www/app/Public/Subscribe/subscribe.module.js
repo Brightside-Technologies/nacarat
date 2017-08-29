@@ -1,6 +1,5 @@
-(function() {
-    'use strict';
+import angular from 'angular';
+import SubscribeController from './subscribe.controller';
 
-    angular
-        .module('Public.Subscribe', []);
-})();
+export default angular.module('Public_Subscribe', [])
+  .controller('SubscribeController', SubscribeController).name;

@@ -1,6 +1,7 @@
-(function() {
-    'use strict';
+import angular from 'angular';
+import VendorListController from './vendor-list/vendor-list.controller';
+import VendorDetailsController from './vendor-details/vendor-details.controller';
 
-    angular
-        .module('Public.Vendor', []);
-})();
+export default angular.module('Public_Vendor', [])
+  .controller('VendorListController', VendorListController)
+  .controller('VendorDetailsController', VendorDetailsController).name;

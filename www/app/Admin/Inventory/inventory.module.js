@@ -1,6 +1,6 @@
-(function() {
-    'use strict';
+import angular from 'angular';
+import InventoryController from './inventory/inventory.controller';
 
-    angular
-        .module('Admin.Inventory', []);
-})();
+export default angular.module('Admin_Inventory', [])
+  .controller('InventoryController', InventoryController)
+  .name;

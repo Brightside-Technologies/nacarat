@@ -1,30 +1,24 @@
-(function() {
-    'use strict';
+ProductsController.$inject = [
+  '$state',
+  '$stateParams',
+  'ProductsService'
+];
 
-    angular
-        .module('Public.Products')
-        .controller('ProductsController', ProductsController);
-        ProductsController.$inject = [
-            '$state',
-            '$stateParams',
-            'ProductsService'
-        ];
-    function ProductsController($state, $stateParams, ProductsService) {
-        var vm = this;
-        vm.products = [];
+export default function ProductsController($state, $stateParams, ProductsService) {
+  var vm = this;
+  vm.products = [];
 
-        init();
+  init();
 
-        function init() {
-          ProductsService
-          .queryBySuggestion($stateParams.q)
-          .then(function success(response) {
-              console.log('response', response);
-              vm.products = response.data;
-          },
-          function error(e) {
-              console.error(e);
-          });
-        }
-    }
-})();
+  function init() {
+    ProductsService
+      .queryBySuggestion($stateParams.q)
+      .then(function success(response) {
+          console.log('response', response);
+          vm.products = response.data;
+        },
+        function error(e) {
+          console.error(e);
+        });
+  }
+}

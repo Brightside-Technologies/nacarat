@@ -1,6 +1,7 @@
-(function() {
-    'use strict';
+import angular from 'angular';
+import SearchBarDirective from './search-bar/search-bar.directive';
+import CompileDirective from './compile.directive';
 
-    angular
-        .module('Nacarat.Directives', []);
-})();
+export default angular.module('Nacarat_Directives', [])
+  .directive('searchBar', SearchBarDirective)
+  .directive('compile', CompileDirective).name;

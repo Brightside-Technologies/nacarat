@@ -1,38 +1,30 @@
-(function() {
-    'use strict';
+InventoryService.$inject = [
+  '$resource',
+  '$http',
+  'config'
+];
 
-    angular
-        .module('Nacarat.Services')
-        .service('InventoryService', InventoryService);
+export default function InventoryService($resource, $http, config) {
+  // var url = baseUrl + '/products/:productId'
+  var baseUrl = config.baseUrl;
 
-    InventoryService.$inject = [
-        '$resource',
-        '$http',
-        'config'
-    ];
+  var service = this;
 
-    function InventoryService($resource, $http, config) {
-        // var url = baseUrl + '/products/:productId'
-        var baseUrl = config.baseUrl;
+  service.query = function() {
+    var url = baseUrl + '/inventory'
+    return $http({
+      url: url,
+      method: 'GET'
+    });
+  }
 
-        var service = this;
+  service.get = function(inventoryId) {
+    // var url = baseUrl + '/products/:productId'
+    var url = baseUrl + '/inventory'
+    return $http({
+      url: url,
+      method: 'GET'
+    });
+  }
 
-        service.query = function(){
-          var url = baseUrl + '/inventory'
-          return $http({
-            url: url,
-            method: 'GET'
-          });
-        }
-
-        service.get = function(inventoryId){
-          // var url = baseUrl + '/products/:productId'
-          var url = baseUrl + '/inventory'
-          return $http({
-            url: url,
-            method: 'GET'
-          });
-        }
-
-    }
-})();
+}

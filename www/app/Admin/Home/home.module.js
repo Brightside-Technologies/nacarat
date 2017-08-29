@@ -1,6 +1,6 @@
-(function() {
-    'use strict';
+import angular from 'angular';
+import AdminHomeController from './home.controller';
 
-    angular
-        .module('Admin.Home', []);
-})();
+export default angular.module('Admin_Home', [])
+  .controller('AdminHomeController', AdminHomeController)
+  .name;

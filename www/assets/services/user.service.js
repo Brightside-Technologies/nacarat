@@ -1,11 +1,3 @@
-(function() {
-    'use strict';
-
-    angular
-        .module('Nacarat.Services')
-        .service('UserService', UserService);
-
-    function UserService() {
-        var vm = this;
-    }
-})();
+export default function UserService() {
+  var vm = this;
+}

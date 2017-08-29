@@ -1,6 +1,6 @@
-(function() {
-    'use strict';
+import angular from 'angular';
+//import AboutController from './about.controller';
 
-    angular
-        .module('Admin.Settings', []);
-})();
+export default angular.module('Admin_Settings', []).name;
+//.controller('AboutController', AboutController)
+//.name;

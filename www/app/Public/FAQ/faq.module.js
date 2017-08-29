@@ -1,6 +1,6 @@
-(function() {
-    'use strict';
+import angular from 'angular';
+import FAQController from './faq.controller';
 
-    angular
-        .module('Public.FAQ', []);
-})();
+export default angular.module('Public_FAQ', [])
+  .controller('FAQController', FAQController)
+  .name;

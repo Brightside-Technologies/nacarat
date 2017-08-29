@@ -1,20 +1,10 @@
-(function() {
-    'use strict';
+export default function AdminHomeController() {
+  var vm = this;
+  vm.title = "Admin Home";
 
-    angular
-        .module('Admin.Home', [])
-        .controller('AdminHomeController', AdminHomeController);
+  init();
 
-    //AdminHomeController.$inject = ['dependencies'];
+  function init() {
 
-    function AdminHomeController() {
-        var vm = this;
-        vm.title = "Admin Home";
-
-        init();
-
-        function init() {
-
-        }
-    }
-})();
+  }
+}

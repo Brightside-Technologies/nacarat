@@ -45,7 +45,7 @@ module.exports = function makeWebpackConfig() {
 
     // Output path from the view of the page
     // Uses webpack-dev-server in development
-    publicPath: isProd ? '/' : 'http://localhost:8080/',
+    publicPath: isProd ? '/' : '/',
 
     // Filename for entry points
     // Only adds hash in build mode
@@ -105,7 +105,7 @@ module.exports = function makeWebpackConfig() {
       loader: isTest ? 'null-loader' : ExtractTextPlugin.extract({
         fallbackLoader: 'style-loader',
         loader: [
-          {loader: 'css-loader', query: {sourceMap: true}},
+          {loader: 'css-loader', query: {sourceMap: true, minimize: true}},
           {loader: 'postcss-loader'}
         ],
       })
@@ -117,7 +117,7 @@ module.exports = function makeWebpackConfig() {
       // Pass along the updated reference to your code
       // You can add here any file extension you want to get copied to your output
       test: /\.(png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot)$/,
-      loader: 'file-loader'
+      loader: 'file-loader?name=assets/[name].[ext]'
     }, {
       // HTML LOADER
       // Reference: https://github.com/webpack/raw-loader
@@ -160,14 +160,15 @@ module.exports = function makeWebpackConfig() {
    * List: http://webpack.github.io/docs/list-of-plugins.html
    */
   config.plugins = [
-    new webpack.LoaderOptionsPlugin({
-      test: /\.scss$/i,
-      options: {
-        postcss: {
-          plugins: [autoprefixer]
-        }
-      }
-    })
+    // new webpack.LoaderOptionsPlugin({
+    //   test: /\.scss$/i,
+    //   options: {
+    //     postcss: {
+    //       plugins: [autoprefixer]
+    //     }
+    //   }
+    // }),
+    new webpack.ProvidePlugin({ _: 'underscore' })
   ];
 
   // Skip rendering index.html in test mode
@@ -183,7 +184,7 @@ module.exports = function makeWebpackConfig() {
       // Reference: https://github.com/webpack/extract-text-webpack-plugin
       // Extract css files
       // Disabled when in test mode or not in build mode
-      new ExtractTextPlugin({filename: 'css/[name].css', disable: !isProd, allChunks: true})
+      new ExtractTextPlugin({filename: 'assets/[name].[hash].css', disable: !isProd, allChunks: true})
     )
   }
 
@@ -200,12 +201,12 @@ module.exports = function makeWebpackConfig() {
 
       // Reference: http://webpack.github.io/docs/list-of-plugins.html#uglifyjsplugin
       // Minify all javascript, switch loaders to minimizing mode
-      new webpack.optimize.UglifyJsPlugin(),
+      //new webpack.optimize.UglifyJsPlugin(),
 
       // Copy assets from the public folder
       // Reference: https://github.com/kevlened/copy-webpack-plugin
       new CopyWebpackPlugin([{
-        from: __dirname + '/www/public'
+        from: __dirname + '/dist'
       }])
     )
   }
