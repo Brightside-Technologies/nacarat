@@ -1,4 +1,9 @@
-export default function HomeController($state) {
+HomeController.$inject = [
+  '$state',
+  'ProductsService'
+];
+
+export default function HomeController($state, ProductsService) {
         var vm = this;
         vm.flickityId = 'flickityId';
         vm.slides = [
@@ -19,6 +24,7 @@ export default function HomeController($state) {
             text: "World"
           }
         ];
+        vm.products = [];
 
         // Define custom options for the demo
         vm.flickityOptions = {
@@ -33,5 +39,8 @@ export default function HomeController($state) {
         init();
 
         function init() {
+          // ProductsService.query().then(function(products){
+          //   console.log('products', products);
+          // })
         }
     }

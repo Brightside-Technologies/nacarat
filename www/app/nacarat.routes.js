@@ -123,7 +123,7 @@ export default function Routes($stateProvider, $urlRouterProvider) {
         'admin': {
           template: require('../assets/layouts/admin-layout.html'),
           controller: function($state, $mdSidenav) {
-            //TEMP controller just to get logout to work
+            // NOTE: TEMP controller just to get logout to work
             var vm = this;
             vm.toggleSidenav = function() {
               $mdSidenav('admin-sidenav').toggle();

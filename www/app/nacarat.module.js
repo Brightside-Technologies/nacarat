@@ -10,6 +10,7 @@ import 'angular-material-data-table/dist/md-data-table.css';
 import '../assets/styles/site.css';
 
 import angular from 'angular';
+//import * as firebase from 'firebase';
 import uiRouter from 'angular-ui-router';
 import ngMaterial from 'angular-material';
 import ngResource from 'angular-resource';
@@ -20,6 +21,7 @@ import 'flickity-imagesloaded';
 import 'flickity-bg-lazyload';
 import 'angular-flickity';
 import 'moment';
+import 'angularfire';
 
 import run from './nacarat.config';
 import routes from './nacarat.routes';
@@ -32,6 +34,7 @@ import Nacarat_Helpers from '../assets/helpers/helpers.module';
 
 angular
   .module('Nacarat', [
+    'firebase',
     uiRouter,
     ngResource,
     ngSanitize,
@@ -46,6 +49,7 @@ angular
   ])
   .constant('config', {
     "baseUrl": "http://127.0.0.1:3000"
+    //"baseUrl": "https://nacarat-2be74.firebaseio.com"
   })
   .config(routes)
   .config(NacaratTheme)

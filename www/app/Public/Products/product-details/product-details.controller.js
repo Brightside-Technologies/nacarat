@@ -15,12 +15,7 @@ export default function ProductDetailsController($state, $stateParams, ProductsS
   function init() {
     ProductsService.get(productId)
       .then(function(product) {
-        console.log("product", product);
-
-        var products = product.data.data;
-        vm.product = products[productId];
-        console.log("vm.product", vm.product);
-        console.log("$stateParams", $stateParams);
+        vm.product = product.data;
       });
   }
 }

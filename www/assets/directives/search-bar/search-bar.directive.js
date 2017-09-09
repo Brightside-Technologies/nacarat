@@ -26,14 +26,13 @@ export default function SearchBarDirective() {
           function error(errorResponse) {
             console.log('errorResponse', errorResponse);
             return [];
-          })
+          });
     }
 
     function itemSelected(item) {
       if (item) {
         // TODO: save search text in cookie to keep after research
-        // TODO: add resolve at 'public.root.products' ?!?.
-        // it would make 'public.root.products' reusable
+        // TODO: add resolve at 'public.root.products' ?!? it would make 'public.root.products' reusable
         $state.go('public.root.products', {
           q: item.text
         });
