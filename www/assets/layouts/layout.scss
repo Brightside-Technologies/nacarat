@@ -1,5 +1,9 @@
 .nacarat-content {
   min-height: calc(100vh - 128px);
+
+  main {
+    overflow-x: hidden;
+  }
 }
 
 .login-layout__content {

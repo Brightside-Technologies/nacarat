@@ -1,5 +1,13 @@
-[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+.ng-cloak,
+.x-ng-cloak,
+[data-ng-cloak],
+[ng-cloak],
+[ng\:cloak],
+[x-ng-cloak] {
   display: none !important; }
+
+main {
+  min-height: 100vh; }
 
 body {
   overflow-x: hidden; }
@@ -42,19 +50,35 @@ body {
   padding-right: 15px !important; }
 
 .h-image-fill {
-  background-repeat: no-repeat;
-  background-position: center;
-  overflow: hidden;
-  background-size: cover; }
+  background-repeat: no-repea !important;
+  background-position: center !important;
+  overflow: hidden !important;
+  background-size: cover !important; }
 
 .h-image-contain {
-  background-repeat: no-repeat;
-  background-position: center;
-  overflow: hidden;
-  background-size: contain; }
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  overflow: hidden !important;
+  background-size: contain !important; }
+
+.h-d-block {
+  display: block !important; }
+
+.h-d-inline-block {
+  display: inline-block !important; }
+
+md-footer small {
+  font-size: 12px;
+  padding: 5px; }
+
+md-footer a {
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.54); }
 
 .nacarat-content {
   min-height: calc(100vh - 128px); }
+  .nacarat-content main {
+    overflow-x: hidden; }
 
 .login-layout__content {
   height: calc(100vh - 64px);
@@ -90,30 +114,36 @@ body {
 .daily-deal-card__product-image {
   height: 75%; }
 
-.demo {
-  background-color: #cce5f6;
+.home-content {
+  min-height: 100vh; }
+  .home-content p {
+    line-height: 1.25; }
+
+.hero {
   color: #555;
   height: 100%;
-  min-height: 5rem;
-  padding: 2rem 3rem; }
-  .demo__card {
+  min-height: 5rem; }
+  .hero__carousel {
     background-color: #fcfcfc;
-    padding: 1rem 1rem 3rem;
     text-align: center; }
-  .demo__title small {
+    .hero__carousel-slides {
+      height: 20rem; }
+    .hero__carousel-slide {
+      height: 100%;
+      text-align: center;
+      width: 100%;
+      background-repeat: no-repeat !important;
+      background-position: center !important;
+      overflow: hidden !important;
+      background-size: cover !important; }
+      .hero__carousel-slide-text {
+        color: #fff; }
+      .hero__carousel-slide .slide__image {
+        width: 100%;
+        height: 100%; }
+  .hero__title small {
     display: block;
     font-size: 70%; }
-  .demo__slides {
-    margin-bottom: 3rem;
-    margin-top: 2rem;
-    height: 20rem; }
-  .demo__slide {
-    height: 100%;
-    text-align: center;
-    width: 100%; }
-    .demo__slide .slide__image {
-      width: 100%;
-      height: 100%; }
 
 .twitter-icon {
   background-color: #00aced !important;

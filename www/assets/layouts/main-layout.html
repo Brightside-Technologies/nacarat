@@ -1,18 +1,20 @@
-<md-toolbar class="nacarat-toolbar">
-  <div class="md-toolbar-tools h-no-horizontal-padding" layout layout-padding>
-    <div flex="nogrow" class="nacarat-toolbar__logo-wrapper" ui-sref=".home" layout layout-align="center center">
-      <img class="nacarat-toolbar__logo--image md-user-avatar" src="./assets/logo.png" />
-      <span layout-padding class="cursive nacarat-toolbar__logo--text">Shop Local</span>
+<header>
+  <md-toolbar class="nacarat-toolbar">
+    <div class="md-toolbar-tools h-no-horizontal-padding" layout layout-padding>
+      <div flex="none" class="nacarat-toolbar__logo-wrapper" ui-sref=".home" layout layout-align="center center">
+        <img class="nacarat-toolbar__logo--image md-user-avatar" src="./assets/logo.png" />
+        <span layout-padding class="cursive nacarat-toolbar__logo--text">Shop Local</span>
+      </div>
+      <search-bar flex style="max-width: 50%" class="h-no-padding"></search-bar>
+      <div flex class="nacarat-toolbar__action-buttons--wrapper h-no-vertical-padding" layout layout-align="end center">
+        <md-button class="nacarat-toolbar__action-buttons" ui-sref="login.root">Partners</md-button>
+      </div>
     </div>
-    <search-bar flex class="h-no-padding"></search-bar>
-    <div flex="nogrow" class="nacarat-toolbar__action-buttons--wrapper h-no-vertical-padding">
-      <md-button class="nacarat-toolbar__action-buttons" ui-sref=".about">About Us</md-button>
-      <md-button class="nacarat-toolbar__action-buttons" ui-sref=".subscribe">Subscribe</md-button>
-      <md-button class="nacarat-toolbar__action-buttons" ui-sref=".faq">FAQ</md-button>
-      <md-button class="nacarat-toolbar__action-buttons" ui-sref="login.root">Partners</md-button>
-    </div>
-  </div>
-</md-toolbar>
-<md-content ui-view layout-padding layout-wrap class="nacarat-content h-no-padding">
-  <!--load home page-->
+  </md-toolbar>
+</header>
+<md-content flex layout-padding layout-wrap class="nacarat-content h-no-padding">
+  <main flex ui-view class="h-no-padding">
+      <!--load home page-->
+  </main>
+  <md-footer layout flex class="h-no-padding"></md-footer>
 </md-content>

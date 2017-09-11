@@ -35,6 +35,7 @@ import Nacarat_Helpers from '../assets/helpers/helpers.module';
 angular
   .module('Nacarat', [
     'firebase',
+    //moment,
     uiRouter,
     ngResource,
     ngSanitize,
