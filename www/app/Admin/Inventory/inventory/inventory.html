@@ -2,7 +2,7 @@
 <md-toolbar class="md-table-toolbar md-default md-toolbar">
   <div class="md-toolbar-tools">
       <md-input-container>
-          <label> Search Table </label>
+          <label> Search Inventory </label>
            <input ng-model="search.filter"> 
          </md-input-container>
   </div>
@@ -21,13 +21,12 @@
       </tr>
     </thead>
     <tbody md-body>
-      <tr md-row md-select="inventory" md-select-id="name" md-auto-select ng-repeat="inventory in vm.inventories | filter: vm.inventorySearch | orderBy: vm.query.order 
+      <tr ui-sref="admin.root.inventory-details({inventoryId:inventory.id})" md-row md-select="inventory" md-select-id="name" md-auto-select ng-repeat="inventory in vm.inventories | filter: vm.inventorySearch | orderBy: vm.query.order 
       | limitTo: vm.query.pageLimit : (vm.query.pageNumber -1) * vm.query.pageLimit">
         <td md-cell>{{inventory.productName}}</td>
         <td md-cell>{{inventory.price}}</td>
         <td md-cell>{{inventory.quantity}}</td>
         <td md-cell>{{inventory.dailyDealPrice}}</td>
-        <td md-cell>{{inventory.seller.name}}</td>
       </tr>
     </tbody>
   </table>

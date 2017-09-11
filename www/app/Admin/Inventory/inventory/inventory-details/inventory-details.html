@@ -1,1 +1,108 @@
+<h3 class="md-headline h-center cursive">Inventory Details</h3>
+<div flex ng-cloak>
+        <md-card flex="60" flex-offset="20">
+          <md-card-title>
+            <md-card-title-text>
+              <span class="md-headline">Product Information</span>
+            </md-card-title-text>
+          </md-card-title>
+          <md-card-content>
+            <md-list flex>
+              <md-list-item class="md-2-line">
+                <div class="md-list-item-text">
+                  <h3>Name</h3>
+                  <h3>{{::vm.inventory.productName}}</h3>
+                </div>
+                <md-button class="md-icon-button md-secondary" aria-label="Edit Name">
+                  <md-icon md-colors="{color: 'orange-500'}" aria-hidden="true">edit</md-icon>
+                </md-button>
+              </md-list-item>
+              <md-list-item class="md-2-line md-long-text">
+                <div class="md-list-item-text">
+                  <h3>Description</h3>
+                  <p>
+                    {{::vm.inventory.description}}
+                  </p>
+                </div>
+                <md-button class="md-icon-button md-secondary"aria-label="Edit About" ng-click="vm.showUpdateAboutUs($event, vm.vendor)">
+                  <md-icon md-colors="{color: 'orange-500'}" aria-hidden="true">edit</md-icon>
+                </md-button>
+              </md-list-item>
+              <md-list-item class="md-2-line md-long-text">
+                    <div class="md-list-item-text">
+                      <h3>Quantity</h3>
+                      <p>
+                        {{::vm.inventory.quantity}}
+                      </p>
+                    </div>
+                    <md-button class="md-icon-button md-secondary"aria-label="Edit About" ng-click="vm.showUpdateAboutUs($event, vm.vendor)">
+                      <md-icon md-colors="{color: 'orange-500'}" aria-hidden="true">edit</md-icon>
+                    </md-button>
+                  </md-list-item>
+                  <md-list-item class="md-2-line md-long-text">
+                        <div class="md-list-item-text">
+                          <h3>Tags</h3>
+                          <p>
+                            {{::vm.inventory.tags}}
+                          </p>
+                        </div>
+                        <md-button class="md-icon-button md-secondary"aria-label="Edit About" ng-click="vm.showUpdateAboutUs($event, vm.vendor)">
+                          <md-icon md-colors="{color: 'orange-500'}" aria-hidden="true">edit</md-icon>
+                        </md-button>
+                      </md-list-item>
+                      
+                          <md-list-item class="md-2-line md-long-text">
+                                <div class="md-list-item-text">
+                                  <h3>Daily Deal Price</h3>
+                                  <p>
+                                    ${{::vm.inventory.dailyDealPrice}}
+                                  </p>
+                                </div>
+                                <md-button class="md-icon-button md-secondary"aria-label="Edit About" ng-click="vm.showUpdateAboutUs($event, vm.vendor)">
+                                  <md-icon md-colors="{color: 'orange-500'}" aria-hidden="true">edit</md-icon>
+                                </md-button>
+                              </md-list-item>
+                              <md-list-item class="md-2-line md-long-text">
+                                    <div class="md-list-item-text">
+                                      <h3>Price</h3>
+                                      <p>
+                                        ${{::vm.inventory.price}}
+                                      </p>
+                                    </div>
+                                    <md-button class="md-icon-button md-secondary"aria-label="Edit About" ng-click="vm.showUpdateAboutUs($event, vm.vendor)">
+                                      <md-icon md-colors="{color: 'orange-500'}" aria-hidden="true">edit</md-icon>
+                                    </md-button>
+                                  </md-list-item>
+                  
+            </md-list>
+          </md-card-content>
+          
+          
+          
+          
+        </md-card>
+    </div>
+        <div ng-cloak ng-repeat="image in vm.inventory.images">
 
+                <md-card flex="60" flex-offset="20" md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch="">
+                        <md-card-title>
+                          <md-card-title-text>
+                            <span class="md-headline">Card with image</span>
+                            <span class="md-subhead">Image {{$index + 1}}</span>
+                          </md-card-title-text>
+                          <md-card-title-media>
+                            <div class="md-media-lg card-media">
+                                <img ng-src="{{image}}" class="md-card-image" alt="{{vm.inventory.productName}}">
+                            </div>
+                          </md-card-title-media>
+                        </md-card-title>
+                        <md-card-actions layout="row" layout-align="end center">
+                          <md-button>Action 1</md-button>
+                          <md-button>Action 2</md-button>
+                        </md-card-actions>
+                      </md-card>
+                
+              </div>
+
+      
+      

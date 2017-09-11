@@ -162,5 +162,14 @@ export default function Routes($stateProvider, $urlRouterProvider) {
           controller: 'InventoryController as vm'
         }
       }
+    })
+    .state('admin.root.inventory-details', {
+      url: 'inventory-details/:inventoryId',
+      views: {
+        '': {
+          template: require('./Admin/Inventory/inventory/inventory-details/inventory-details.html'),
+          controller: 'InventoryDetailsController as vm'
+        }
+      }
     });
 }
