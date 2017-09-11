@@ -1,48 +1,97 @@
-.daily-deal-card{
+.daily-deal-card {
   height: 20rem;
   // max-height: 75%;
 }
 
 .daily-deal-card__product-image {
-    height: 75%;
-    // max-height:50%;
+  height: 75%;
+  // max-height:50%;
 }
 
-.demo {
-    background-color: lighten(#3498db, 35);;
-    color: #555;
-    height: 100%;
-    min-height: 5rem;
-    padding: 2rem 3rem;
+.home-content {
+  min-height: 100vh;
 
-    &__card {
-        background-color: #fcfcfc;
-        padding: 1rem 1rem 3rem;
-        text-align: center;
+  p {
+    line-height: 1.25;
+  }
+}
+
+.products {
+  color: #555;
+  height: 100%;
+  min-height: 5rem;
+  &__carousel {
+    background-color: #fcfcfc;
+    text-align: center;
+
+    &-slides {
+      height: 20rem;
     }
 
-    &__title {
-        small {
-            display: block;
-            font-size: 70%;
-        }
-    }
+    &-slide {
+      height: 100%;
+      text-align: center;
+      width: 100%;
+      background-repeat: no-repeat !important;
+      background-position: center !important;
+      overflow: hidden !important;
+      background-size: cover !important;
 
-    // <div> container for slides
-    &__slides {
-        margin-bottom: 3rem;
-        margin-top: 2rem;
-        height: 20rem;
-    }
+      &-text {
+        color: #fff;
+      }
 
-    // <figure> individual slide
-    &__slide {
-        height: 100%;
-        text-align: center;
+      .slide__image {
         width: 100%;
-        .slide__image{
-          width:100%;
-          height:100%;
-        }
+        height: 100%;
+      }
     }
+  }
+
+  &__title {
+    small {
+      display: block;
+      font-size: 70%;
+    }
+  }
+}
+
+.hero {
+  color: #555;
+  height: 100%;
+  min-height: 5rem;
+  &__carousel {
+    background-color: #fcfcfc;
+    text-align: center;
+
+    &-slides {
+      height: 20rem;
+    }
+
+    &-slide {
+      height: 100%;
+      text-align: center;
+      width: 100%;
+      background-repeat: no-repeat !important;
+      background-position: center !important;
+      overflow: hidden !important;
+      background-size: cover !important;
+
+      &-text {
+        color: #fff;
+      }
+
+      .slide__image {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+
+  &__title {
+    small {
+      display: block;
+      font-size: 70%;
+    }
+  }
 }

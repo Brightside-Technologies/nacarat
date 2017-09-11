@@ -6,7 +6,6 @@ ProductDetailsController.$inject = [
 
 export default function ProductDetailsController($state, $stateParams, ProductsService) {
   var productId = $stateParams.productId;
-  console.log("productId", productId);
   var vm = this;
   vm.product = {};
 

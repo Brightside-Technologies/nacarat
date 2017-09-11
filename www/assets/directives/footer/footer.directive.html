@@ -1,0 +1,14 @@
+<md-toolbar layout="row" layout-padding md-colors="{background: 'grey-900'}">
+  <div layout layout-xs="column" flex class="h-no-padding">
+    <div flex-xs="100" flex="33" flex-order="1" layout layout-align-xs="center center" layout-align="start center">
+      <img class="nacarat-toolbar__logo--image md-user-avatar" src="./assets/logo.png" />
+      <span>Some kind of slogan</span>
+    </div>
+    <div hide-xs flex flex-order="2"></div>
+    <div flex-xs="100" flex="33" flex-order="3" layout layout-align-xs="center center" layout-align="end center">
+      <small>&copy; {{vm.currentYear}} ShopLocal, Inc.</small>
+      <small><a ui-sref=".about">About Us</a></small>
+      <small><a ui-sref=".faq">FAQ</a></small>
+    </div>
+  </div>
+</md-toolbar>

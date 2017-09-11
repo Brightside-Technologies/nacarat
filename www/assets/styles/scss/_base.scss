@@ -1,20 +1,27 @@
-[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+.ng-cloak,
+.x-ng-cloak,
+[data-ng-cloak],
+[ng-cloak],
+[ng\:cloak],
+[x-ng-cloak] {
   display: none !important;
 }
 
+main {
+  min-height: 100vh;
+}
+
 body {
-    overflow-x: hidden;
+  overflow-x: hidden;
 }
 
 [ui-sref] {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .cursive {
-    font-family: 'Pacifico', cursive;
+  font-family: 'Pacifico', cursive;
 }
-
-
 // .gradient {
 //     /* background: #e53935;*/
 //     /* fallback for old browsers */

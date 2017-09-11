@@ -1,24 +1,78 @@
-<section flex="column" class="demo" data-ng-controller="HomeController as vm">
-  <!-- <h1 class="demo__title">
-      {{ vm.projectName }}
-      <small>{{ vm.demoDetail }}</small>
-    </h1> -->
-
-  <div class="demo__card" flex="column">
-    <!-- <button ng-click="vm.goToFirst()">
-        Go to first slide
-      </button>
-
-      <button ng-click="vm.goToLast()">
-        Go to last slide
-      </button> -->
-
-    <div class="demo__slides" bc-flickity="{{vm.flickityOptions}}" bc-flickity-id="{{vm.flickityId}}">
-      <figure class="demo__slide" data-ng-repeat="slide in vm.slides track by $index">
-        <h1>{{::slide.text}}</h1>
-        <img class="slide__image" flex data-flickity-lazyload="{{::slide.image}}" alt="" />
-      </figure>
+<section flex layout="column" class="home-content">
+  <div layout layout-padding class="hero">
+    <div class="hero__carousel" flex="column">
+      <div class="hero__carousel-slides" id="hero-carousel-slides">
+        <figure class="hero__carousel-slide" ng-repeat="slide in vm.slides track by $index" ng-style="{'background-image':'url({{slide.image}})'}">
+          <h1 class="hero__carousel-slide-text">{{::slide.text}}</h1>
+        </figure>
+      </div>
     </div>
-
+  </div>
+  <div flex layout-xs="column" layout layout-padding>
+    <div flex-xs="100" flex="33" flex-order="2">
+      <h3 class="md-headline">The Fox & the Grapes</h3>
+      <p>
+        A Fox one day spied a beautiful bunch of ripe grapes hanging from a vine trained along the branches of a tree. The grapes seemed ready to burst with juice, and the Fox's mouth watered as he gazed longingly at them. </p>
+    </div>
+    <div flex-xs="100" flex="33" flex-order="2">
+      <h3 class="md-headline">The Owl & the Grasshopper</h3>
+      <p>
+        The Owl always takes her sleep during the day. Then after sundown, when the rosy light fades from the sky and the shadows rise slowly through the wood, out she comes ruffling and blinking from the old hollow tree. </p>
+    </div>
+    <div flex-xs="100" flex="33" flex-order="2">
+      <h3 class="md-headline">The Wild Boar & the Fox</h3>
+      <p>
+        A Wild Boar was sharpening his tusks busily against the stump of a tree, when a Fox happened by. Now the Fox was always looking for a chance to make fun of his neighbors.
+      </p>
+    </div>
+  </div>
+  <!-- <div layout layout-padding class="products">
+    <div class="products__carousel" flex="column">
+      <div class="products__carousel-slides" id="products-carousel-slides">
+        <figure class="products__carousel-slide" ng-repeat="(id, product) in vm.products">
+          <md-card ui-sref="public.root.product-details({productId:id})" flex-xs="100" flex="20" class="daily-product-card">
+            <img ng-src="{{::product.images[0]}}" class="md-card-image daily-deal-card__product-image" alt="{{::product.productName}}">
+            <md-card-title class="h-no-vertical-padding">
+              <md-card-title-text>
+                <span class="md-subhead h-no-padding">
+                      {{::product.productName}} &ndash;
+                      <strong><s>{{::product.price | currency:"$"}}</s></strong>
+                      <strong md-colors="{color: 'red-500'}">{{::product.dailyproductPrice | currency:"$"}}</strong>
+                    </span>
+              </md-card-title-text>
+            </md-card-title>
+            <md-card-actions layout="row" layout-align="end center">
+              <md-button class="md-icon-button" aria-label="Favorite">
+                <md-icon class="material-icons">favorite</md-icon>
+              </md-button>
+              <md-button class="md-icon-button" aria-label="Settings">
+                <md-icon>menu</md-icon>
+              </md-button>
+              <md-button class="md-icon-button" aria-label="Share">
+                <md-icon>share_arrow</md-icon>
+              </md-button>
+            </md-card-actions>
+          </md-card>
+        </figure>
+      </div>
+    </div>
+  </div> -->
+  <div flex layout="column" layout-padding md-colors="{background: 'red-100'}">
+    <h3 class="md-headline h-center h-no-margins">Subscribe</h3>
+    <p class="h-center">
+      Some text encouraging users to subscribe.
+    </p>
+    <div layout layout-align="center center">
+      <md-button class="md-raised md-accent">Subscribe</md-button>
+    </div>
+  </div>
+  <div flex layout="column" layout-padding md-colors="{background: 'blue-grey-200'}">
+    <h3 class="md-headline h-center h-no-margins">Join Us</h3>
+    <p class="h-center">
+      Some text encouraging users (merchants) to join our network. Essentially, a call to action.
+    </p>
+    <div layout layout-align="center center">
+      <md-button class="md-raised md-accent">Register Now</md-button>
+    </div>
   </div>
 </section>
