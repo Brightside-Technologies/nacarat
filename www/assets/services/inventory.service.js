@@ -11,7 +11,7 @@ export default function InventoryService($resource, $http, config) {
   var service = this;
 
   service.query = function() {
-    var url = baseUrl + '/inventory'
+    var url = baseUrl + '/vendors/8b9846d7-9df4-440c-8bbc-88b8a9fc7217/inventories.json'
     return $http({
       url: url,
       method: 'GET'
@@ -20,7 +20,7 @@ export default function InventoryService($resource, $http, config) {
 
   service.get = function(inventoryId) {
     // var url = baseUrl + '/products/:productId'
-    var url = baseUrl + '/inventory'
+    var url = baseUrl + '/vendors/8b9846d7-9df4-440c-8bbc-88b8a9fc7217/inventories/8b9846d7-9df4-440c-8bbc-88b8a9fc7217.json'
     return $http({
       url: url,
       method: 'GET'
