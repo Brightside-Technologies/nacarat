@@ -2,12 +2,15 @@ HomeController.$inject = [
   '$state',
   'ProductsService',
   '$document',
-  'FlickityService'
+  'FlickityService',
+  '$q',
+  '$timeout',
+  '$scope'
 ];
 
-export default function HomeController($state, ProductsService, $document, FlickityService) {
+// TODO: Reinitialize flickity without groupCells on small screen
+export default function HomeController($state, ProductsService, $document, FlickityService, $q, $timeout, $scope) {
   var vm = this;
-  vm.flickityId = 'heroCarousel';
   vm.slides = [{
       image: "http://cdn.benjamincharity.com/codepen/angular-flickity/slide1.jpg",
       text: "Lorem Ipsum"
@@ -25,23 +28,25 @@ export default function HomeController($state, ProductsService, $document, Flick
       text: "The Plane Tree"
     }
   ];
-  vm.products = [];
+  vm.productsObj = {};
 
   var heroCarouselOptions = {
-    cellSelector: '.hero__carousel-slide',
+    cellSelector: '.nacarat-carousel__slide',
     wrapAround: true,
-    resize: false,
-    setGallerySize: false,
-    freeScroll: true,
+    //resize: false,
+    //setGallerySize: false,
+    //groupCells: 3,
+    //freeScroll: true,
     freeScrollFriction: 0.03
   };
 
   var productsCarouselOptions = {
-    cellSelector: '.products__carousel-slide',
+    cellSelector: '.nacarat-carousel__slide',
     wrapAround: true,
-    resize: false,
-    setGallerySize: false,
-    freeScroll: true,
+    //resize: false,
+    //setGallerySize: false,
+    groupCells: 3,
+    //freeScroll: true,
     freeScrollFriction: 0.03
   };
 
@@ -50,20 +55,34 @@ export default function HomeController($state, ProductsService, $document, Flick
 
   function init() {
     angular.element($document[0]).ready(function() {
-
-      // ProductsService.query()
-      //   .then(function success(response) {
-      //       console.log('response', response);
-      //       vm.products = response.data;
-      //     },
-      //     function error(e) {
-      //       console.error(e);
-      //     });
-
-      var element = angular.element(document.getElementById('hero-carousel-slides'));
-      FlickityService.create(element[0], element[0].id, heroCarouselOptions);
-      // var products = angular.element(document.getElementById('products-carousel-slides'));
-      // FlickityService.create(products[0], products[0].id, productsCarouselOptions);
-    })
+      ProductsService.query()
+        .then(function success(response) {
+            vm.productsObj = response.data;
+            return $q.resolve(vm.productsObj);
+          },
+          function error(e) {
+            console.error(e);
+          })
+        .then(function(productsArray) {
+          var productsCarousel = angular.element(document.getElementById('products-carousel'));
+          var heroCarousel = angular.element(document.getElementById('hero-carousel'));
+          initCarouselInstance(productsCarousel, heroCarousel);
+        });
+    });
   }
+
+  function initCarouselInstance(productsCarousel, heroCarousel) {
+    $timeout(function() {
+      FlickityService.create(productsCarousel[0], productsCarousel[0].id, productsCarouselOptions);
+      FlickityService.create(heroCarousel[0], heroCarousel[0].id, heroCarouselOptions);
+
+      $scope.$on('$destroy', function() {
+        FlickityService.destroy(productsCarousel[0].id);
+        FlickityService.destroy(heroCarousel[0].id);
+      });
+
+    })
+
+  }
+
 }

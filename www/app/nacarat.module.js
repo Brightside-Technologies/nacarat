@@ -10,18 +10,13 @@ import 'angular-material-data-table/dist/md-data-table.css';
 import '../assets/styles/site.css';
 
 import angular from 'angular';
-//import * as firebase from 'firebase';
 import uiRouter from 'angular-ui-router';
 import ngMaterial from 'angular-material';
-import ngResource from 'angular-resource';
 import ngSanitize from 'angular-sanitize';
 import mdDataTable from 'angular-material-data-table';
 import Flickity from 'flickity';
-import 'flickity-imagesloaded';
-import 'flickity-bg-lazyload';
 import 'angular-flickity';
-import 'moment';
-import 'angularfire';
+// import 'angularfire';
 
 import run from './nacarat.config';
 import routes from './nacarat.routes';
@@ -35,9 +30,7 @@ import Nacarat_Helpers from '../assets/helpers/helpers.module';
 angular
   .module('Nacarat', [
     'firebase',
-    //moment,
     uiRouter,
-    ngResource,
     ngSanitize,
     ngMaterial,
     'bc.Flickity',

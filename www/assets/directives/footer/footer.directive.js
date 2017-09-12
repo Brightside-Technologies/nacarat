@@ -7,10 +7,10 @@ export default function FooterDirective() {
     bindToController: true
   };
 
-    function FooterController() {
-      var vm = this;
+  function FooterController() {
+    var vm = this;
 
-      var date = new Date();
-      vm.currentYear = date.getFullYear();
-    }
+    var date = new Date();
+    vm.currentYear = moment().year();
+  }
 }

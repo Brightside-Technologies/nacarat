@@ -18,6 +18,21 @@ body {
 .cursive {
   font-family: 'Pacifico', cursive; }
 
+.flickity-page-dots {
+  bottom: 0px; }
+
+/* white circles */
+.flickity-page-dots .dot {
+  width: 12px;
+  height: 12px;
+  opacity: 1;
+  background: transparent;
+  border: 2px solid #fff; }
+
+/* fill-in selected dot */
+.flickity-page-dots .dot.is-selected {
+  background: #fff; }
+
 .h-full-width {
   width: 100% !important;
   width: 100vw !important; }
@@ -119,31 +134,28 @@ md-footer a {
   .home-content p {
     line-height: 1.25; }
 
-.hero {
-  color: #555;
+.nacarat-carousel__container {
   height: 100%;
   min-height: 5rem; }
-  .hero__carousel {
-    background-color: #fcfcfc;
-    text-align: center; }
-    .hero__carousel-slides {
-      height: 20rem; }
-    .hero__carousel-slide {
-      height: 100%;
-      text-align: center;
+
+.nacarat-carousel {
+  background-color: #fcfcfc;
+  text-align: center; }
+  .nacarat-carousel__slides {
+    height: 25rem; }
+  .nacarat-carousel__slide {
+    height: 100%;
+    text-align: center;
+    width: 100%;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    overflow: hidden !important;
+    background-size: cover !important; }
+    .nacarat-carousel__slide-text {
+      color: #fff; }
+    .nacarat-carousel__slide .slide__image {
       width: 100%;
-      background-repeat: no-repeat !important;
-      background-position: center !important;
-      overflow: hidden !important;
-      background-size: cover !important; }
-      .hero__carousel-slide-text {
-        color: #fff; }
-      .hero__carousel-slide .slide__image {
-        width: 100%;
-        height: 100%; }
-  .hero__title small {
-    display: block;
-    font-size: 70%; }
+      height: 100%; }
 
 .twitter-icon {
   background-color: #00aced !important;

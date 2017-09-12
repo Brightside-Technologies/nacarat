@@ -1,9 +1,9 @@
 <section flex layout="column" class="home-content">
-  <div layout layout-padding class="hero">
-    <div class="hero__carousel" flex="column">
-      <div class="hero__carousel-slides" id="hero-carousel-slides">
-        <figure class="hero__carousel-slide" ng-repeat="slide in vm.slides track by $index" ng-style="{'background-image':'url({{slide.image}})'}">
-          <h1 class="hero__carousel-slide-text">{{::slide.text}}</h1>
+  <div flex layout layout-padding class="nacarat-carousel__container">
+    <div class="nacarat-carousel" flex="column">
+      <div class="nacarat-carousel__slides" id="hero-carousel">
+        <figure class="nacarat-carousel__slide" ng-repeat="slide in vm.slides track by $index" ng-style="{'background-image':'url({{slide.image}})'}">
+          <h1 class="nacarat-carousel__slide-text">{{::slide.text}}</h1>
         </figure>
       </div>
     </div>
@@ -26,11 +26,12 @@
       </p>
     </div>
   </div>
-  <!-- <div layout layout-padding class="products">
-    <div class="products__carousel" flex="column">
-      <div class="products__carousel-slides" id="products-carousel-slides">
-        <figure class="products__carousel-slide" ng-repeat="(id, product) in vm.products">
-          <md-card ui-sref="public.root.product-details({productId:id})" flex-xs="100" flex="20" class="daily-product-card">
+  <div flex layout="column" layout-padding class="nacarat-carousel__container">
+    <h3 class="md-headline h-center flex">Todays Daily Deals</h3>
+    <div class="nacarat-carousel" flex="column">
+      <div class="nacarat-carousel__slides" id="products-carousel">
+        <figure flex-xs="100" flex="20" class="nacarat-carousel__slide" ng-repeat="(productId, product) in vm.productsObj track by $index">
+          <md-card ui-sref="public.root.product-details({productId:productId})" flex="100" class="daily-product-card">
             <img ng-src="{{::product.images[0]}}" class="md-card-image daily-deal-card__product-image" alt="{{::product.productName}}">
             <md-card-title class="h-no-vertical-padding">
               <md-card-title-text>
@@ -56,7 +57,7 @@
         </figure>
       </div>
     </div>
-  </div> -->
+  </div>
   <div flex layout="column" layout-padding md-colors="{background: 'red-100'}">
     <h3 class="md-headline h-center h-no-margins">Subscribe</h3>
     <p class="h-center">

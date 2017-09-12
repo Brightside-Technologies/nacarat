@@ -22,6 +22,24 @@ body {
 .cursive {
   font-family: 'Pacifico', cursive;
 }
+
+.flickity-page-dots {
+  bottom: 0px;
+}
+/* white circles */
+.flickity-page-dots .dot {
+  width: 12px;
+  height: 12px;
+  opacity: 1;
+  background: transparent;
+  border: 2px solid #fff;
+}
+/* fill-in selected dot */
+.flickity-page-dots .dot.is-selected {
+  background: #fff;
+}
+
+
 // .gradient {
 //     /* background: #e53935;*/
 //     /* fallback for old browsers */

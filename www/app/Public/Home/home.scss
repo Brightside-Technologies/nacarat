@@ -16,82 +16,35 @@
   }
 }
 
-.products {
-  color: #555;
+.nacarat-carousel__container {
   height: 100%;
   min-height: 5rem;
-  &__carousel {
-    background-color: #fcfcfc;
-    text-align: center;
-
-    &-slides {
-      height: 20rem;
-    }
-
-    &-slide {
-      height: 100%;
-      text-align: center;
-      width: 100%;
-      background-repeat: no-repeat !important;
-      background-position: center !important;
-      overflow: hidden !important;
-      background-size: cover !important;
-
-      &-text {
-        color: #fff;
-      }
-
-      .slide__image {
-        width: 100%;
-        height: 100%;
-      }
-    }
-  }
-
-  &__title {
-    small {
-      display: block;
-      font-size: 70%;
-    }
-  }
 }
 
-.hero {
-  color: #555;
-  height: 100%;
-  min-height: 5rem;
-  &__carousel {
-    background-color: #fcfcfc;
-    text-align: center;
+.nacarat-carousel {
+  background-color: #fcfcfc;
+  text-align: center;
 
-    &-slides {
-      height: 20rem;
-    }
-
-    &-slide {
-      height: 100%;
-      text-align: center;
-      width: 100%;
-      background-repeat: no-repeat !important;
-      background-position: center !important;
-      overflow: hidden !important;
-      background-size: cover !important;
-
-      &-text {
-        color: #fff;
-      }
-
-      .slide__image {
-        width: 100%;
-        height: 100%;
-      }
-    }
+  &__slides {
+    height: 25rem;
   }
 
-  &__title {
-    small {
-      display: block;
-      font-size: 70%;
+  &__slide {
+    height: 100%;
+    text-align: center;
+    width: 100%;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    overflow: hidden !important;
+    background-size: cover !important;
+
+    &-text {
+      color: #fff;
+    }
+
+    .slide__image {
+      width: 100%;
+      height: 100%;
     }
   }
 }
