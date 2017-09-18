@@ -1,10 +1,9 @@
 InventoryService.$inject = [
-  '$resource',
   '$http',
   'config'
 ];
 
-export default function InventoryService($resource, $http, config) {
+export default function InventoryService($http, config) {
   // var url = baseUrl + '/products/:productId'
   var baseUrl = config.baseUrl;
 

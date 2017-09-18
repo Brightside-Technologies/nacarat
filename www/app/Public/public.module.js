@@ -6,6 +6,7 @@ import Public_Vendor from './Vendor/vendor.module';
 import Public_Subscribe from './Subscribe/subscribe.module';
 import Public_FAQ from './FAQ/faq.module';
 import Public_About from './About/about.module';
+import Public_Routes from './public.routes.js';
 
 export default angular.module('Nacarat_Public', [
     Public_Login,
@@ -15,4 +16,6 @@ export default angular.module('Nacarat_Public', [
     Public_Subscribe,
     Public_FAQ,
     Public_About
-  ]).name;
+  ])
+  .config(Public_Routes)
+  .name;

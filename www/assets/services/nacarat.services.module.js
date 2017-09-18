@@ -3,7 +3,7 @@ import DailyDealsService from './daily-deals.service';
 import InventoryService from './inventory.service';
 import ProductsService from './products.service';
 import VendorService from './vendors.service';
-import UserService from './user.service';
+import AuthenticationService from './authentication.service';
 
 
 export default angular.module('Nacarat_Services', [])
@@ -11,5 +11,5 @@ export default angular.module('Nacarat_Services', [])
   .service('InventoryService', InventoryService)
   .service('ProductsService', ProductsService)
   .service('VendorService', VendorService)
-  .service('UserService', UserService)
+  .service('AuthenticationService', AuthenticationService)
   .name;

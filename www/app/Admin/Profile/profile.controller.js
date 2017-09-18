@@ -1,14 +1,9 @@
-//import VendorService from '../../../assets/services/vendors.service';
-
-ProfileController.$inject = [
-  'VendorService',
-  '$dialogHelper'
-];
-
-export default function ProfileController(VendorService, $dialogHelper) {
+// TODO: Remove  hardcoded vendorId.  This will come from login
+// TODO: Refactor SocialMedias and ContactInformation to not be arrays
+export default function ProfileController(VendorService, $dialogHelper, RequireSignIn) {
   var vendorId = '8b9846d7-9df4-440c-8bbc-88b8a9fc7217';
   var vm = this;
-  vm.vendor = {};
+  vm.vendorProfile = {};
   vm.showUpdateAboutUs = showUpdateAboutUs;
   vm.showDeleteContactInfo = showDeleteContactInfo;
   vm.showDeleteSocialMedia = showDeleteSocialMedia;
@@ -20,8 +15,8 @@ export default function ProfileController(VendorService, $dialogHelper) {
   function init() {
     VendorService.get(vendorId)
       .then(function(response) {
-          vm.vendor = response.data.data[vendorId];
-          console.log('vendor', vm.vendor);
+          vm.vendorProfile = response.data.profile;
+          console.log('vendor', vm.vendorProfile);
         },
         function error(err) {
           console.log("err", err);

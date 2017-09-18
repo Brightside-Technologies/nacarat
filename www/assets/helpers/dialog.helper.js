@@ -153,23 +153,23 @@ export default function $dialogHelper($mdDialog, $mdMedia, $state) {
             } else {
               vm.enableSubmit = false;
             }
-          })
+          });
 
           function keypress(e) {
             if (e.keyCode === 13) {
               if (vm.form.$valid)
-                (vm.confirmBtn.action || $mdDialog.hide)(vm.modelValue)
+                (vm.confirmBtn.action || $mdDialog.hide)(vm.modelValue);
             }
           }
 
           function confirmAction() {
             if (vm.form.$valid)
-              (vm.confirmBtn.action || $mdDialog.hide)(vm.modelValue)
+              (vm.confirmBtn.action || $mdDialog.hide)(vm.modelValue);
           }
 
           function cancelAction() {
             (vm.cancelBtn.action || $mdDialog.cancel)();
-          };
+          }
 
         },
         controllerAs: "vm",

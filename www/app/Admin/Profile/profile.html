@@ -10,7 +10,7 @@
         <md-list-item class="md-2-line">
           <div class="md-list-item-text">
             <h3>Name</h3>
-            <h3>{{::vm.vendor.vendorName}}</h3>
+            <h3>{{::vm.vendorProfile.vendorName}}</h3>
           </div>
           <md-button class="md-icon-button md-secondary" aria-label="Edit Name">
             <md-icon md-colors="{color: 'orange-500'}" aria-hidden="true">edit</md-icon>
@@ -20,7 +20,7 @@
           <div class="md-list-item-text">
             <h3>About Us</h3>
             <p>
-              {{::vm.vendor.about}}
+              {{::vm.vendorProfile.about}}
             </p>
           </div>
           <md-button class="md-icon-button md-secondary"aria-label="Edit About" ng-click="vm.showUpdateAboutUs($event, vm.vendor)">
@@ -36,7 +36,7 @@
     </md-card-title>
     <md-card-content>
       <md-list>
-        <md-list-item ng-if="vm.vendor.contactInformation" class="md-2-line" ng-repeat="contact in vm.vendor.contactInformation track by $index">
+        <md-list-item ng-if="vm.vendorProfile.contactInformation" class="md-2-line" ng-repeat="contact in vm.vendorProfile.contactInformation track by $index">
           <md-icon class="md-avatar-icon">{{::contact.icon}}</md-icon>
           <div class="md-list-item-text">
             <h3> {{ ::contact.value }} </h3>
@@ -49,7 +49,7 @@
             <md-icon md-colors="{color: 'red-500'}" aria-hidden="true">clear</md-icon>
           </md-button>
         </md-list-item>
-        <md-list-item ng-if="!vm.vendor.contactInformation">
+        <md-list-item ng-if="!vm.vendorProfile.contactInformation">
           <div class="md-list-item-text">
             No contact Information on record
           </div>
@@ -63,7 +63,7 @@
     </md-card-title>
     <md-card-content>
       <md-list>
-        <md-list-item ng-if="vm.vendor.socialMedias" class="md-2-line noright" ng-repeat="social in vm.vendor.socialMedias track by $index">
+        <md-list-item ng-if="vm.vendorProfile.socialMedias" class="md-2-line noright" ng-repeat="social in vm.vendorProfile.socialMedias track by $index">
           <md-icon class="fa fa-lg md-avatar-icon fa-{{social.type | lowercase}} {{social.type | lowercase}}-icon" aria-hidden="true"></md-icon>
           <div class="md-list-item-text">
             <p><a href="{{::social.url}}">{{::social.description}}</a></p>
@@ -75,7 +75,7 @@
             <md-icon md-colors="{color: 'red-500'}" aria-hidden="true">clear</md-icon>
           </md-button>
         </md-list-item>
-        <md-list-item ng-if="!vm.vendor.socialMedias">
+        <md-list-item ng-if="!vm.vendorProfile.socialMedias">
           <div class="md-list-item-text">
             No social media entries on record
           </div>

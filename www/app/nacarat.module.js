@@ -18,9 +18,8 @@ import Flickity from 'flickity';
 import 'angular-flickity';
 // import 'angularfire';
 
-import run from './nacarat.config';
-import routes from './nacarat.routes';
-import NacaratTheme from './nacarat.theme.js';
+import Nacarat_Init from './nacarat.init';
+import Nacarat_Theme from './nacarat.theme.js';
 import Nacarat_Admin from './Admin/admin.module';
 import Nacarat_Public from './Public/public.module';
 import Nacarat_Services from '../assets/services/nacarat.services.module';
@@ -45,6 +44,5 @@ angular
     "baseUrl": "http://127.0.0.1:3000"
     //"baseUrl": "https://nacarat-2be74.firebaseio.com"
   })
-  .config(routes)
-  .config(NacaratTheme)
-  .run(run);
+  .config(Nacarat_Theme)
+  .run(Nacarat_Init);

@@ -5,11 +5,14 @@ HomeController.$inject = [
   'FlickityService',
   '$q',
   '$timeout',
-  '$scope'
+  '$scope',
+  '$mdMedia'
 ];
 
-// TODO: Reinitialize flickity without groupCells on small screen
-export default function HomeController($state, ProductsService, $document, FlickityService, $q, $timeout, $scope) {
+// TODO: Re-style products cards
+// TODO: Make cards same height (issue is with the image size probably)
+// TODO: Use different layout for home.html.  One with transparent toolbar and image as background 
+export default function HomeController($state, ProductsService, $document, FlickityService, $q, $timeout, $scope, $mdMedia) {
   var vm = this;
   vm.slides = [{
       image: "http://cdn.benjamincharity.com/codepen/angular-flickity/slide1.jpg",
@@ -30,30 +33,29 @@ export default function HomeController($state, ProductsService, $document, Flick
   ];
   vm.productsObj = {};
 
+  // options to be applied to flickity instances
   var heroCarouselOptions = {
     cellSelector: '.nacarat-carousel__slide',
     wrapAround: true,
-    //resize: false,
-    //setGallerySize: false,
-    //groupCells: 3,
-    //freeScroll: true,
     freeScrollFriction: 0.03
   };
-
   var productsCarouselOptions = {
     cellSelector: '.nacarat-carousel__slide',
     wrapAround: true,
-    //resize: false,
-    //setGallerySize: false,
     groupCells: 3,
-    //freeScroll: true,
     freeScrollFriction: 0.03
   };
-
+  var productsCarouselOptionsXS = {
+    cellSelector: '.nacarat-carousel__slide',
+    wrapAround: true,
+    freeScrollFriction: 0.03
+  };
 
   init();
 
   function init() {
+
+    // wait until document has loaded
     angular.element($document[0]).ready(function() {
       ProductsService.query()
         .then(function success(response) {
@@ -64,6 +66,8 @@ export default function HomeController($state, ProductsService, $document, Flick
             console.error(e);
           })
         .then(function(productsArray) {
+
+          // find DOM elements with which to instantiate flickity instances
           var productsCarousel = angular.element(document.getElementById('products-carousel'));
           var heroCarousel = angular.element(document.getElementById('hero-carousel'));
           initCarouselInstance(productsCarousel, heroCarousel);
@@ -73,15 +77,34 @@ export default function HomeController($state, ProductsService, $document, Flick
 
   function initCarouselInstance(productsCarousel, heroCarousel) {
     $timeout(function() {
+
+      // create flickity instances
       FlickityService.create(productsCarousel[0], productsCarousel[0].id, productsCarouselOptions);
       FlickityService.create(heroCarousel[0], heroCarousel[0].id, heroCarouselOptions);
 
+      // when scope is destroyed, destroy flickity instances
       $scope.$on('$destroy', function() {
         FlickityService.destroy(productsCarousel[0].id);
         FlickityService.destroy(heroCarousel[0].id);
       });
 
-    })
+      // watch for changes in viewport size. If screen size is small, recreate
+      // products carousel without options.groupCells
+      var productsCarouselInstance;
+      $scope.$watch(function() {
+          return $mdMedia('xs');
+        },
+        function(isSmallScreen) {
+          if (isSmallScreen) {
+            FlickityService.destroy(productsCarousel[0].id);
+            FlickityService.create(productsCarousel[0], productsCarousel[0].id, productsCarouselOptionsXS);
+          } else {
+            FlickityService.destroy(productsCarousel[0].id);
+            FlickityService.create(productsCarousel[0], productsCarousel[0].id, productsCarouselOptions);
+          }
+        });
+
+    });
 
   }
 
