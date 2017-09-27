@@ -1,17 +1,6 @@
-HomeController.$inject = [
-  '$state',
-  'ProductsService',
-  '$document',
-  'FlickityService',
-  '$q',
-  '$timeout',
-  '$scope',
-  '$mdMedia'
-];
-
 // TODO: Re-style products cards
 // TODO: Make cards same height (issue is with the image size probably)
-// TODO: Use different layout for home.html.  One with transparent toolbar and image as background 
+// TODO: Use different layout for home.html.  One with transparent toolbar and image as background
 export default function HomeController($state, ProductsService, $document, FlickityService, $q, $timeout, $scope, $mdMedia) {
   var vm = this;
   vm.slides = [{

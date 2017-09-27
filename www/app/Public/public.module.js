@@ -1,4 +1,3 @@
-import angular from 'angular';
 import Public_Login from './Login/login.module';
 import Public_Home from './Home/home.module';
 import Public_Products from './Products/products.module';
@@ -9,13 +8,13 @@ import Public_About from './About/about.module';
 import Public_Routes from './public.routes.js';
 
 export default angular.module('Nacarat_Public', [
-    Public_Login,
-    Public_Home,
-    Public_Products,
-    Public_Vendor,
-    Public_Subscribe,
-    Public_FAQ,
-    Public_About
-  ])
-  .config(Public_Routes)
-  .name;
+        Public_Login,
+        Public_Home,
+        Public_Products,
+        Public_Vendor,
+        Public_Subscribe,
+        Public_FAQ,
+        Public_About
+    ])
+    .config(Public_Routes)
+    .name;

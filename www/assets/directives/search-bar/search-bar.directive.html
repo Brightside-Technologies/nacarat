@@ -8,7 +8,7 @@
     md-items="item in vm.throttledSearchSuggestions(vm.searchText)"
     md-item-text="item.text"
     md-min-length="3"
-    placeholder="Find products locally">
+    placeholder="{{vm.placeholder}}">
       <md-item-template>
         <span md-highlight-text="vm.searchText" md-highlight-flags="^i">{{item.text}}</span>
       </md-item-template>

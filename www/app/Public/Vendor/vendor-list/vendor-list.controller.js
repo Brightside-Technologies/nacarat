@@ -1,9 +1,3 @@
-VendorListController.$inject = [
-  '$state',
-  '$scope',
-  'VendorService'
-];
-
 export default function VendorListController($state, $scope, VendorService) {
   var vm = this;
   vm.vendors = [];

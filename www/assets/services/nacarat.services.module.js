@@ -1,4 +1,4 @@
-import angular from 'angular';
+//import angular from 'angular';
 import DailyDealsService from './daily-deals.service';
 import InventoryService from './inventory.service';
 import ProductsService from './products.service';

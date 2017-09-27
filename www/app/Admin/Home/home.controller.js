@@ -1,10 +1,10 @@
 export default function AdminHomeController() {
-  var vm = this;
-  vm.title = "Admin Home";
+    var vm = this;
+    vm.title = "Admin Home";
 
-  init();
+    init();
 
-  function init() {
+    function init() {
 
-  }
+    }
 }

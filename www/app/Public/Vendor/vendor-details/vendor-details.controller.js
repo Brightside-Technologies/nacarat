@@ -1,9 +1,3 @@
-VendorDetailsController.$inject = [
-  '$state',
-  '$stateParams',
-  'VendorService'
-];
-
 export default function VendorDetailsController($state, $stateParams, VendorService) {
   var vendorId = $stateParams.vendorId;
   var vm = this;

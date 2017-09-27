@@ -1,9 +1,3 @@
-ProductsController.$inject = [
-  '$state',
-  '$stateParams',
-  'ProductsService'
-];
-
 export default function ProductsController($state, $stateParams, ProductsService) {
   var vm = this;
   vm.products = [];
