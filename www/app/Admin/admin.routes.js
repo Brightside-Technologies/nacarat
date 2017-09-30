@@ -44,10 +44,15 @@ export default function AdminRoutes($stateProvider, $urlRouterProvider) {
                 RequireSignIn: function(AuthenticationService) {
                     return AuthenticationService.requireSignIn();
                 },
-                User: function(AuthenticationService, $state) {
+                User: function(AuthenticationService, $state, UsersService) {
                     return AuthenticationService.requireSignIn()
                         .then(function(auth) {
-                                return AuthenticationService.getAuthenticatedUser();
+                            return UsersService.get(auth.uid).then(function (user){
+                                var user = user.data;
+                                var firebaseUser = AuthenticationService.getAuthenticatedUser();
+                                var nacaratUser = angular.extend({}, user, firebaseUser);
+                                return nacaratUser;
+                                });
                             },
                             function(error) {
                                 console.log('User', error);

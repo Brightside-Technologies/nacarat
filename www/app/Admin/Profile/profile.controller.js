@@ -1,7 +1,7 @@
 // TODO: Remove  hardcoded vendorId.  This will come from login
 // TODO: Refactor SocialMedias and ContactInformation to not be arrays
-export default function ProfileController(VendorService, $dialogHelper, RequireSignIn) {
-    var vendorId = '8b9846d7-9df4-440c-8bbc-88b8a9fc7217';
+export default function ProfileController(VendorService, $dialogHelper, RequireSignIn, User) {
+    var vendorId = User.storeId;
     var vm = this;
     vm.vendorProfile = {};
     vm.showUpdateAboutUs = showUpdateAboutUs;
@@ -16,7 +16,6 @@ export default function ProfileController(VendorService, $dialogHelper, RequireS
         VendorService.get(vendorId)
             .then(function(response) {
                     vm.vendorProfile = response.data.profile;
-                    console.log('vendor', vm.vendorProfile);
                 },
                 function error(err) {
                     console.log("err", err);

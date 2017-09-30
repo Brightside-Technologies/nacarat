@@ -16,7 +16,7 @@
         <md-menu md-position-mode="target-right target" md-offset="0 50">
             <md-button layout layout-padding ng-click="$mdMenu.open($event)">
                 <img class="sidenav__header-avatar h-horizontal-padding" ng-src="{{::vm.user.photo || './assets/user.png'}}" />
-                <span md-colors="{color: 'grey-A100'}">{{::vm.user.displayName}}</span>
+                <span md-colors="{color: 'grey-A100'}">{{vm.user.displayName || vm.user.email}}</span>
                 <md-icon md-colors="{color: 'grey-A100'}">keyboard_arrow_down</md-icon>
             </md-button>
             <md-menu-content width="4">

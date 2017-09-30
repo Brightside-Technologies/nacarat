@@ -3,8 +3,11 @@
 // TODO: Add proper form validation messages
 export default function LoginController($state, $mdToast, $rootScope, RequireNoAuth, AuthenticationService) {
     var vm = this;
-    //vm.login = login;
     vm.loginWithProvider = loginWithProvider;
+    vm.logInWithUsernamePassword = logInWithUsernamePassword;
+    vm.credentials = {};
+    vm.credentials.email = '';
+    vm.credentials.password = '';
 
     init();
 
@@ -13,7 +16,16 @@ export default function LoginController($state, $mdToast, $rootScope, RequireNoA
     function loginWithProvider(provider) {
         AuthenticationService.signInWithPopup(provider)
             .then(function(loginResponse) {
-                    // loginResponse.credential
+                    $state.go('admin.root.home');
+                },
+                function error(err) {
+                    console.log('err', err);
+                    $mdToast.showSimple(err.message);
+                });
+    }
+    function logInWithUsernamePassword(user) {
+        AuthenticationService.logInWithUsernamePassword(user)
+            .then(function(loginResponse) {
                     $state.go('admin.root.home');
                 },
                 function error(err) {

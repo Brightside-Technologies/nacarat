@@ -9,7 +9,7 @@
       <form name="form" layout="column">
         <md-input-container md-no-float class="md-block" flex-gt-xs>
           <!-- <label>Username</label> -->
-          <input ng-model="vm.credentials.username" placeholder="Username">
+          <input ng-model="vm.credentials.email" placeholder="Username">
         </md-input-container>
         <md-input-container md-no-float class="md-block" flex-gt-xs>
           <!-- <label>Password</label> -->
@@ -18,7 +18,7 @@
       </form>
     </md-card-content>
     <md-card-actions layout="column" layout-align="center center" layout-margin>
-      <md-button flex="100" class="md-primary md-raised h-full-width h-margins-5" md-colors="{background: 'teal-500'}" ng-disabled="true">Login</md-button>
+      <md-button flex="100" class="md-primary md-raised h-full-width h-margins-5" md-colors="{background: 'teal-500'}" ng-click="vm.logInWithUsernamePassword(vm.credentials)">Login</md-button>
       <md-button flex="100" class="btn-login btn-login--facebook h-full-width h-margins-5 h-center" ng-click="vm.loginWithProvider('facebook')">Login with Facebook</md-button>
       <md-button flex="100" class="btn-login btn-login--google h-full-width h-margins-5 h-center" ng-click="vm.loginWithProvider('google')">Login with Google</md-button>
       <md-button class="h-full-width h-margins-5">Register</md-button>

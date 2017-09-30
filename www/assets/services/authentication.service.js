@@ -13,7 +13,7 @@ export default function AuthenticationService($http, $firebaseAuth, $q, config, 
     var service = this;
 
     service.register = register;
-    service.logIn = logIn;
+    service.logInWithUsernamePassword = logInWithUsernamePassword;
     service.logOut = logOut;
     service.isUserLoggedIn = isUserLoggedIn;
     service.signInWithPopup = signInWithPopup;
@@ -29,7 +29,7 @@ export default function AuthenticationService($http, $firebaseAuth, $q, config, 
         return firebaseAuthObject.$createUserWithEmailAndPassword(user.email, user.password);
     }
 
-    function logIn(user) {
+    function logInWithUsernamePassword(user) {
         return firebaseAuthObject.$signInWithEmailAndPassword(user.email, user.password);
     }
 
