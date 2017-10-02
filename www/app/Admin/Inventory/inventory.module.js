@@ -1,3 +1,4 @@
+// TODO: No need for inventory sub dir
 import InventoryController from './inventory/inventory.controller';
 import InventoryDetailsController from './inventory/inventory-details/inventory-details.controller';
 
