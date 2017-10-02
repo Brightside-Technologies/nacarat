@@ -1,3 +1,8 @@
+// TODO: Skeleton pages
+// TODO: Look into uirouter scrolling directive. The problem to solve is to scroll to the top on state change.
+// TODO: Need wo product details pages.  One when looking by vendor and another when looking by product.
+// Looking by product should have a list of vendors that sell the product
+// TODO: Will need different states for differet product details
 // TODO: put all image assets on firebase (or S3)
 import logo from '../assets/img/logo.png';
 import defaultUser from '../assets/img/user.png';
@@ -42,8 +47,8 @@ angular
         Nacarat_Directives
     ])
     .constant('config', {
-        //"baseUrl": "http://127.0.0.1:3000"
-        "baseUrl": "https://nacarat-2be74.firebaseio.com"
+        "baseUrl": "http://127.0.0.1:3000"
+            //"baseUrl": "https://nacarat-2be74.firebaseio.com"
     })
     .config(Nacarat_Theme)
     .run(Nacarat_Init);
