@@ -40,6 +40,12 @@ body {
 .h-center {
   text-align: center !important; }
 
+.h-left {
+  text-align: left !important; }
+
+.h-right {
+  text-align: right !important; }
+
 .h-no-margins {
   margin: 0 !important; }
 
@@ -82,6 +88,9 @@ body {
 .h-d-inline-block {
   display: inline-block !important; }
 
+.h-light-text {
+  color: #777 !important; }
+
 md-footer small {
   font-size: 12px;
   padding: 5px; }
@@ -123,11 +132,11 @@ md-footer a {
   height: 3rem;
   width: 3rem; }
 
-.daily-deal-card {
+.product-card {
   height: 20rem; }
 
-.daily-deal-card__product-image {
-  height: 75%; }
+.product-card__image {
+  height: 60%; }
 
 .home-content {
   min-height: 100vh; }

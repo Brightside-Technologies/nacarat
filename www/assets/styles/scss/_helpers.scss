@@ -1,63 +1,75 @@
 .h-full-width {
-  width: 100% !important;
-  width: 100vw !important;
+    width: 100% !important;
+    width: 100vw !important;
 }
 
 .h-center {
-  text-align: center !important;
+    text-align: center !important;
+}
+
+.h-left {
+    text-align: left !important;
+}
+
+.h-right {
+    text-align: right !important;
 }
 
 .h-no-margins {
-  margin: 0 !important;
+    margin: 0 !important;
 }
 
 .h-margins-5 {
-  margin: 5px !important;
+    margin: 5px !important;
 }
 
 .h-no-padding {
-  padding: 0 !important;
+    padding: 0 !important;
 }
 
 .h-full-height {
-  height: 100% !important;
+    height: 100% !important;
 }
 
 .h-no-vertical-padding {
-  padding-top: 0 !important;
-  padding-bottom: 0 !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
 }
 
 .h-no-horizontal-padding {
-  padding-left: 0 !important;
-  padding-right: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
 }
 
 .h-horizontal-padding {
-  padding-left: 15px !important;
-  padding-right: 15px !important;
+    padding-left: 15px !important;
+    padding-right: 15px !important;
 }
 
 .h-image-fill {
-  //background: url() center no-repeat;
-  background-repeat: no-repea !important;
-  background-position: center !important;
-  overflow: hidden !important;
-  background-size: cover !important;
+    //background: url() center no-repeat;
+    background-repeat: no-repea !important;
+    background-position: center !important;
+    overflow: hidden !important;
+    background-size: cover !important;
 }
 
 .h-image-contain {
-  //background: url() center no-repeat;
-  background-repeat: no-repeat !important;
-  background-position: center !important;
-  overflow: hidden !important;
-  background-size: contain;
+    //background: url() center no-repeat;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    overflow: hidden !important;
+    background-size: contain;
 }
 
 .h-d-block {
-  display: block !important;
+    display: block !important;
 }
 
 .h-d-inline-block {
-  display: inline-block !important;
+    display: inline-block !important;
+}
+
+.h-light-text {
+    color: #777 !important;
 }
