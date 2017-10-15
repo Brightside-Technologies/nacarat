@@ -1,4 +1,4 @@
-// TODO: Implement user registriation (after app works with google and facebooj?)
+// TODO: Implement user registriation
 // TODO: Firebase.js is referenced in index.html.  Can I import this?
 // TODO: Add proper form validation messages
 export default function LoginController($state, $mdToast, $rootScope, RequireNoAuth, AuthenticationService) {
@@ -23,6 +23,7 @@ export default function LoginController($state, $mdToast, $rootScope, RequireNoA
                     $mdToast.showSimple(err.message);
                 });
     }
+
     function logInWithUsernamePassword(user) {
         AuthenticationService.logInWithUsernamePassword(user)
             .then(function(loginResponse) {
