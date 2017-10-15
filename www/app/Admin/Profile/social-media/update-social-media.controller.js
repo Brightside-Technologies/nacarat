@@ -1,4 +1,8 @@
-export default function UpdateSocialMediaController(locals, $dialogHelper) {
+// TODO: show toast when action succeeds or fails
+// TODO: Check that the form has changed before submitting
+// TODO: Add validation
+// TODO: refactor vm.model structure
+export default function UpdateSocialMediaController(locals, VendorService, $dialogHelper, $state) {
     var dialogProperties = locals.locals.dialogProperties;
     var vm = this;
     vm.content = dialogProperties.dialogContent.contentHTML;
@@ -10,7 +14,6 @@ export default function UpdateSocialMediaController(locals, $dialogHelper) {
     vm.model = locals.locals.model;
     vm.flexGtMd = "33";
     vm.flexMd = "33";
-    console.log(vm.model);
 
     vm.form = {};
     vm.submit = submit;
@@ -20,7 +23,14 @@ export default function UpdateSocialMediaController(locals, $dialogHelper) {
 
     function submit() {
         if (vm.form.$valid) {
-            console.log("SUBMIT");
+            console.log(VendorService);
+            VendorService.profile.updateSocialMedia(vm.model.vendorId, vm.model.model.type, vm.model.model.data)
+                .then(function(response) {
+                        $state.reload();
+                    },
+                    function error(err) {
+                        console.log(err);
+                    })
         }
     }
 

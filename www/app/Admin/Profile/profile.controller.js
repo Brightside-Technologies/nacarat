@@ -1,6 +1,7 @@
-// TODO: Remove  hardcoded vendorId.  This will come from login
-// TODO: Refactor SocialMedias and ContactInformation to not be arrays
-export default function ProfileController(VendorService, $dialogHelper, RequireSignIn, User) {
+// TODO: Refactor ContactInformation to not be arrays
+// TODO: Implement DELETE social media
+var dialogFormTemplate = require('../../../assets/templates/dialog-form.tmpl.html');
+export default function ProfileController(VendorService, $dialogHelper, User) {
     var vendorId = User.storeId;
     var vm = this;
     vm.vendorProfile = {};
@@ -15,6 +16,7 @@ export default function ProfileController(VendorService, $dialogHelper, RequireS
     function init() {
         VendorService.get(vendorId)
             .then(function(response) {
+                    console.log(response);
                     vm.vendorProfile = response.data.profile;
                 },
                 function error(err) {
@@ -26,12 +28,12 @@ export default function ProfileController(VendorService, $dialogHelper, RequireS
         var content = [
             '<md-input-container class="md-block" flex>',
             '<label>About Us</label>',
-            '<textarea ng-model="vm.model.about" rows="5" md-select-on-focus></textarea>',
+            '<textarea ng-model="vm.model.about" rows="5" md-maxlength-"180" md-select-on-focus></textarea>',
             '</md-input-container>'
         ].join('').replace(/\s\s+/g, '');
 
         var locals = {
-            model: model,
+            model: { vendorId: vendorId, about: model },
             dialogProperties: {
                 dialogContent: {
                     contentHTML: content
@@ -42,8 +44,8 @@ export default function ProfileController(VendorService, $dialogHelper, RequireS
             }
         };
         var opts = {};
-        opts.controller = 'UpdateSocialMediaController';
-        opts.templateUrl = './assets/templates/dialog-form.tmpl.html';
+        opts.controller = 'UpdateAboutController';
+        opts.template = dialogFormTemplate;
         opts.target = ev;
         opts.openFrom = angular.element(ev.toElement);
         opts.closeTo = angular.element(ev.toElement);
@@ -70,6 +72,7 @@ export default function ProfileController(VendorService, $dialogHelper, RequireS
     }
 
     function showDeleteSocialMedia(ev, record) {
+        console.log(record);
         var opts = {};
         opts.target = ev;
         opts.title = "Delete Social Media Entry?";
@@ -89,13 +92,17 @@ export default function ProfileController(VendorService, $dialogHelper, RequireS
 
         var content = [
             '<md-input-container class="md-block" flex>',
-            '<label>' + model.type + '</label>',
-            '<input ng-model="vm.model.description">',
+            '<label>Display</label>',
+            '<input ng-model="vm.model.model.data.display">',
+            '</md-input-container>',
+            '<md-input-container class="md-block" flex>',
+            '<label>Url</label>',
+            '<input ng-model="vm.model.model.data.url">',
             '</md-input-container>'
         ].join('').replace(/\s\s+/g, '');
 
         var locals = {
-            model: model,
+            model: { vendorId: vendorId, model: model },
             dialogProperties: {
                 dialogContent: {
                     contentHTML: content
@@ -107,7 +114,7 @@ export default function ProfileController(VendorService, $dialogHelper, RequireS
         };
         var opts = {};
         opts.controller = 'UpdateSocialMediaController';
-        opts.templateUrl = './assets/templates/dialog-form.tmpl.html';
+        opts.template = dialogFormTemplate
         opts.target = ev;
         opts.openFrom = angular.element(ev.toElement);
         opts.closeTo = angular.element(ev.toElement);
@@ -149,7 +156,7 @@ export default function ProfileController(VendorService, $dialogHelper, RequireS
 
         var opts = {};
         opts.controller = controller;
-        opts.templateUrl = './assets/templates/dialog-form.tmpl.html';
+        opts.template = dialogFormTemplate
         opts.target = ev;
         opts.openFrom = angular.element(ev.toElement);
         opts.closeTo = angular.element(ev.toElement);

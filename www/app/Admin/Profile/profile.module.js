@@ -4,6 +4,7 @@ import UpdateSocialMediaController from './social-media/update-social-media.cont
 import UpdateAddressController from './contact-information/address/update-address.controller';
 import UpdateEmailController from './contact-information/email/update-email.controller';
 import UpdatePhoneController from './contact-information/phone/update-phone.controller';
+import UpdateAboutController from './basic/update-about.controller';
 
 export default angular.module('Admin_Profile', [])
     .controller('ProfileController', ProfileController)
@@ -12,4 +13,5 @@ export default angular.module('Admin_Profile', [])
     .controller('UpdateAddressController', UpdateAddressController)
     .controller('UpdateEmailController', UpdateEmailController)
     .controller('UpdatePhoneController', UpdatePhoneController)
+    .controller('UpdateAboutController', UpdateAboutController)
     .name;
