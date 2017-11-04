@@ -1,7 +1,6 @@
-export default function AdminHomeController() {
+export default function AdminHomeController(Merchant) {
     var vm = this;
-    vm.title = "Admin Home";
-
+    vm.businesses = Merchant.businesses;
     init();
 
     function init() {

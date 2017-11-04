@@ -10,9 +10,18 @@
                 <md-list-item class="md-2-line">
                     <div class="md-list-item-text">
                         <h3>Name</h3>
-                        <h3>{{::vm.vendorProfile.vendorName}}</h3>
+                        <h3>{{::vm.businessProfile.name}}</h3>
                     </div>
-                    <md-button class="md-icon-button md-secondary" aria-label="Edit Name">
+                    <md-button class="md-icon-button md-secondary" aria-label="Update Name" ng-click="vm.showUpdateBusinessName($event, vm.businessProfile.name)">
+                        <md-icon md-colors="{color: 'orange-500'}" aria-hidden="true">edit</md-icon>
+                    </md-button>
+                </md-list-item>
+                <md-list-item class="md-2-line">
+                    <div class="md-list-item-text">
+                        <h3>Business Type</h3>
+                        <h3>{{::vm.businessProfile.type}}</h3>
+                    </div>
+                    <md-button class="md-icon-button md-secondary" aria-label="Update Business Type" ng-click="null">
                         <md-icon md-colors="{color: 'orange-500'}" aria-hidden="true">edit</md-icon>
                     </md-button>
                 </md-list-item>
@@ -20,10 +29,10 @@
                     <div class="md-list-item-text">
                         <h3>About Us</h3>
                         <p>
-                            {{::vm.vendorProfile.about}}
+                            {{::vm.businessProfile.about}}
                         </p>
                     </div>
-                    <md-button class="md-icon-button md-secondary" aria-label="Edit About" ng-click="vm.showUpdateAboutUs($event, vm.vendorProfile.about)">
+                    <md-button class="md-icon-button md-secondary" aria-label="Update About" ng-click="vm.showUpdateAboutUs($event, vm.businessProfile.about)">
                         <md-icon md-colors="{color: 'orange-500'}" aria-hidden="true">edit</md-icon>
                     </md-button>
                 </md-list-item>
@@ -36,22 +45,55 @@
         </md-card-title>
         <md-card-content>
             <md-list>
-                <md-list-item ng-if="vm.vendorProfile.contactInformation" class="md-2-line" ng-repeat="contact in vm.vendorProfile.contactInformation track by $index">
-                    <md-icon class="md-avatar-icon">{{::contact.icon}}</md-icon>
+                <md-list-item ng-if="vm.businessProfile.phone" class="md-2-line">
+                    <md-icon class="md-avatar-icon">phone</md-icon>
                     <div class="md-list-item-text">
-                        <h3> {{ ::contact.value }} </h3>
-                        <p> {{ ::contact.type }} </p>
+                        <h3> {{ ::vm.businessProfile.phone.calling_code }} {{ ::vm.businessProfile.phone.number }}</h3>
+                        <p> Phone </p>
                     </div>
-                    <md-button class="md-icon-button md-secondary" aria-label="{{'Edit ' + contact.type}}" ng-click="vm.showUpdateContactInfo($event, contact)">
+                    <md-button class="md-icon-button md-secondary" aria-label="Edit Phone" ng-click="vm.showUpdatePhone($event, vm.businessProfile.phone)">
                         <md-icon md-colors="{color: 'orange-500'}" aria-hidden="true">edit</md-icon>
                     </md-button>
-                    <md-button class="md-icon-button md-secondary" aria-label="{{'Delete ' + contact.type}}" ng-click="vm.showDeleteContactInfo($event, contact)">
-                        <md-icon md-colors="{color: 'red-500'}" aria-hidden="true">clear</md-icon>
+                </md-list-item>
+                <md-list-item ng-if="!vm.businessProfile.phone">
+                    <div class="md-list-item-text">
+                        No phone number on record
+                    </div>
+                </md-list-item>
+            </md-list>
+            <md-list>
+                <md-list-item ng-if="vm.businessProfile.email" class="md-2-line">
+                    <md-icon class="md-avatar-icon">mail</md-icon>
+                    <div class="md-list-item-text">
+                        <h3> {{ ::vm.businessProfile.email }}</h3>
+                        <p> Email </p>
+                    </div>
+                    <md-button class="md-icon-button md-secondary" aria-label="Update Email" ng-click="vm.showUpdateEmail($event, vm.businessProfile.email)">
+                        <md-icon md-colors="{color: 'orange-500'}" aria-hidden="true">edit</md-icon>
                     </md-button>
                 </md-list-item>
-                <md-list-item ng-if="!vm.vendorProfile.contactInformation">
+                <md-list-item ng-if="!vm.businessProfile.email">
                     <div class="md-list-item-text">
-                        No contact Information on record
+                        No email on record
+                    </div>
+                </md-list-item>
+            </md-list>
+            <md-list>
+                <md-list-item ng-if="vm.businessProfile.address" class="md-2-line">
+                    <md-icon class="md-avatar-icon">location_on</md-icon>
+                    <div class="md-list-item-text">
+                        <h3>
+                            {{ ::vm.businessProfile.address.delivery_line_1 }} {{ ::vm.businessProfile.address.last_line }}
+                        </h3>
+                        <p> Address </p>
+                    </div>
+                    <md-button class="md-icon-button md-secondary" aria-label="Update Phone" ng-click="vm.showUpdateAddress($event, vm.businessProfile.address)">
+                        <md-icon md-colors="{color: 'orange-500'}" aria-hidden="true">edit</md-icon>
+                    </md-button>
+                </md-list-item>
+                <md-list-item ng-if="!vm.businessProfile.address">
+                    <div class="md-list-item-text">
+                        No address on record
                     </div>
                 </md-list-item>
             </md-list>
@@ -63,10 +105,12 @@
         </md-card-title>
         <md-card-content>
             <md-list>
-                <md-list-item ng-if="vm.vendorProfile.socialMedias" class="md-2-line noright" ng-repeat="(type, data) in vm.vendorProfile.socialMedias track by $index">
+                <md-list-item ng-if="vm.businessProfile.socialMedias" class="md-2-line noright" ng-repeat="(type, data) in vm.businessProfile.socialMedias track by $index">
                     <md-icon class="fa fa-lg md-avatar-icon fa-{{type}} {{type}}-icon" aria-hidden="true"></md-icon>
                     <div class="md-list-item-text">
-                        <p><a href="{{::data.url}}">{{::data.display}}</a></p>
+                        <p>
+                            <a href="{{::data.url}}">{{::data.display}}</a>
+                        </p>
                     </div>
                     <md-button class="md-icon-button md-secondary" aria-label="{{'Edit ' + type}}" ng-click="vm.showUpdateSocialMedia($event, {type: type, data: data})">
                         <md-icon md-colors="{color: 'orange-500'}" aria-hidden="true">edit</md-icon>
@@ -75,12 +119,31 @@
                         <md-icon md-colors="{color: 'red-500'}" aria-hidden="true">clear</md-icon>
                     </md-button>
                 </md-list-item>
-                <md-list-item ng-if="!vm.vendorProfile.socialMedias">
+                <md-list-item ng-if="!vm.businessProfile.socialMedias">
                     <div class="md-list-item-text">
                         No social media entries on record
                     </div>
                 </md-list-item>
             </md-list>
+        </md-card-content>
+        <md-card-title>
+            <md-card-title-text>
+                <span class="md-headline">Hours of Operation</span>
+            </md-card-title-text>
+        </md-card-title>
+        <md-card-content>
+            <md-list-item class="md-2-line md-long-text">
+                <div class="md-list-item-text" layout="column">
+                    <div layout ng-repeat="(day, hours) in vm.businessProfile.hoursOfOperation">
+                        <h6 flex layout layout-align="center center" class="h-no-margins md-subhead">{{::day}}</h6>
+                        <h6 ng-if="hours.isOpen" flex layout layout-align="center center" class="h-no-margins md-subhead">{{hours.openTime}} &ndash; {{hours.closeTime}}</h6>
+                        <h6 ng-if="!hours.isOpen" flex layout layout-align="center center" class="h-no-margins md-subhead">Closed</h6>
+                    </div>
+                </div>
+                <md-button class="md-icon-button md-secondary" aria-label="Update Hours of Operation" ng-click="null">
+                    <md-icon md-colors="{color: 'orange-500'}" aria-hidden="true">edit</md-icon>
+                </md-button>
+            </md-list-item>
         </md-card-content>
     </md-card>
 </div>

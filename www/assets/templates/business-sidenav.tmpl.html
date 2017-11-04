@@ -1,0 +1,41 @@
+<div layout class="sidenav__header h-image-contain" layout-align="center center">
+    <md-menu md-position-mode="target-right target" md-offset="0 50">
+        <md-button layout layout-padding ng-click="$mdMenu.open($event)">
+            <img class="sidenav__header-avatar h-horizontal-padding" ng-src="{{::vm.user.photo || './assets/user.png'}}" />
+            <span md-colors="{color: 'grey-A100'}">{{vm.user.displayName || vm.user.name || vm.user.email}}</span>
+            <md-icon md-colors="{color: 'grey-A100'}">keyboard_arrow_down</md-icon>
+        </md-button>
+        <md-menu-content width="4">
+            <md-menu-item>
+                <md-button ng-click="vm.logout()">
+                    <div layout="row" flex>
+                        <p flex>Logout</p>
+                        <md-icon md-menu-align-target style="margin: auto 3px auto 0;">exit_to_app</md-icon>
+                    </div>
+                </md-button>
+            </md-menu-item>
+        </md-menu-content>
+    </md-menu>
+</div>
+<md-list>
+    <md-list-item ui-sref="admin.root.profile">
+        <md-icon>store</md-icon>
+        <p>Profile</p>
+    </md-list-item>
+    <md-list-item ui-sref="admin.root.inventory">
+        <md-icon>shopping_cart</md-icon>
+        <p>Inventory</p>
+    </md-list-item>
+    <md-list-item ng-click=null>
+        <md-icon>track_changes</md-icon>
+        <p>Deliveries</p>
+    </md-list-item>
+    <md-list-item ng-click=null>
+        <md-icon>settings</md-icon>
+        <p>Settings</p>
+    </md-list-item>
+    <md-list-item ng-click="vm.logout()">
+        <md-icon>input</md-icon>
+        <p>Logout</p>
+    </md-list-item>
+</md-list>

@@ -1,5 +1,6 @@
-export default function UpdatePhoneController(locals, $dialogHelper) {
+export default function UpdatePhoneController(locals, BusinessesService, $state, $dialogHelper) {
     var dialogProperties = locals.locals.dialogProperties;
+    var businessId = locals.locals.model.businessId;
     var vm = this;
     vm.content = dialogProperties.dialogContent.contentHTML;
     vm.contentPath = dialogProperties.dialogContent.contentTemplateUrl;
@@ -7,10 +8,9 @@ export default function UpdatePhoneController(locals, $dialogHelper) {
     vm.title = dialogProperties.title;
     vm.submitText = dialogProperties.submitText;
     vm.cancelText = dialogProperties.cancelText;
-    vm.model = locals.locals.model;
+    vm.phone = locals.locals.model.phone;
     vm.flexGtMd = "33";
     vm.flexMd = "33";
-    console.log(vm.model);
 
     vm.form = {};
     vm.submit = submit;
@@ -20,7 +20,14 @@ export default function UpdatePhoneController(locals, $dialogHelper) {
 
     function submit() {
         if (vm.form.$valid) {
-            console.log("SUBMIT");
+            BusinessesService.profile.updatePhone(businessId, vm.phone)
+                .then(function success(response) {
+                        $state.reload();
+                    },
+                    function error(err) {
+                        console.log(err);
+                    }
+                );
         }
     }
 

@@ -1,7 +1,8 @@
 // TODO: Re-style products cards
 // TODO: Make cards same height (issue is with the image size probably)
 // TODO: Use different layout for home.html.  One with transparent toolbar and image as background
-export default function HomeController($state, $document, $timeout, $scope, $mdMedia, ProductsService, VendorService, FlickityService) {
+// TODO: Add default image/logo for partners grid
+export default function HomeController($state, $document, $timeout, $scope, $mdMedia, ProductsService, BusinessesService, FlickityService) {
     var vm = this;
     vm.heroSlides = [{
             image: "http://cdn.benjamincharity.com/codepen/angular-flickity/slide1.jpg",
@@ -100,7 +101,7 @@ export default function HomeController($state, $document, $timeout, $scope, $mdM
     }
 
     function initPartnersGrid() {
-        VendorService.query()
+        BusinessesService.query()
             .then(function(data) {
                     vm.listOfPartners = data.data;
                 },

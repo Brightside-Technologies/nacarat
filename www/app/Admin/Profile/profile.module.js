@@ -5,6 +5,7 @@ import UpdateAddressController from './contact-information/address/update-addres
 import UpdateEmailController from './contact-information/email/update-email.controller';
 import UpdatePhoneController from './contact-information/phone/update-phone.controller';
 import UpdateAboutController from './basic/update-about.controller';
+import UpdateBusinessNameController from './basic/update-business-name.controller';
 
 export default angular.module('Admin_Profile', [])
     .controller('ProfileController', ProfileController)
@@ -14,4 +15,5 @@ export default angular.module('Admin_Profile', [])
     .controller('UpdateEmailController', UpdateEmailController)
     .controller('UpdatePhoneController', UpdatePhoneController)
     .controller('UpdateAboutController', UpdateAboutController)
+    .controller('UpdateBusinessNameController', UpdateBusinessNameController)
     .name;
