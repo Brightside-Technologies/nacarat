@@ -11,6 +11,7 @@ export default function BusinessesService($http, config) {
   service.profile.updateAbout = updateAbout;
   service.profile.updateEmail = updateEmail;
   service.profile.updatePhone = updatePhone;
+  service.profile.updateHoursOfOperation = updateHoursOfOperation;
   service.profile.deleteSocialMedia = deleteSocialMedia;
 
   function getAllBusinesses() {
@@ -62,6 +63,15 @@ export default function BusinessesService($http, config) {
       url: url,
       method: "PUT",
       data: phoneObj
+    });
+  }
+
+  function updateHoursOfOperation(businessId, hoursOfOperationObj) {
+    var url = baseUrl + "/businesses/" + businessId + "/profile/hoursOfOperation.json";
+    return $http({
+      url: url,
+      method: "PUT",
+      data: hoursOfOperationObj
     });
   }
 

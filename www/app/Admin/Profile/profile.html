@@ -140,7 +140,7 @@
                         <h6 ng-if="!hours.isOpen" flex layout layout-align="center center" class="h-no-margins md-subhead">Closed</h6>
                     </div>
                 </div>
-                <md-button class="md-icon-button md-secondary" aria-label="Update Hours of Operation" ng-click="null">
+                <md-button class="md-icon-button md-secondary" aria-label="Update Hours of Operation" ng-click="vm.showUpdateHoursOfOperation($event, vm.businessProfile.hoursOfOperation)">
                     <md-icon md-colors="{color: 'orange-500'}" aria-hidden="true">edit</md-icon>
                 </md-button>
             </md-list-item>
