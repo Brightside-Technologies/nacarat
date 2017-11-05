@@ -31,7 +31,7 @@ export default function BusinessesService($http, config) {
   }
 
   function updateSocialMedia(businessId, socialMediaType, data) {
-    var url = baseUrl + "/businesses/" + businessId + "/profile/socialMedias/" + type + ".json";
+    var url = baseUrl + "/businesses/" + businessId + "/profile/socialMedias/" + socialMediaType + ".json";
     return $http({
       url: url,
       method: "PUT",
