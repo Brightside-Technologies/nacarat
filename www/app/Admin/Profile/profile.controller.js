@@ -14,6 +14,7 @@ export default function ProfileController($state, $stateParams, $dialogHelper, B
   vm.showUpdateEmail = showUpdateEmail;
   vm.showUpdatePhone = showUpdatePhone;
   vm.showUpdateSocialMedia = showUpdateSocialMedia;
+  vm.showUpdateHoursOfOperation = showUpdateHoursOfOperation;
   vm.showDeleteSocialMedia = showDeleteSocialMedia;
 
   init();
@@ -21,7 +22,6 @@ export default function ProfileController($state, $stateParams, $dialogHelper, B
   function init() {}
 
   function showUpdateBusinessName(ev, model) {
-    console.log('model', model);
     var content = [
       '<md-input-container class="md-block" flex>',
       "<label>Business Name</label>",
@@ -43,6 +43,7 @@ export default function ProfileController($state, $stateParams, $dialogHelper, B
         cancelText: "Cancel"
       }
     };
+
     var opts = {};
     opts.controller = "UpdateBusinessNameController";
     opts.template = dialogFormTemplate;
@@ -197,6 +198,35 @@ export default function ProfileController($state, $stateParams, $dialogHelper, B
     };
     var opts = {};
     opts.controller = "UpdateSocialMediaController";
+    opts.template = dialogFormTemplate;
+    opts.target = ev;
+    opts.openFrom = angular.element(ev.toElement);
+    opts.closeTo = angular.element(ev.toElement);
+    opts.locals = {
+      locals: locals
+    };
+    $dialogHelper.showCustom(opts);
+  }
+
+  function showUpdateHoursOfOperation(ev, model) {
+    var content = require('./hours-of-operation/hours-of-operation.tmpl.html');
+
+    var locals = {
+      model: {
+        businessId: businessId,
+        hoursOfOperation: model
+      },
+      dialogProperties: {
+        dialogContent: {
+          contentHTML: content
+        },
+        title: "Update hours of operation",
+        submitText: "Update",
+        cancelText: "Cancel"
+      }
+    };
+    var opts = {};
+    opts.controller = "UpdateHoursOfOperationController";
     opts.template = dialogFormTemplate;
     opts.target = ev;
     opts.openFrom = angular.element(ev.toElement);
