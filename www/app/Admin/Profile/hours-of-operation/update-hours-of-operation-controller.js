@@ -2,6 +2,7 @@ export default function UpdateHoursOfOperationController(locals, BusinessesServi
     var dialogProperties = locals.locals.dialogProperties;
     var businessId = locals.locals.model.businessId;
     var vm = this;
+    vm.daysOfTheWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
     vm.content = dialogProperties.dialogContent.contentHTML;
     vm.contentPath = dialogProperties.dialogContent.contentTemplateUrl;
 
