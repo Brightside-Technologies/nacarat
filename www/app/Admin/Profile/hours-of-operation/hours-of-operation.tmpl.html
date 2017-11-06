@@ -1,4 +1,4 @@
-<div layout="column" flex ng-repeat="(day, hours) in vm.hoursOfOperation track by $index">
+<div layout="column" flex ng-repeat="day in vm.daysOfTheWeek track by $index">
     <h6 flex class="md-subhead h-no-margins">{{::day}}</h6>
     <div layout flex layout-padding flex-xs="column">
         <md-input-container flex>

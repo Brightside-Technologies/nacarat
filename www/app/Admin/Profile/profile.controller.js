@@ -8,6 +8,7 @@ var dialogFormTemplate = require("../../../assets/templates/dialog-form.tmpl.htm
 export default function ProfileController($state, $stateParams, $dialogHelper, Business, BusinessesService) {
   var businessId = Business.id;
   var vm = this;
+  vm.daysOfTheWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
   vm.businessProfile = Business.profile;
   vm.showUpdateBusinessName = showUpdateBusinessName;
   vm.showUpdateAboutUs = showUpdateAboutUs;

@@ -18,6 +18,16 @@
                 </md-list-item>
                 <md-list-item class="md-2-line">
                     <div class="md-list-item-text">
+                        <h3>Display Image</h3>
+                        <md-icon ng-if="!vm.businessProfile.profilePhotoUrl" class="md-avatar-icon">business</md-icon>
+                        <img ng-if="!!vm.businessProfile.profilePhotoUrl" class="md-avatar" ng-src="{{vm.businessProfile.profilePhotoUrl}}" />
+                    </div>
+                    <md-button class="md-icon-button md-secondary" aria-label="Update Name" ng-click="null">
+                        <md-icon md-colors="{color: 'orange-500'}" aria-hidden="true">edit</md-icon>
+                    </md-button>
+                </md-list-item>
+                <md-list-item class="md-2-line">
+                    <div class="md-list-item-text">
                         <h3>Business Type</h3>
                         <h3>{{::vm.businessProfile.type}}</h3>
                     </div>
@@ -134,10 +144,10 @@
         <md-card-content>
             <md-list-item class="md-2-line md-long-text">
                 <div class="md-list-item-text" layout="column">
-                    <div layout ng-repeat="(day, hours) in vm.businessProfile.hoursOfOperation">
+                    <div layout ng-repeat="day in vm.daysOfTheWeek track by $index">
                         <h6 flex layout layout-align="center center" class="h-no-margins md-subhead">{{::day}}</h6>
-                        <h6 ng-if="hours.isOpen" flex layout layout-align="center center" class="h-no-margins md-subhead">{{hours.openTime}} &ndash; {{hours.closeTime}}</h6>
-                        <h6 ng-if="!hours.isOpen" flex layout layout-align="center center" class="h-no-margins md-subhead">Closed</h6>
+                        <h6 ng-if="vm.businessProfile.hoursOfOperation[day].isOpen" flex layout layout-align="center center" class="h-no-margins md-subhead">{{::vm.businessProfile.hoursOfOperation[day].openTime}} &ndash; {{::vm.businessProfile.hoursOfOperation[day].closeTime}}</h6>
+                        <h6 ng-if="!vm.businessProfile.hoursOfOperation[day].isOpen" flex layout layout-align="center center" class="h-no-margins md-subhead">Closed</h6>
                     </div>
                 </div>
                 <md-button class="md-icon-button md-secondary" aria-label="Update Hours of Operation" ng-click="vm.showUpdateHoursOfOperation($event, vm.businessProfile.hoursOfOperation)">
