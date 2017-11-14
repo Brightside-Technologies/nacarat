@@ -11,7 +11,7 @@ export default function UpdateBusinessNameController(locals, BusinessesService, 
     vm.submitText = dialogProperties.submitText;
     vm.cancelText = dialogProperties.cancelText;
     vm.businessName = locals.locals.model.businessName;
-    console.log(vm.model);
+    vm.model = locals.locals.model;
     vm.flexGtMd = "33";
     vm.flexMd = "33";
 

@@ -59,13 +59,11 @@ export default function ProfileController($state, $stateParams, $dialogHelper, B
 
   function showUpdateAboutUs(ev, model) {
     var content = [
-        '<md-input-container class="md-block" flex>',
-        "<label>About Us</label>",
-        '<textarea ng-model="vm.about" rows="5" md-maxlength-"180" md-select-on-focus></textarea>',
-        "</md-input-container>"
-      ]
-      .join("")
-      .replace(/\s\s+/g, "");
+      '<md-input-container class="md-block" flex>',
+      "<label>About Us</label>",
+      '<textarea ng-model="vm.about" rows="5" md-maxlength-"180" md-select-on-focus></textarea>',
+      "</md-input-container>"
+    ].join("").replace(/\s\s+/g, "");
 
     var locals = {
       model: {
