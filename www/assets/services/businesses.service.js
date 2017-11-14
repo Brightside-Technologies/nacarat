@@ -8,6 +8,7 @@ export default function BusinessesService($http, config) {
   service.query = getAllBusinesses;
   service.get = getBusinessById;
   service.profile.updateSocialMedia = updateSocialMedia;
+  service.profile.updateName = updateName;
   service.profile.updateAbout = updateAbout;
   service.profile.updateEmail = updateEmail;
   service.profile.updatePhone = updatePhone;
@@ -45,6 +46,15 @@ export default function BusinessesService($http, config) {
       url: url,
       method: "PUT",
       data: angular.toJson(aboutText)
+    });
+  }
+
+  function updateName(businessId, businessName) {
+    var url = baseUrl + "/businesses/" + businessId + "/profile/name.json";
+    return $http({
+      url: url,
+      method: "PUT",
+      data: angular.toJson(businessName)
     });
   }
 
