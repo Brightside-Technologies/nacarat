@@ -6,7 +6,7 @@ import BusinessesService from './businesses.service';
 import MerchantsService from './merchants.service';
 import AuthenticationService from './authentication.service';
 import UsersService from './users.service';
-
+import EnumsService from './enums.service';
 
 export default angular.module('Nacarat_Services', [])
     .service('DailyDealsService', DailyDealsService)
@@ -16,4 +16,5 @@ export default angular.module('Nacarat_Services', [])
     .service('AuthenticationService', AuthenticationService)
     .service('UsersService', UsersService)
     .service('MerchantsService', MerchantsService)
+    .service('EnumsService', EnumsService)
     .name;

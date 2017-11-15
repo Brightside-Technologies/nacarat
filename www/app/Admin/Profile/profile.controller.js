@@ -16,6 +16,7 @@ export default function ProfileController($state, $stateParams, $dialogHelper, B
   vm.showUpdatePhone = showUpdatePhone;
   vm.showUpdateSocialMedia = showUpdateSocialMedia;
   vm.showUpdateHoursOfOperation = showUpdateHoursOfOperation;
+  vm.showAddSocialMedia = showAddSocialMedia;
   vm.showDeleteSocialMedia = showDeleteSocialMedia;
 
   init();
@@ -167,6 +168,80 @@ export default function ProfileController($state, $stateParams, $dialogHelper, B
     $dialogHelper.showCustom(opts);
   }
 
+  function showUpdateHoursOfOperation(ev, model) {
+    var content = require('./hours-of-operation/hours-of-operation.tmpl.html');
+
+    var locals = {
+      model: {
+        businessId: businessId,
+        hoursOfOperation: model
+      },
+      dialogProperties: {
+        dialogContent: {
+          contentHTML: content
+        },
+        title: "Update hours of operation",
+        submitText: "Update",
+        cancelText: "Cancel"
+      }
+    };
+    var opts = {};
+    opts.controller = "UpdateHoursOfOperationController";
+    opts.template = dialogFormTemplate;
+    opts.target = ev;
+    opts.openFrom = angular.element(ev.toElement);
+    opts.closeTo = angular.element(ev.toElement);
+    opts.locals = {
+      locals: locals
+    };
+    $dialogHelper.showCustom(opts);
+  }
+
+  function showAddSocialMedia(ev) {
+    var content = [
+      '<md-input-container class="md-block" flex>',
+      '<label>Type</label>',
+      '<md-select ng-model="vm.socialMediaType">',
+      '<md-option ng-repeat="type in vm.socialMediaTypes | orderBy: \'name\' track by $index" value="{{type.name}}">',
+      '{{type.name}}',
+      ' </md-option>',
+      '</md-select>',
+      "</md-input-container>",
+      '<md-input-container class="md-block" flex>',
+      "<label>Display</label>",
+      '<input ng-model="vm.socialMedia.display">',
+      "</md-input-container>",
+      '<md-input-container class="md-block" flex>',
+      "<label>Url</label>",
+      '<input ng-model="vm.socialMedia.url">',
+      "</md-input-container>"
+    ].join("").replace(/\s\s+/g, "");
+
+    var locals = {
+      model: {
+        businessId: businessId
+      },
+      dialogProperties: {
+        dialogContent: {
+          contentHTML: content
+        },
+        title: "Add Social Media",
+        submitText: "Add",
+        cancelText: "Cancel"
+      }
+    };
+    var opts = {};
+    opts.controller = "AddSocialMediaController";
+    opts.template = dialogFormTemplate;
+    opts.target = ev;
+    opts.openFrom = angular.element(ev.toElement);
+    opts.closeTo = angular.element(ev.toElement);
+    opts.locals = {
+      locals: locals
+    };
+    $dialogHelper.showCustom(opts);
+  }
+
   function showUpdateSocialMedia(ev, model) {
     var content = [
         '<md-input-container class="md-block" flex>',
@@ -207,34 +282,6 @@ export default function ProfileController($state, $stateParams, $dialogHelper, B
     $dialogHelper.showCustom(opts);
   }
 
-  function showUpdateHoursOfOperation(ev, model) {
-    var content = require('./hours-of-operation/hours-of-operation.tmpl.html');
-
-    var locals = {
-      model: {
-        businessId: businessId,
-        hoursOfOperation: model
-      },
-      dialogProperties: {
-        dialogContent: {
-          contentHTML: content
-        },
-        title: "Update hours of operation",
-        submitText: "Update",
-        cancelText: "Cancel"
-      }
-    };
-    var opts = {};
-    opts.controller = "UpdateHoursOfOperationController";
-    opts.template = dialogFormTemplate;
-    opts.target = ev;
-    opts.openFrom = angular.element(ev.toElement);
-    opts.closeTo = angular.element(ev.toElement);
-    opts.locals = {
-      locals: locals
-    };
-    $dialogHelper.showCustom(opts);
-  }
 
   function showDeleteSocialMedia(ev, socialMedia) {
     console.log(socialMedia);
