@@ -1,14 +1,32 @@
-.twitter-icon{
+.icon {
+  line-height: 1em;
+
+  &:before {
+    margin: 5px;
+  }
+
+  &-twitter {
     background-color: #00aced !important;
     color: white !important;
+  }
+
+  &-facebook {
+    background-color: #3b5998 !important;
+    color: white !important;
+  }
+
+  &-instagram {
+    // background: url(https://www.instagram.com/static/images/ico/apple-touch-icon-76x76-precomposed.png/932e4d9af891.png);
+    background-color: #d93175 !important;
+    color: white !important;
+  }
+
+  &-snapchat {
+    background-color: black !important;
+    color: white !important;
+  }
 }
 
-.facebook-icon{
-  background-color: #3B5998 !important;
-  color:white !important;
-}
-
-.instagram-icon{
-  background-color: #000 !important;
-  color:white !important;
+.social-media-display {
+  text-decoration: none;
 }

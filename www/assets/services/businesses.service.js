@@ -1,4 +1,4 @@
-// NOTE: wont work locall with updateAbout, updateEmail
+// NOTE: wont work locall with updateAbout, updateEmail, updateName
 
 export default function BusinessesService($http, config) {
   var baseUrl = config.baseUrl;
@@ -14,6 +14,7 @@ export default function BusinessesService($http, config) {
   service.profile.updatePhone = updatePhone;
   service.profile.updateHoursOfOperation = updateHoursOfOperation;
   service.profile.deleteSocialMedia = deleteSocialMedia;
+  service.profile.addSocialMedia = addSocialMedia;
 
   function getAllBusinesses() {
     var url = baseUrl + "/businesses.json";
@@ -90,6 +91,15 @@ export default function BusinessesService($http, config) {
     return $http({
       url: url,
       method: "DELETE"
+    });
+  }
+
+  function addSocialMedia(businessId, socialMediaObj) {
+    var url = baseUrl + "/businesses/" + businessId + "/profile/socialMedias.json";
+    return $http({
+      url: url,
+      method: "PATCH",
+      data: socialMediaObj
     });
   }
 }
