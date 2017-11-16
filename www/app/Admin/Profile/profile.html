@@ -31,7 +31,7 @@
                         <h3>Business Type</h3>
                         <h3>{{::vm.businessProfile.type}}</h3>
                     </div>
-                    <md-button class="md-icon-button md-secondary" aria-label="Update Business Type" ng-click="null">
+                    <md-button class="md-icon-button md-secondary" aria-label="Update Business Type" ng-click="vm.showUpdateBusinessType($event, vm.businessProfile.type)">
                         <md-icon md-colors="{color: 'orange-500'}" aria-hidden="true">edit</md-icon>
                     </md-button>
                 </md-list-item>

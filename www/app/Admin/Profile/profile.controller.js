@@ -1,8 +1,6 @@
-// TODO: Implement DELETE social media
 // TODO: Need different layouts for "Business" view and "Merchant" view. Mainly, sidenav is different
 // TODO: Style dialog buttons
-// TODO: Need a $mdToast helper?
-// TODO: Need global error handler 
+// TODO: Add $mdToast to all Success and Error callbacks
 // TODO: Updates to Business profile should be applied to businesses AND merchant/business 
 var dialogFormTemplate = require("../../../assets/templates/dialog-form.tmpl.html");
 export default function ProfileController($state, $stateParams, $dialogHelper, Business, BusinessesService) {
@@ -11,6 +9,7 @@ export default function ProfileController($state, $stateParams, $dialogHelper, B
   vm.daysOfTheWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
   vm.businessProfile = Business.profile;
   vm.showUpdateBusinessName = showUpdateBusinessName;
+  vm.showUpdateBusinessType = showUpdateBusinessType;
   vm.showUpdateAboutUs = showUpdateAboutUs;
   vm.showUpdateEmail = showUpdateEmail;
   vm.showUpdatePhone = showUpdatePhone;
@@ -82,6 +81,45 @@ export default function ProfileController($state, $stateParams, $dialogHelper, B
     };
     var opts = {};
     opts.controller = "UpdateAboutController";
+    opts.template = dialogFormTemplate;
+    opts.target = ev;
+    opts.openFrom = angular.element(ev.toElement);
+    opts.closeTo = angular.element(ev.toElement);
+    opts.locals = {
+      locals: locals
+    };
+    $dialogHelper.showCustom(opts);
+  }
+
+  function showUpdateBusinessType(ev, model) {
+    var content = [
+      '<md-input-container class="md-block" flex>',
+      '<label>Type</label>',
+      '<md-select ng-model="vm.businessType">',
+      '<md-option ng-repeat="type in vm.businessTypes | orderBy: \'name\' track by $index" value="{{type.name}}">',
+      '{{type.name}}',
+      ' </md-option>',
+      '</md-select>',
+      "</md-input-container>"
+    ].join("").replace(/\s\s+/g, "");
+
+    var locals = {
+      model: {
+        businessId: businessId,
+        businessType: model
+      },
+      dialogProperties: {
+        dialogContent: {
+          contentHTML: content
+        },
+        title: "Update Business Type",
+        submitText: "Update",
+        cancelText: "Cancel"
+      }
+    };
+
+    var opts = {};
+    opts.controller = "UpdateBusinessTypeController";
     opts.template = dialogFormTemplate;
     opts.target = ev;
     opts.openFrom = angular.element(ev.toElement);
@@ -281,7 +319,6 @@ export default function ProfileController($state, $stateParams, $dialogHelper, B
     };
     $dialogHelper.showCustom(opts);
   }
-
 
   function showDeleteSocialMedia(ev, socialMedia) {
     console.log(socialMedia);
