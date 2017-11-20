@@ -2,7 +2,7 @@
 // TODO: Style dialog buttons
 // TODO: Add $mdToast to all Success and Error callbacks
 // TODO: Updates to Business profile should be applied to businesses AND merchant/business 
-var dialogFormTemplate = require("../../../assets/templates/dialog-form.tmpl.html");
+var dialogFormTemplate = require("../../../../assets/templates/dialog-form.tmpl.html");
 export default function ProfileController($state, $stateParams, $dialogHelper, Business, BusinessesService) {
   var businessId = Business.id;
   var vm = this;

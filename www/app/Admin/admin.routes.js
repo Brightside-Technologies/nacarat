@@ -11,7 +11,7 @@ export default function AdminRoutes($stateProvider, $urlRouterProvider) {
         RequireNoAuth: function (AuthenticationService, $state, $q) {
           return AuthenticationService.requireSignIn()
             .then(function (auth) {
-                $state.go("admin.root.merchant");
+                $state.go("admin.root.merchant.businesses");
               },
               function (error) {
                 return; //$q.reject(error);;
@@ -75,12 +75,11 @@ export default function AdminRoutes($stateProvider, $urlRouterProvider) {
         }
       },
       views: {
-        admin: {
+        'admin': {
           template: require("../../assets/layouts/admin-layout.html"),
-          controller: function ($state, $mdSidenav, Merchant, AuthenticationService) {
+          controller: function ($state, $mdSidenav, AuthenticationService) {
             // NOTE: TEMP controller just to get logout to work
             var vm = this;
-            vm.user = Merchant;
             vm.toggleSidenav = function () {
               $mdSidenav("admin-sidenav").toggle();
             };
@@ -99,61 +98,4 @@ export default function AdminRoutes($stateProvider, $urlRouterProvider) {
         }
       }
     })
-    .state("admin.root.merchant", {
-      //abstract: true,
-      url: "",
-      views: {
-        "": {
-          template: require("./Home/home.html"),
-          controller: "AdminHomeController as vm"
-        },
-        "admin-sidenav": {
-          template: require("../../assets/templates/business-sidenav.tmpl.html")
-        }
-      }
-    })
-    .state("admin.root.business", {
-      abstract: true,
-      url: "/business/:businessId",
-      resolve: {
-        Business: function ($stateParams, BusinessesService) {
-          return BusinessesService.get($stateParams.businessId)
-            .then(function (businessObj) {
-              var businessObject = businessObj.data;
-              businessObject.id = $stateParams.businessId;
-              return businessObject;
-            });
-        }
-      }
-    })
-    .state("admin.root.business.profile", {
-      url: "/profile",
-      views: {
-        "@admin.root": {
-          template: require("./Profile/profile.html"),
-          controller: "ProfileController as vm"
-        },
-        "admin-sidenav@admin.root": {
-          template: require("../../assets/templates/business-sidenav.tmpl.html")
-        }
-      }
-    })
-    .state("admin.root.inventory", {
-      url: "/inventory",
-      views: {
-        "": {
-          template: require("./Inventory/inventory/inventory.html"),
-          controller: "InventoryController as vm"
-        }
-      }
-    })
-    .state("admin.root.inventory-details", {
-      url: "inventory-details/:inventoryId",
-      views: {
-        "": {
-          template: require("./Inventory/inventory/inventory-details/inventory-details.html"),
-          controller: "InventoryDetailsController as vm"
-        }
-      }
-    });
 }

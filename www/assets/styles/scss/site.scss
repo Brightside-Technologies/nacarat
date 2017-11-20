@@ -1,11 +1,11 @@
-@import 'variables';
-@import 'mixins';
-@import 'base';
-@import 'helpers';
+@import "variables";
+@import "mixins";
+@import "base";
+@import "helpers";
 //include app component styling
-@import '../../directives/footer/footer';
-@import '../../layouts/layout';
-@import '../../../app/Public//Home/home';
-@import '../../../app/Admin/Profile/profile';
-@import '../../directives/search-bar/search-bar';
-@import '../../../app/Public/Login/login';
+@import "../../directives/footer/footer";
+@import "../../layouts/layout";
+@import "../../../app/Public//Home/home";
+@import "../../../app/Admin/Business/Profile/profile";
+@import "../../directives/search-bar/search-bar";
+@import "../../../app/Public/Login/login";

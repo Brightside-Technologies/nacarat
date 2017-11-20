@@ -1,17 +1,17 @@
 <div layout class="sidenav__header h-image-contain">
     <div flex layout layout-align="center center" layout-padding>
-        <img class="sidenav__header-avatar" ng-src="{{vm.business.profilePhotoUrl || './assets/user.png'}}" />
-        <span md-colors="{color: 'grey-A100'}">{{vm.business.name}}</span>
+        <img class="sidenav__header-avatar" ng-src="{{vm.user.profilePhotoUrl || './assets/user.png'}}" />
+        <span md-colors="{color: 'grey-A100'}">{{vm.user.name}}</span>
     </div>
 </div>
 <md-list>
-    <md-list-item ui-sref="admin.root.business.profile">
-        <md-icon>store</md-icon>
+    <md-list-item ng-click="null">
+        <md-icon>person</md-icon>
         <p>Profile</p>
     </md-list-item>
-    <md-list-item ui-sref="admin.root.business.inventory">
-        <md-icon>shopping_cart</md-icon>
-        <p>Inventory</p>
+    <md-list-item ng-click=null>
+        <md-icon>store</md-icon>
+        <p>Businesses</p>
     </md-list-item>
     <md-list-item ng-click=null>
         <md-icon>settings</md-icon>
