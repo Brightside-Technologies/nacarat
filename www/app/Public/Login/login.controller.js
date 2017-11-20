@@ -28,8 +28,8 @@ export default function LoginController($state, $mdToast, $rootScope, RequireNoA
 
   function logInWithUsernamePassword(user) {
     AuthenticationService.logInWithUsernamePassword(user).then(
-      function(loginResponse) {
-        $state.go("admin.root.merchant");
+      function (loginResponse) {
+        $state.go("admin.root.merchant.businesses");
       },
       function error(err) {
         console.log("err", err);
