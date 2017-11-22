@@ -33,6 +33,43 @@ export default function BusinessRoutes($stateProvider, $urlRouterProvider) {
                 }
             }
         })
+        // .state("admin.root.business.profile.delete-social-media", {
+        //     url: "/delete-social-media/:socialMediaType",
+        //     onEnter: function ($dialogHelper, $toastHelper, BusinessesService, $stateParams, $state) {
+        //         console.log('stateParams', $stateParams)
+        //         var businessId = $stateParams.businessId
+        //         var socialMediaType = $stateParams.socialMediaType
+        //         var opts = {};
+        //         //opts.target = ev;
+        //         opts.title = "Delete Social Media Entry?";
+        //         opts.htmlContent = "<strong>" + socialMediaType + "</strong> entry" + " will be deleted";
+        //         opts.ariaLabel = "Delete " + socialMediaType;
+        //         opts.okLabel = "Delete";
+        //         opts.cancelLabel = "Cancel";
+        //         opts.confirm = confirm;
+        //         opts.cancel = cancel;
+        //         $dialogHelper.showConfirm(opts);
+
+        //         function confirm() {
+        //             BusinessesService.profile.deleteSocialMedia(businessId, socialMediaType)
+        //                 .then(function success() {
+        //                         $state.go('^', {
+        //                             businessId: businessId
+        //                         });
+        //                         $toastHelper.showSuccess('Social media deleted successfully');
+        //                     },
+        //                     function error(err) {
+        //                         $toastHelper.showError('Error has occurred. Please try again');
+        //                     });
+        //         }
+
+        //         function cancel() {
+        //             $state.go('^', {
+        //                 businessId: businessId
+        //             });
+        //         }
+        //     }
+        // })
         .state("admin.root.business.inventory", {
             url: "/inventory",
             views: {

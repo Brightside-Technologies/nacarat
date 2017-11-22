@@ -3,7 +3,7 @@
 // TODO: Add $mdToast to all Success and Error callbacks
 // TODO: Updates to Business profile should be applied to businesses AND merchant/business 
 var dialogFormTemplate = require("../../../../assets/templates/dialog-form.tmpl.html");
-export default function ProfileController($state, $stateParams, $dialogHelper, Business, BusinessesService) {
+export default function ProfileController($state, $stateParams, $dialogHelper, $toastHelper, Business, BusinessesService) {
   var businessId = Business.id;
   var vm = this;
   vm.daysOfTheWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
@@ -321,7 +321,10 @@ export default function ProfileController($state, $stateParams, $dialogHelper, B
   }
 
   function showDeleteSocialMedia(ev, socialMedia) {
-    console.log(socialMedia);
+    // $state.go('admin.root.business.profile.delete-social-media', {
+    //   socialMediaType: socialMedia.type
+    // });
+
     var opts = {};
     opts.target = ev;
     opts.title = "Delete Social Media Entry?";
@@ -335,10 +338,11 @@ export default function ProfileController($state, $stateParams, $dialogHelper, B
     function confirm() {
       BusinessesService.profile.deleteSocialMedia(businessId, socialMedia.type)
         .then(function success() {
+            $toastHelper.showSuccess('Social media deleted successfully');
             $state.reload();
           },
           function error(err) {
-            console.log(err);
+            $toastHelper.showError('Error has occurred. Please try again');
           });
     }
   }

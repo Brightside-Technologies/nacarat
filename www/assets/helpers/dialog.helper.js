@@ -1,10 +1,8 @@
-$dialogHelper.$inject = ['$mdDialog', '$mdMedia', '$state'];
-
 export default function $dialogHelper($mdDialog, $mdMedia, $state) {
 
-  var service = this;
+  var helper = this;
 
-  service.showCustom = function(options) {
+  helper.showCustom = function (options) {
     var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'));
     $mdDialog.show({
       controller: options.controller,
@@ -22,7 +20,7 @@ export default function $dialogHelper($mdDialog, $mdMedia, $state) {
     });
   };
 
-  service.showConfirm = function(options) {
+  helper.showConfirm = function (options) {
     $mdDialog.show(
         $mdDialog.confirm()
         .title(options.title)
@@ -34,62 +32,27 @@ export default function $dialogHelper($mdDialog, $mdMedia, $state) {
         .cancel(options.cancelLabel)
       )
       .then(function confirm() {
-          options.confirm();
+          (options.confirm || angular.noop)();
         },
         function cancel() {
           //cancel
+          (options.cancel || $mdDialog.cancel)();
         });
   };
 
-  service.hide = function() {
+  helper.hide = function () {
     $mdDialog.hide();
   };
 
-  service.cancel = function() {
-    $state.get($state.current.name).data.dialog = false;
+  helper.cancel = function () {
     $mdDialog.cancel();
   };
 
   /**
-   * @description show prompt dialog, based on the preset prompt dialog in Angular Material.  In this one, user is able to pass options to control the template
-   * e.g - validation, adding theming classes, choosing different input types, etc.
-   * <code>options</code> passed in should be of the following form
-   * <pre>
-   *  var promptDialogOptions = {};
-      promptDialogOptions.target = ev;
-      promptDialogOptions.closeTo = ev;
-      promptDialogOptions.openTo = ev;
-      promptDialogOptions.locals = {
-          templateVm: {
-              title: 'Title of prompt dialog',
-              textContent: 'Text content of prompt dialog',
-              ariaLabel: 'Aria lable of prompt dialog',
-              input: {
-                  type: 'text', // type of the input. In the near future, <code>select</code> and <code>checkbox</code> will be supported
-                  label: 'label', // label for <code>input[type='text']</code>
-                  placeholder: '', // placeholder of <code>input[type='text']</code>
-                  initialValue: 0,  // initial value of <code>input[type='text']</code>
-                  attributes: [{ 'integer': function (val) { return val > 0 } }, { 'required': true }] // list of attributes and respective values to attach to to <code>input[type='text']</code> via <code>attributes</code> directive and <code>attributes-list</code>
-              },
-              confirmBtn: {
-                  text: 'Update', // text to display in confirm button. Defaults to 'OK'
-                  cssClass: 'md-primary', // class to add to confirm button
-                  action: confirmFn // function to execute when the confirm button is pressed.  Default calls <code>$mdDialog.hide(val)</code>
-              },
-              cancelBtn: {
-                  text: 'Cancel' // text to display in confirm button. Defaults to 'CANCEL'
-                  cssClass: '', // class to add to cancel button
-                  action: cancelFn // function to execute when the cancel button is pressed.  Default calls <code>$mdDialog.abort()</code>
-              }
-          }
-      }
-      promptDialogOptions.confirmCb = function () { console.log("CONFIRM CB") }; // function to execute after confirmation is done. Default is <code>angular.noop()</code>
-      promptDialogOptions.cancelCb = function () { console.log("CANCEL CB") }; // function to execute after cancellation is done. Default is <code>angular.noop()</code>
-   * </pre>
-   * @todo Add support for different input types e.g - select, checkbox (or toggle maybe)
-   * <code>attributes</code> directive needs work. Validation issues when dynamically adding validation attribute directives
+   * show prompt dialog, based on the preset prompt dialog in Angular Material.  In this one, user is able to pass options to control the template
+   * e.g - validation, adding theming classes, choosing different input types, etc
    */
-  service.showPrompt = function(options) {
+  helper.showPrompt = function (options) {
 
     var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'));
     var promptTemplate = [
@@ -139,7 +102,7 @@ export default function $dialogHelper($mdDialog, $mdMedia, $state) {
           vm.keypress = keypress;
 
           var originalValue = vm.input.initialValue;
-          $scope.$watch('vm.modelValue', function(n, o) {
+          $scope.$watch('vm.modelValue', function (n, o) {
 
             var newValueTocompare = '';
             if (typeof originalValue == 'number') {

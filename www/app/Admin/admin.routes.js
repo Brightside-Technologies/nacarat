@@ -1,35 +1,6 @@
 export default function AdminRoutes($stateProvider, $urlRouterProvider) {
   //$urlRouterProvider.when('/admin/i', '/login');
   $stateProvider
-    /*********************************************/
-    /************Login States*********************/
-    /*********************************************/
-    .state("login", {
-      url: "",
-      abstract: true,
-      resolve: {
-        RequireNoAuth: function (AuthenticationService, $state, $q) {
-          return AuthenticationService.requireSignIn()
-            .then(function (auth) {
-                $state.go("admin.root.merchant.businesses");
-              },
-              function (error) {
-                return; //$q.reject(error);;
-              }
-            );
-        }
-      },
-      template: require("../../assets/layouts/login-layout.html")
-    })
-    .state("login.root", {
-      url: "/login",
-      views: {
-        "": {
-          template: require("../Public/Login/login.html"),
-          controller: "LoginController as vm"
-        }
-      }
-    })
     /**********************************************/
     /*Private states. Need auth to access these   */
     /**********************************************/
@@ -79,11 +50,11 @@ export default function AdminRoutes($stateProvider, $urlRouterProvider) {
           template: require("../../assets/layouts/admin-layout.html"),
           controller: function ($state, $mdSidenav, AuthenticationService) {
             // NOTE: TEMP controller just to get logout to work
-            var vm = this;
-            vm.toggleSidenav = function () {
+            var admin = this;
+            admin.toggleSidenav = function () {
               $mdSidenav("admin-sidenav").toggle();
             };
-            vm.logout = function () {
+            admin.logout = function () {
               AuthenticationService.logOut()
                 .then(function () {
                     $state.go("login.root");
@@ -94,7 +65,7 @@ export default function AdminRoutes($stateProvider, $urlRouterProvider) {
                 );
             };
           },
-          controllerAs: "vm"
+          controllerAs: "admin"
         }
       }
     })

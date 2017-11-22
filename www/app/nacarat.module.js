@@ -6,7 +6,7 @@
 // TODO: Will need different states for differet product details
 // TODO: add $mdToast to all success and error callbacks
 // TODO: add check to all Updates: only Update if model has changed
-// TODO: Global error handler: Check google drive for example + resources
+// TODO: Test ExceptionHandler
 
 // TODO: put all image assets on firebase (or S3)
 
@@ -31,7 +31,9 @@ import "angular-flickity";
 // import 'angularfire';
 
 import Nacarat_Init from "./nacarat.init";
+import Nacarat_Routes from "./nacarat.routes";
 import Nacarat_Theme from "./nacarat.theme.js";
+import Nacarat_Config from "./nacarat.config";
 import Nacarat_Public from "./Public/public.module";
 import Nacarat_Admin from "./Admin/admin.module";
 import Nacarat_Services from "../assets/services/nacarat.services.module";
@@ -53,8 +55,10 @@ angular
     Nacarat_Directives
   ])
   .constant("config", {
-    "baseUrl": "http://127.0.0.1:3000"
-    //"baseUrl": "https://nacarat-2be74.firebaseio.com"
+    baseUrl: "http://127.0.0.1:3000"
+    //baseUrl: "https://nacarat-2be74.firebaseio.com"
   })
   .config(Nacarat_Theme)
+  .config(Nacarat_Routes)
+  .config(Nacarat_Config)
   .run(Nacarat_Init);

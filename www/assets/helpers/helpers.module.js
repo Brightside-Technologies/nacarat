@@ -1,5 +1,7 @@
-//import angular from 'angular';
 import $dialogHelper from './dialog.helper';
+import $toastHelper from './toast.helper';
 
 export default angular.module('Nacarat_Helpers', [])
-  .service('$dialogHelper', $dialogHelper).name;
+  .service('$dialogHelper', $dialogHelper)
+  .service('$toastHelper', $toastHelper)
+  .name;
