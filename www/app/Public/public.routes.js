@@ -1,6 +1,5 @@
 export default function Routes($stateProvider, $urlRouterProvider) {
-    $urlRouterProvider.otherwise('/');
-    //$urlRouterProvider.when('/', '/');
+    $urlRouterProvider.otherwise('/not-found');
     $stateProvider
         .state('public', {
             url: '',
