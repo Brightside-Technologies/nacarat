@@ -24,6 +24,10 @@ module.exports = (function makeWebpackConfig() {
    */
   var config = {};
 
+  // config.externals = {
+  //   angular: "angular"
+  // };
+
   /**
    * Entry
    * Reference: http://webpack.github.io/docs/configuration.html#entry
@@ -195,6 +199,10 @@ module.exports = (function makeWebpackConfig() {
     //     }
     //   }
     // }),
+    new webpack.LoaderOptionsPlugin({
+      minimize: true,
+      debug: false
+    }),
     new webpack.ProvidePlugin({ _: "underscore" }),
     new webpack.ProvidePlugin({ moment: "moment" }),
     new DashboardPlugin()
