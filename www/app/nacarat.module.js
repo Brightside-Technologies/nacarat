@@ -55,8 +55,8 @@ angular
     Nacarat_Directives
   ])
   .constant("config", {
-    //baseUrl: "http://127.0.0.1:3000"
-    baseUrl: "https://nacarat-2be74.firebaseio.com"
+    baseUrl: "http://127.0.0.1:3000"
+    //baseUrl: "https://nacarat-2be74.firebaseio.com"
   })
   .config(Nacarat_Theme)
   .config(Nacarat_Routes)
