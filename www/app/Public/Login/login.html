@@ -1,28 +1,25 @@
-<div flex layout>
-    <md-card flex class="login-card">
-        <md-card-title flex="nogrow">
-            <md-card-title-text layout layout-align="center" flex>
-                <span class="md-display-1 cursive">Welcome</span>
-            </md-card-title-text>
-        </md-card-title>
-        <md-card-content flex layout layout-align="center center">
-            <form flex name="form" layout="column">
-                <md-input-container class="md-block md-accent" flex-gt-xs>
-                    <label class="cursive md-subhead">Username</label>
-                    <input ng-model="vm.credentials.email">
-                </md-input-container>
-                <md-input-container class="md-block md-accent" flex-gt-xs>
-                    <label class="cursive md-subhead">Password</label>
-                    <input type="password" ng-model="vm.credentials.password">
-                </md-input-container>
-            </form>
+<md-card class="login-card" flex-xs="100" flex-sm="100" flex-gt-sm="33">
+    <md-card-title flex="nogrow">
+        <md-card-title-text layout layout-align="center" flex>
+            <span class="md-display-1 cursive">Welcome</span>
+        </md-card-title-text>
+    </md-card-title>
+    <form name="form">
+        <md-card-content flex layout="column" layout-align="center center">
+            <md-input-container class="md-block md-accent h-full-width" flex flex-gt-xs>
+                <label class="cursive md-subhead">Username</label>
+                <input ng-model="vm.credentials.email">
+            </md-input-container>
+            <md-input-container class="md-block md-accent h-full-width" flex-gt-xs>
+                <label class="cursive md-subhead">Password</label>
+                <input type="password" ng-model="vm.credentials.password">
+            </md-input-container>
         </md-card-content>
         <md-card-actions layout="column" layout-align="center center" layout-margin>
-            <md-button flex="100" class="md-raised h-full-width h-margins-5" md-colors="{background: 'teal-500'}" ng-click="vm.logInWithUsernamePassword(vm.credentials)">Login</md-button>
+            <md-button type="submit" flex="100" class="md-raised md-accent h-full-width h-margins-5" ng-click="vm.logInWithUsernamePassword(vm.credentials)">Login</md-button>
             <!-- <md-button flex="100" class="btn-login btn-login--facebook h-full-width h-margins-5 h-center" ng-click="vm.loginWithProvider('facebook')">Login with Facebook</md-button>-->
             <!--<md-button flex="100" class="btn-login btn-login--google h-full-width h-margins-5 h-center" ng-click="vm.loginWithProvider('google')">Login with Google</md-button> -->
             <md-button ng-disabled="true" class="md-accent md-raised h-full-width h-margins-5">Register</md-button>
         </md-card-actions>
-    </md-card>
-    <md-card>
-</div>
+    </form>
+</md-card>
