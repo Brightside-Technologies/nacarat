@@ -1,4 +1,5 @@
-<md-dialog flex-md="{{vm.flexMd || '66'}}" flex-gt-md="{{vm.flexGtMd || '50'}}" md-theme="default" aria-label="vm.title" tabindex="-1">
+<md-dialog flex-md="{{vm.flexMd || '66'}}" flex-gt-md="{{vm.flexGtMd || '50'}}" md-theme="default" aria-label="vm.title"
+  tabindex="-1">
   <form name="vm.form" novalidate>
     <md-dialog-content class="md-dialog-content dialog-box" role="document" tabindex="-1">
       <h2 class="md-title">{{vm.title}}</h2>
@@ -9,7 +10,8 @@
     </md-dialog-content>
     <md-dialog-actions>
       <md-button type="button" ng-click="vm.cancel()" aria-label="vm.cancelAria || 'Cancel' ">{{vm.cancelText || 'Cancel'}}</md-button>
-      <md-button ng-hide="vm.hideSubmitButton" class="md-primary" md-autofocus="true" type="submit" ng-click="vm.submit()" ng-disabled="(vm.form.$invalid || vm.enableSubmit == false)" aria-label="vm.submitAria || 'Submit' ">{{vm.submitText || 'Submit'}}</md-button>
+      <md-button ng-hide="vm.hideSubmitButton" class="md-accent" md-autofocus="true" type="submit" ng-click="vm.submit()" ng-disabled="(vm.form.$invalid || vm.enableSubmit == false)"
+        aria-label="vm.submitAria || 'Submit' ">{{vm.submitText || 'Submit'}}</md-button>
     </md-dialog-actions>
   </form>
 </md-dialog>

@@ -1,18 +1,26 @@
 // TODO: Need different layouts for "Business" view and "Merchant" view. Mainly, sidenav is different
 // TODO: Style dialog buttons
 // TODO: Add $mdToast to all Success and Error callbacks
-// TODO: Updates to Business profile should be applied to businesses AND merchant/business 
+// TODO: Updates to Business profile should be applied to businesses AND merchant/business
 var dialogFormTemplate = require("../../../../assets/templates/dialog-form.tmpl.html");
-export default function ProfileController($state, $stateParams, $dialogHelper, $toastHelper, Business, BusinessesService) {
+export default function ProfileController(
+  $state,
+  $stateParams,
+  $dialogHelper,
+  $toastHelper,
+  Business,
+  BusinessesService
+) {
   var businessId = Business.id;
   var vm = this;
-  vm.daysOfTheWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+  vm.daysOfTheWeek = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
   vm.businessProfile = Business.profile;
   vm.showUpdateBusinessName = showUpdateBusinessName;
   vm.showUpdateBusinessType = showUpdateBusinessType;
   vm.showUpdateAboutUs = showUpdateAboutUs;
   vm.showUpdateEmail = showUpdateEmail;
   vm.showUpdatePhone = showUpdatePhone;
+  vm.showUpdateAddress = showUpdateAddress;
   vm.showUpdateSocialMedia = showUpdateSocialMedia;
   vm.showUpdateHoursOfOperation = showUpdateHoursOfOperation;
   vm.showAddSocialMedia = showAddSocialMedia;
@@ -28,7 +36,9 @@ export default function ProfileController($state, $stateParams, $dialogHelper, $
       "<label>Business Name</label>",
       '<input ng-model="vm.businessName"/>',
       "</md-input-container>"
-    ].join("").replace(/\s\s+/g, "");
+    ]
+      .join("")
+      .replace(/\s\s+/g, "");
 
     var locals = {
       model: {
@@ -63,7 +73,9 @@ export default function ProfileController($state, $stateParams, $dialogHelper, $
       "<label>About Us</label>",
       '<textarea ng-model="vm.about" rows="5" md-maxlength-"180" md-select-on-focus></textarea>',
       "</md-input-container>"
-    ].join("").replace(/\s\s+/g, "");
+    ]
+      .join("")
+      .replace(/\s\s+/g, "");
 
     var locals = {
       model: {
@@ -94,14 +106,16 @@ export default function ProfileController($state, $stateParams, $dialogHelper, $
   function showUpdateBusinessType(ev, model) {
     var content = [
       '<md-input-container class="md-block" flex>',
-      '<label>Type</label>',
+      "<label>Type</label>",
       '<md-select ng-model="vm.businessType">',
       '<md-option ng-repeat="type in vm.businessTypes | orderBy: \'name\' track by $index" value="{{type.name}}">',
-      '{{type.name}}',
-      ' </md-option>',
-      '</md-select>',
+      "{{type.name}}",
+      " </md-option>",
+      "</md-select>",
       "</md-input-container>"
-    ].join("").replace(/\s\s+/g, "");
+    ]
+      .join("")
+      .replace(/\s\s+/g, "");
 
     var locals = {
       model: {
@@ -136,7 +150,9 @@ export default function ProfileController($state, $stateParams, $dialogHelper, $
       "<label>Email</label>",
       '<input ng-model="vm.model.email">',
       "</md-input-container>"
-    ].join("").replace(/\s\s+/g, "");
+    ]
+      .join("")
+      .replace(/\s\s+/g, "");
 
     var locals = {
       model: {
@@ -167,17 +183,19 @@ export default function ProfileController($state, $stateParams, $dialogHelper, $
 
   function showUpdatePhone(ev, model) {
     var content = [
-      '<div layout flex>',
+      "<div layout flex>",
       '<md-input-container class="md-block" flex>',
       "<label>Code</label>",
       '<input ng-model="vm.phone.calling_code">',
-      '</md-input-container>',
+      "</md-input-container>",
       '<md-input-container class="md-block" flex>',
-      '<label>Number</label>',
+      "<label>Number</label>",
       '<input ng-model="vm.phone.number">',
-      '</md-input-container>',
-      '</div>'
-    ].join("").replace(/\s\s+/g, "");
+      "</md-input-container>",
+      "</div>"
+    ]
+      .join("")
+      .replace(/\s\s+/g, "");
 
     var locals = {
       model: {
@@ -206,8 +224,36 @@ export default function ProfileController($state, $stateParams, $dialogHelper, $
     $dialogHelper.showCustom(opts);
   }
 
+  function showUpdateAddress(ev, model) {
+    var locals = {
+      model: {
+        businessId: businessId,
+        address: model
+      },
+      dialogProperties: {
+        dialogContent: {
+          contentHTML: "<address model='vm.address'></address>"
+        },
+        title: "Update Address",
+        submitText: "Update",
+        cancelText: "Cancel"
+      }
+    };
+
+    var opts = {};
+    opts.controller = "UpdateAddressController";
+    opts.template = dialogFormTemplate;
+    opts.target = ev;
+    opts.openFrom = angular.element(ev.toElement);
+    opts.closeTo = angular.element(ev.toElement);
+    opts.locals = {
+      locals: locals
+    };
+    $dialogHelper.showCustom(opts);
+  }
+
   function showUpdateHoursOfOperation(ev, model) {
-    var content = require('./hours-of-operation/hours-of-operation.tmpl.html');
+    var content = require("./hours-of-operation/hours-of-operation.tmpl.html");
 
     var locals = {
       model: {
@@ -238,12 +284,12 @@ export default function ProfileController($state, $stateParams, $dialogHelper, $
   function showAddSocialMedia(ev) {
     var content = [
       '<md-input-container class="md-block" flex>',
-      '<label>Type</label>',
+      "<label>Type</label>",
       '<md-select ng-model="vm.socialMediaType">',
       '<md-option ng-repeat="type in vm.socialMediaTypes | orderBy: \'name\' track by $index" value="{{type.name}}">',
-      '{{type.name}}',
-      ' </md-option>',
-      '</md-select>',
+      "{{type.name}}",
+      " </md-option>",
+      "</md-select>",
       "</md-input-container>",
       '<md-input-container class="md-block" flex>',
       "<label>Display</label>",
@@ -253,7 +299,9 @@ export default function ProfileController($state, $stateParams, $dialogHelper, $
       "<label>Url</label>",
       '<input ng-model="vm.socialMedia.url">',
       "</md-input-container>"
-    ].join("").replace(/\s\s+/g, "");
+    ]
+      .join("")
+      .replace(/\s\s+/g, "");
 
     var locals = {
       model: {
@@ -282,15 +330,15 @@ export default function ProfileController($state, $stateParams, $dialogHelper, $
 
   function showUpdateSocialMedia(ev, model) {
     var content = [
-        '<md-input-container class="md-block" flex>',
-        "<label>Display</label>",
-        '<input ng-model="vm.model.model.data.display">',
-        "</md-input-container>",
-        '<md-input-container class="md-block" flex>',
-        "<label>Url</label>",
-        '<input ng-model="vm.model.model.data.url">',
-        "</md-input-container>"
-      ]
+      '<md-input-container class="md-block" flex>',
+      "<label>Display</label>",
+      '<input ng-model="vm.model.model.data.display">',
+      "</md-input-container>",
+      '<md-input-container class="md-block" flex>',
+      "<label>Url</label>",
+      '<input ng-model="vm.model.model.data.url">',
+      "</md-input-container>"
+    ]
       .join("")
       .replace(/\s\s+/g, "");
 
@@ -336,15 +384,15 @@ export default function ProfileController($state, $stateParams, $dialogHelper, $
     $dialogHelper.showConfirm(opts);
 
     function confirm() {
-      BusinessesService.profile.deleteSocialMedia(businessId, socialMedia.type)
-        .then(function success() {
-            $toastHelper.showSuccess('Social media deleted successfully');
-            $state.reload();
-          },
-          function error(err) {
-            $toastHelper.showError('Error has occurred. Please try again');
-          });
+      BusinessesService.profile.deleteSocialMedia(businessId, socialMedia.type).then(
+        function success() {
+          $toastHelper.showSuccess("Social media deleted successfully");
+          $state.reload();
+        },
+        function error(err) {
+          $toastHelper.showError("Error has occurred. Please try again");
+        }
+      );
     }
   }
-
 }
