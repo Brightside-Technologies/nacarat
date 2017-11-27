@@ -1,0 +1,11 @@
+<md-autocomplete name="address" required md-clear-button="true" md-no-cache="true" md-selected-item="vm.selectedAddress"
+    md-search-text="vm.addressSearchText" md-selected-item-change="vm.suggestedAddressSelected(address)" md-items="address in vm.getAddressSuggestions(vm.addressSearchText)"
+    md-item-text="address.text" md-min-length="3" placeholder="Address">
+    <md-item-template>
+        <span md-highlight-text="vm.addressSearchText" md-highlight-flags="^i">{{address.text}}</span>
+    </md-item-template>
+    <md-not-found>
+        No suggestions matching "{{vm.addressSearchText}}" were found.
+    </md-not-found>
+    <!-- <validation-message input-name="vm.form.address" field-name="'Address'"></validation-message> -->
+</md-autocomplete>
