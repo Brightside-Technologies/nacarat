@@ -1,4 +1,4 @@
-export default function AddSocialMediaController($dialogHelper, $state, locals, EnumsService, BusinessesService) {
+export default function AddSocialMediaController($toastHelper, $dialogHelper, $state, locals, EnumsService, BusinessesService) {
     var dialogProperties = locals.locals.dialogProperties;
     var businessId = locals.locals.model.businessId;
     var vm = this;
@@ -10,8 +10,8 @@ export default function AddSocialMediaController($dialogHelper, $state, locals, 
     vm.cancelText = dialogProperties.cancelText;
     vm.socialMediaType = "";
     vm.socialMedia = {
-        "url": "",
-        "display": ""
+        url: "",
+        display: ""
     };
     vm.flexGtMd = "33";
     vm.flexMd = "33";
@@ -20,26 +20,28 @@ export default function AddSocialMediaController($dialogHelper, $state, locals, 
     vm.submit = submit;
     vm.cancel = cancel;
 
-    init()
+    init();
 
     function init() {
-        EnumsService.getSocialMediaTypes()
-            .then(function (response) {
-                vm.socialMediaTypes = response.data;
-            })
+        EnumsService.getSocialMediaTypes().then(function(response) {
+            vm.socialMediaTypes = response.data;
+        });
     }
 
     function submit() {
         if (vm.form.$valid) {
             var socialMediaObject = {};
             socialMediaObject[vm.socialMediaType.toLowerCase()] = vm.socialMedia;
-            BusinessesService.profile.addSocialMedia(businessId, socialMediaObject)
-                .then(function (response) {
-                        $state.reload();
-                    },
-                    function error(err) {
-                        console.log(err);
-                    })
+            BusinessesService.profile.addSocialMedia(businessId, socialMediaObject).then(
+                function(response) {
+                    $toastHelper.showSuccess("Social media added successfully");
+                    $state.reload();
+                },
+                function error(err) {
+                    $toastHelper.showError("An error occurred. Please try again");
+                    console.log(err);
+                }
+            );
         }
     }
 
