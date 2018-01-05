@@ -7,6 +7,7 @@
 // TODO: add $mdToast to all success and error callbacks
 // TODO: add check to all Updates: only Update if model has changed
 // TODO: Test ExceptionHandler
+// TODO: validate phone numbers https://numvalidate.com
 
 // TODO: put all image assets on firebase (or S3)
 
@@ -41,24 +42,24 @@ import Nacarat_Directives from "../assets/directives/nacarat.directives.module";
 import Nacarat_Helpers from "../assets/helpers/helpers.module";
 
 angular
-  .module("Nacarat", [
-    "firebase",
-    "bc.Flickity",
-    uiRouter,
-    ngSanitize,
-    ngMaterial,
-    mdDataTable,
-    Nacarat_Admin,
-    Nacarat_Public,
-    Nacarat_Helpers,
-    Nacarat_Services,
-    Nacarat_Directives
-  ])
-  .constant("config", {
-    baseUrl: "http://127.0.0.1:3000"
-    //baseUrl: "https://nacarat-2be74.firebaseio.com"
-  })
-  .config(Nacarat_Theme)
-  .config(Nacarat_Routes)
-  .config(Nacarat_Config)
-  .run(Nacarat_Init);
+    .module("Nacarat", [
+        "firebase",
+        "bc.Flickity",
+        uiRouter,
+        ngSanitize,
+        ngMaterial,
+        mdDataTable,
+        Nacarat_Admin,
+        Nacarat_Public,
+        Nacarat_Helpers,
+        Nacarat_Services,
+        Nacarat_Directives
+    ])
+    .constant("config", {
+        baseUrl: "http://127.0.0.1:3000"
+        //baseUrl: "https://nacarat-2be74.firebaseio.com"
+    })
+    .config(Nacarat_Theme)
+    .config(Nacarat_Routes)
+    //.config(Nacarat_Config)
+    .run(Nacarat_Init);

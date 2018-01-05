@@ -9,6 +9,7 @@ export default function UpdatePhoneController(locals, BusinessesService, $state,
     vm.submitText = dialogProperties.submitText;
     vm.cancelText = dialogProperties.cancelText;
     vm.phone = locals.locals.model.phone;
+
     vm.flexGtMd = "33";
     vm.flexMd = "33";
 
@@ -20,14 +21,14 @@ export default function UpdatePhoneController(locals, BusinessesService, $state,
 
     function submit() {
         if (vm.form.$valid) {
-            BusinessesService.profile.updatePhone(businessId, vm.phone)
-                .then(function success(response) {
-                        $state.reload();
-                    },
-                    function error(err) {
-                        console.log(err);
-                    }
-                );
+            BusinessesService.profile.updatePhone(businessId, vm.phone).then(
+                function success(response) {
+                    $state.reload();
+                },
+                function error(err) {
+                    console.log(err);
+                }
+            );
         }
     }
 
