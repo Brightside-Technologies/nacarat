@@ -12,8 +12,10 @@
   <script src="https://use.fontawesome.com/3aae8a1f4c.js"></script>
 </head>
 
-<body class="h-full-height h-full-width" ui-view ng-cloak>
-  <!--Inject either public named view or admin named view-->
+<body class="h-full-height h-full-width" ng-cloak>
+  <ui-view>
+    <!--Inject either public named view or admin named view-->
+  </ui-view>
 
   <script src="https://www.gstatic.com/firebasejs/3.6.6/firebase.js"></script>
 </body>

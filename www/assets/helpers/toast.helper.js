@@ -1,6 +1,4 @@
 export default function $toastHelper($mdToast) {
-    var body = angular.element(document).find("html");
-    console.log("body", body);
     var customToastTemplate = [
         "<md-toast>",
         '<md-icon style="padding-right: 5px" md-colors="{color: {{vm.mdColors}}}">{{vm.mdIconContent}}</md-icon>',
@@ -33,8 +31,7 @@ export default function $toastHelper($mdToast) {
             },
             controller: SuccessToastController,
             bindToController: true,
-            controllerAs: "vm",
-            parent: body
+            controllerAs: "vm"
         };
 
         function SuccessToastController(locals) {
@@ -70,8 +67,7 @@ export default function $toastHelper($mdToast) {
             },
             controller: ErrorToastController,
             bindToController: true,
-            controllerAs: "vm",
-            parent: body
+            controllerAs: "vm"
         };
 
         function ErrorToastController(locals) {

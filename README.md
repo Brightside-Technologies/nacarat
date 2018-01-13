@@ -72,8 +72,6 @@ npm install
   nodemon index.js
 ```
 
-> _Note_: I've added a shortcut to run the server from `nacarat` directory `npm run start:express`. For this, you'll need `nodemon`
-
 ## Deployment
 
 This project uses **Webpack** as a bundler. That is, while developing, you will be working in the `www` directory. When we are ready to deploy a version live, we need to build the project. The build process takes the files in `www` and produces the contents of `dist`. The contents of `dist` are usually concatenated and minified. `dist` is what ends up being deployed.
