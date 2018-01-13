@@ -33,13 +33,13 @@ import "angular-flickity";
 
 import Nacarat_Init from "./nacarat.init";
 import Nacarat_Routes from "./nacarat.routes";
-import Nacarat_Theme from "./nacarat.theme.js";
-import Nacarat_Config from "./nacarat.config";
+import Nacarat_Theme from "./config/theme.config";
 import Nacarat_Public from "./Public/public.module";
 import Nacarat_Admin from "./Admin/admin.module";
 import Nacarat_Services from "../assets/services/nacarat.services.module";
 import Nacarat_Directives from "../assets/directives/nacarat.directives.module";
 import Nacarat_Helpers from "../assets/helpers/helpers.module";
+import HttpConfig from "./config/http.config";
 
 angular
     .module("Nacarat", [
@@ -61,5 +61,5 @@ angular
     })
     .config(Nacarat_Theme)
     .config(Nacarat_Routes)
-    //.config(Nacarat_Config)
+    .config(HttpConfig)
     .run(Nacarat_Init);
