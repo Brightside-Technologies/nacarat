@@ -1,4 +1,5 @@
 export default function $toastHelper($mdToast) {
+    var hideDelay = 30000; // 30 seconds
     var customToastTemplate = [
         "<md-toast>",
         '<md-icon style="padding-right: 5px" md-colors="{color: {{vm.mdColors}}}">{{vm.mdIconContent}}</md-icon>',
@@ -21,11 +22,11 @@ export default function $toastHelper($mdToast) {
         $mdToast.hide();
 
         var successToastOptions = {
-            template: customToastTemplate,
             //autoWrap: true,
-            hideDelay: false,
-            position: "bottom left",
             //toastClass: 'class'
+            template: customToastTemplate,
+            hideDelay: hideDelay,
+            position: "bottom left",
             locals: {
                 textContent: textContent
             },
@@ -46,8 +47,6 @@ export default function $toastHelper($mdToast) {
         }
 
         return $mdToast.show(successToastOptions);
-        //.then(function (response) {
-        //});
     }
 
     function showError(textContent) {
@@ -57,11 +56,11 @@ export default function $toastHelper($mdToast) {
         $mdToast.hide();
 
         var errorToastOptions = {
-            template: customToastTemplate,
             //autoWrap: true,
-            hideDelay: false,
-            position: "bottom left",
             //toastClass: 'class'
+            template: customToastTemplate,
+            hideDelay: hideDelay,
+            position: "bottom left",
             locals: {
                 textContent: textContent
             },
@@ -82,7 +81,5 @@ export default function $toastHelper($mdToast) {
         }
 
         return $mdToast.show(errorToastOptions);
-        //.then(function (response) {
-        //});
     }
 }
