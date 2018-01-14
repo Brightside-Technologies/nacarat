@@ -35,6 +35,7 @@ export default function UpdateBusinessNameController(
                 .updateName(vm.model.businessId, vm.businessName)
                 .then(function(response) {
                     $state.reload();
+                    $dialogHelper.hide();
                     $toastHelper.showSuccess("Business name has been updated sucessfully");
                 })
                 .catch($errorHandler);

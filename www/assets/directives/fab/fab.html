@@ -1,0 +1,15 @@
+<md-fab-speed-dial md-open="false" md-direction="{{vm.fabOptions.direction}}" ng-class="vm.fabOptions.animation + ' ' + vm.fabOptions.position">
+    <md-fab-trigger>
+        <md-button aria-label="{{vm.fabOptions.trigger.label}}" class="md-fab md-accent">
+            <md-tooltip md-direction="{{toolTipDirection || 'left'}}" ng-if="vm.fabOptions.trigger.toolTip">{{vm.fabOptions.trigger.label}}</md-tooltip>
+            <md-icon>{{vm.fabOptions.trigger.icon}}</md-icon>
+        </md-button>
+    </md-fab-trigger>
+    <md-fab-actions>
+        <md-button ng-click="action.action($event)" ng-repeat="action in vm.fabOptions.actions | orderBy: 'label'" aria-label="{{action.label}}"
+            class="md-fab md-raised md-mini">
+            <md-tooltip md-direction="{{toolTipDirection || 'left'}}" ng-if="action.toolTip">{{action.label}}</md-tooltip>
+            <md-icon aria-label="{{action.label}}">{{action.icon}}</md-icon>
+        </md-button>
+    </md-fab-actions>
+</md-fab-speed-dial>

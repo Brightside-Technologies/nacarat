@@ -116,14 +116,6 @@
         </md-card-title>
         <md-card-content>
             <md-list>
-                <md-list-item>
-                    <p>
-                        <i>Add social media</i>
-                    </p>
-                    <md-button class="md-icon-button md-secondary" aria-label="Add Social Media" ng-click="vm.showAddSocialMedia($event)">
-                        <md-icon md-colors="{color: 'teal-500'}" aria-hidden="true">add</md-icon>
-                    </md-button>
-                </md-list-item>
                 <md-list-item ng-if="vm.businessProfile.socialMedias" class="md-2-line noright" ng-repeat="(type, data) in vm.businessProfile.socialMedias track by $index">
                     <md-icon class="fa fa-lg md-avatar-icon fa-{{type == 'snapchat' ? 'snapchat-ghost' : type}} icon icon-{{type}}" aria-hidden="true"></md-icon>
                     <!-- <md-icon class="md-avatar-icon h-image-fill icon icon-{{type}}" aria-hidden="true"></md-icon> -->

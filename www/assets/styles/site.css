@@ -99,6 +99,13 @@ md-footer a {
   text-decoration: none;
   color: rgba(255, 255, 255, 0.54); }
 
+md-fab-speed-dial.md-fab-bottom-right {
+  top: auto;
+  right: 20px;
+  bottom: 20px;
+  left: auto;
+  position: fixed !important; }
+
 .nacarat-content {
   min-height: calc(100vh - 128px); }
   .nacarat-content main {

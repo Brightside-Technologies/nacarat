@@ -58,6 +58,7 @@
         "underscore": "^1.8.3"
     },
     "scripts": {
+        "sass": "gulp sass",
         "serve:dist": "http-server ./dist -a localhost -p 8000 -c-1 -o",
         "start:nacarat": "webpack-dev-server --history-api-fallback --hot --inline --progress",
         "build:development": "gulp dist:cleanout && webpack --bail --progress --profile",

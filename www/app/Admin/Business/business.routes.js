@@ -4,19 +4,18 @@ export default function BusinessRoutes($stateProvider, $urlRouterProvider) {
             abstract: true,
             url: "/business/:businessId",
             resolve: {
-                Business: function ($stateParams, BusinessesService) {
-                    return BusinessesService.get($stateParams.businessId)
-                        .then(function (businessObj) {
-                            var businessObject = businessObj.data;
-                            businessObject.id = $stateParams.businessId;
-                            return businessObject;
-                        });
+                Business: function($stateParams, BusinessesService) {
+                    return BusinessesService.get($stateParams.businessId).then(function(businessObj) {
+                        var businessObject = businessObj.data;
+                        businessObject.id = $stateParams.businessId;
+                        return businessObject;
+                    });
                 }
             },
             views: {
                 "admin-sidenav": {
                     template: require("../../../assets/templates/business-sidenav.tmpl.html"),
-                    controller: function (Business) {
+                    controller: function(Business) {
                         var vm = this;
                         vm.business = Business.profile;
                     },
@@ -28,7 +27,10 @@ export default function BusinessRoutes($stateProvider, $urlRouterProvider) {
             url: "/profile",
             views: {
                 "@admin.root": {
-                    template: require("./Profile/profile.html"),
+                    templateProvider: function() {
+                        var businesProfileHTML = require("./Profile/profile.html");
+                        return businesProfileHTML + "<fab fab-options='vm.fabOptions'></fab>";
+                    },
                     controller: "ProfileController as vm"
                 }
             }

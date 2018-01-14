@@ -91,6 +91,26 @@ npm run build:development
 
 * [Netlify](https://www.netlify.com/) - Netlify is where the front end code is hosted. The code is checked into Github and is automatically deployed to Netlify. The latest version of the project can be seen at http://nacarat.netlify.com.
 
+_Note_: If you want to use `scss`, I use `gulp-sass` to compile scss to css. `npm run sass` compile it all for you. However, to use it on your Windows machine, you need to do the following:
+
+```
+npm install -g node-gyp
+```
+
+Then, from an elevated PowerShell (as Admin)
+
+```
+npm install --global --production
+```
+
+Finally, you can install `gulp-sass`.
+
+_Note_ `gulp-sass` is alread included in the `package.json` but running `npm install` will not install it if the previous steps haven't been done.
+
+```
+npm install gulp-sass
+```
+
 ## Authors
 
 * **Diego Bernal** - _Lead Developer_ - [go-diego](https://github.com/go-diego)

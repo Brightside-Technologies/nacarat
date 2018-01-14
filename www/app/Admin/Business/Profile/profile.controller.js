@@ -23,8 +23,48 @@ export default function ProfileController(
     vm.showUpdateAddress = showUpdateAddress;
     vm.showUpdateSocialMedia = showUpdateSocialMedia;
     vm.showUpdateHoursOfOperation = showUpdateHoursOfOperation;
-    vm.showAddSocialMedia = showAddSocialMedia;
     vm.showDeleteSocialMedia = showDeleteSocialMedia;
+    vm.fabOptions = {
+        animation: "md-scale",
+        position: "md-fab-bottom-right",
+        direction: "up",
+        trigger: {
+            label: "Add phone, email, address, or social media",
+            icon: "add",
+            class: "",
+            toolTip: true
+        },
+        actions: [
+            {
+                label: "Add Phone",
+                toolTip: true,
+                class: "",
+                icon: "phone",
+                action: showAddPhone
+            },
+            {
+                label: "Add Email",
+                toolTip: true,
+                class: "",
+                icon: "mail",
+                action: showAddEmail
+            },
+            {
+                label: "Add Address",
+                toolTip: true,
+                class: "",
+                icon: "location_on",
+                action: showAddAddress
+            },
+            {
+                label: "Add Social Media",
+                toolTip: true,
+                class: "",
+                icon: "public",
+                action: showAddSocialMedia
+            }
+        ]
+    };
 
     init();
 
@@ -329,6 +369,12 @@ export default function ProfileController(
         };
         $dialogHelper.showCustom(opts);
     }
+
+    function showAddPhone(ev) {}
+
+    function showAddEmail(ev) {}
+
+    function showAddAddress(ev) {}
 
     function showUpdateSocialMedia(ev, model) {
         var content = [
