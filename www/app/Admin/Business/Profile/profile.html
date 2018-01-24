@@ -58,7 +58,7 @@
                 <md-list-item ng-if="vm.businessProfile.phone" class="md-2-line">
                     <md-icon class="md-avatar-icon">phone</md-icon>
                     <div class="md-list-item-text">
-                        <h3> {{ ::vm.businessProfile.phone.calling_code }} {{ ::vm.businessProfile.phone.number }}</h3>
+                        <h3> {{ ::vm.businessProfile.phone.nationalFormat }}</h3>
                         <p> Phone </p>
                     </div>
                     <md-button class="md-icon-button md-secondary" aria-label="Edit Phone" ng-click="vm.showUpdatePhone($event, vm.businessProfile.phone)">

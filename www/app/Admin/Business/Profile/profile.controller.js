@@ -222,21 +222,6 @@ export default function ProfileController(
     }
 
     function showUpdatePhone(ev, model) {
-        // var content = [
-        //   "<div layout flex>",
-        //   '<md-input-container class="md-block" flex>',
-        //   "<label>Code</label>",
-        //   '<input ng-model="vm.phone.calling_code">',
-        //   "</md-input-container>",
-        //   '<md-input-container class="md-block" flex>',
-        //   "<label>Number</label>",
-        //   '<input ng-model="vm.phone.number">',
-        //   "</md-input-container>",
-        //   "</div>"
-        // ]
-        //   .join("")
-        //   .replace(/\s\s+/g, "");
-        console.log("model", model);
         var content = '<phone model="vm.phone"></phone>';
 
         var locals = {
@@ -263,6 +248,7 @@ export default function ProfileController(
         opts.locals = {
             locals: locals
         };
+
         $dialogHelper.showCustom(opts);
     }
 

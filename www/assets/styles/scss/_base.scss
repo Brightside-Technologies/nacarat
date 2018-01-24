@@ -4,41 +4,45 @@
 [ng-cloak],
 [ng\:cloak],
 [x-ng-cloak] {
-  display: none !important;
+    display: none !important;
+}
+
+md-card[md-ink-ripple] {
+    position: relative;
+    cursor: pointer;
 }
 
 main {
-  min-height: 100vh;
+    min-height: 100vh;
 }
 
 body {
-  overflow-x: hidden;
+    overflow-x: hidden;
 }
 
 [ui-sref] {
-  cursor: pointer;
+    cursor: pointer;
 }
 
 .cursive {
-  font-family: 'Pacifico', cursive;
+    font-family: "Pacifico", cursive;
 }
 
 .flickity-page-dots {
-  bottom: 0px;
+    bottom: 0px;
 }
 /* white circles */
 .flickity-page-dots .dot {
-  width: 12px;
-  height: 12px;
-  opacity: 1;
-  background: transparent;
-  border: 2px solid #fff;
+    width: 12px;
+    height: 12px;
+    opacity: 1;
+    background: transparent;
+    border: 2px solid #fff;
 }
 /* fill-in selected dot */
 .flickity-page-dots .dot.is-selected {
-  background: #fff;
+    background: #fff;
 }
-
 
 // .gradient {
 //     /* background: #e53935;*/

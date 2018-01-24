@@ -12,27 +12,30 @@ export default function PhoneDirective() {
     };
 }
 
-function PhoneController($scope, $http, $q, $phoneHelper) {
-    var vm = this;
-    console.log("vm", vm);
+function PhoneController($scope, $phoneHelper, $errorHandler) {
     var number = "";
-
+    var isOldSameAsNew = false;
+    var rawPhone = "";
+    var vm = this;
     $scope.$watch(
         "vm.model",
         function(newPhone, oldPhone) {
-            console.log("oldPhone", oldPhone);
-            console.log("newPhone", newPhone);
-            var isOldSameAsNew = oldPhone.number == newPhone.number;
-            if (newPhone.number.replace("-", "").length == 10 && !isOldSameAsNew) {
-                number = newPhone.calling_code.replace("+", "") + newPhone.number;
-                $phoneHelper
-                    .validate(number)
-                    .then(function(response) {
-                        console.log("response", response);
-                    })
-                    .catch(function(err) {
-                        console.log("err", err);
-                    });
+            isOldSameAsNew = _.isEqual(oldPhone, newPhone);
+            if (newPhone.nationalFormat) {
+                rawPhone = newPhone.nationalFormat
+                    .replace("-", "")
+                    .replace("(", "")
+                    .replace(")", "")
+                    .replace(" ", "");
+                if (rawPhone.length == 10 && !isOldSameAsNew) {
+                    $phoneHelper
+                        .validate(1 + rawPhone)
+                        .then(function(response) {
+                            vm.model = response.data.data;
+                        })
+                        // TODO: add form validation. Error message
+                        .catch($errorHandler);
+                }
             }
         },
         true
