@@ -20,6 +20,7 @@ import "angular-material/layouts/angular-material.layouts.css";
 import "angular-material/layouts/angular-material.layouts.ie_fixes.css";
 import "flickity/dist/flickity.css";
 import "angular-material-data-table/dist/md-data-table.css";
+import "angular-material-time-picker/dist/md-time-picker.css";
 import "../assets/styles/site.css";
 
 import angular from "angular";
@@ -29,6 +30,8 @@ import ngSanitize from "angular-sanitize";
 import mdDataTable from "angular-material-data-table";
 import Flickity from "flickity";
 import "angular-flickity";
+import ngMessages from "angular-messages";
+import ngTimePicker from "angular-material-time-picker";
 // import 'angularfire';
 
 import Nacarat_Init from "./nacarat.init";
@@ -46,9 +49,11 @@ angular
         "firebase",
         "bc.Flickity",
         uiRouter,
+        ngMessages,
         ngSanitize,
         ngMaterial,
         mdDataTable,
+        ngTimePicker,
         Nacarat_Admin,
         Nacarat_Public,
         Nacarat_Helpers,

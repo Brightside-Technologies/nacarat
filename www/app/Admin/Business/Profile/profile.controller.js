@@ -1,9 +1,10 @@
 // TODO: Need different layouts for "Business" view and "Merchant" view. Mainly, sidenav is different
 // TODO: Style dialog buttons
-// TODO: Add $mdToast to all Success and Error callbacks
 // TODO: Updates to Business profile should be applied to businesses AND merchant/business
 var dialogFormTemplate = require("../../../../assets/templates/dialog-form.tmpl.html");
 export default function ProfileController(
+    $scope,
+    $errorHandler,
     $state,
     $stateParams,
     $dialogHelper,
@@ -13,6 +14,9 @@ export default function ProfileController(
 ) {
     var businessId = Business.id;
     var vm = this;
+    vm.disableUpdateHoursOfOperationButton = true;
+    vm.showUpdateHoursOfOperation = showUpdateHoursOfOperation;
+    vm.updateHoursByDay = updateHoursByDay;
     vm.daysOfTheWeek = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
     vm.businessProfile = Business.profile;
     vm.showUpdateBusinessName = showUpdateBusinessName;
@@ -22,7 +26,6 @@ export default function ProfileController(
     vm.showUpdatePhone = showUpdatePhone;
     vm.showUpdateAddress = showUpdateAddress;
     vm.showUpdateSocialMedia = showUpdateSocialMedia;
-    vm.showUpdateHoursOfOperation = showUpdateHoursOfOperation;
     vm.showDeleteSocialMedia = showDeleteSocialMedia;
     vm.fabOptions = {
         animation: "md-scale",
@@ -65,6 +68,24 @@ export default function ProfileController(
             }
         ]
     };
+
+    var originalHoursOfOperation = angular.copy(vm.businessProfile.hoursOfOperation);
+    var hasHoursChanged = false;
+    var allOpenTimesSet = false;
+    var hoursOfOperationValues = [];
+    var openDaysWithNullHours = [];
+    $scope.$watch(
+        "vm.businessProfile.hoursOfOperation",
+        function(newHoursOfOperation) {
+            hasHoursChanged = !_.isEqual(newHoursOfOperation, originalHoursOfOperation);
+            hoursOfOperationValues = _.values(newHoursOfOperation);
+            openDaysWithNullHours = _.filter(hoursOfOperationValues, function(data) {
+                return data.isOpen && !!data.openTime == false && !!data.closeTime == false;
+            });
+            vm.disableUpdateHoursOfOperationButton = !hasHoursChanged && !openDaysWithNullHours.length > 0;
+        },
+        true
+    );
 
     init();
 
@@ -184,6 +205,185 @@ export default function ProfileController(
         $dialogHelper.showCustom(opts);
     }
 
+    //#region Address
+    function showAddAddress(ev) {}
+
+    function showUpdateAddress(ev, model) {
+        var locals = {
+            model: {
+                businessId: businessId,
+                address: model
+            },
+            dialogProperties: {
+                dialogContent: {
+                    contentHTML: "<address model='vm.address'></address>"
+                },
+                title: "Update Address",
+                submitText: "Update",
+                cancelText: "Cancel"
+            }
+        };
+
+        var opts = {};
+        opts.controller = "UpdateAddressController";
+        opts.template = dialogFormTemplate;
+        opts.target = ev;
+        opts.openFrom = angular.element(ev.toElement);
+        opts.closeTo = angular.element(ev.toElement);
+        opts.locals = {
+            locals: locals
+        };
+        $dialogHelper.showCustom(opts);
+    }
+    //#endregion
+
+    //#region Hours of Operations
+    function showUpdateHoursOfOperation(ev) {
+        var opts = {};
+        opts.target = ev;
+        opts.title = "Update Hours?";
+        opts.htmlContent = "Hours of operation will be updated for <b>" + vm.businessProfile.name + "</b>";
+        opts.ariaLabel = "Update Hours";
+        opts.okLabel = "Update";
+        opts.cancelLabel = "Cancel";
+        opts.confirm = confirm;
+        $dialogHelper.showConfirm(opts);
+
+        function confirm() {
+            var hoursOfOperationObj = angular.copy(vm.businessProfile.hoursOfOperation);
+            angular.forEach(hoursOfOperationObj, function(value, key, obj) {
+                if (!value.isOpen) {
+                    value.openTime = null;
+                    value.closeTime = null;
+                }
+            });
+
+            BusinessesService.profile
+                .updateHoursOfOperation(businessId, hoursOfOperationObj)
+                .then(function success(response) {
+                    $state.reload();
+                    $toastHelper.showSuccess("Hours of operation updated successfully");
+                })
+                .catch($errorHandler);
+        }
+    }
+
+    function updateHoursByDay(ev, hoursOfOperationByDay, day) {
+        var content = [
+            '<div flex layout="column" layout-padding>',
+            '<div layout flex layout-align="center center">',
+            "<label>Open</label>",
+            '<md-time-picker ng-model="vm.openTime" mandatory="required" no-auto-switch></md-time-picker>',
+            "</div>",
+            '<div layout flex layout-align="center center">',
+            "<label>Close</label>",
+            '<md-time-picker ng-model="vm.closeTime" mandatory="required" no-auto-switch></md-time-picker>',
+            "</div>",
+            "</div>"
+        ]
+            .join("")
+            .replace(/\s\s+/g, "");
+
+        var locals = {
+            model: {
+                businessId: businessId,
+                hoursOfOperation: hoursOfOperationByDay
+            },
+            dialogProperties: {
+                dialogContent: {
+                    contentHTML: content
+                },
+                title: "Update Hours for " + day,
+                submitText: "Ok",
+                cancelText: "Cancel"
+            }
+        };
+        var opts = {};
+        opts.controller = UpdateHoursByDay;
+        opts.template = dialogFormTemplate;
+        opts.target = ev;
+        opts.openFrom = angular.element(ev.toElement);
+        opts.closeTo = angular.element(ev.toElement);
+        opts.locals = {
+            locals: locals
+        };
+        $dialogHelper
+            .showCustom(opts)
+            .then(function(response) {
+                if (response) {
+                    vm.businessProfile.hoursOfOperation[day].openTime = response.openTime;
+                    vm.businessProfile.hoursOfOperation[day].closeTime = response.closeTime;
+                }
+            })
+            .catch($errorHandler);
+
+        function UpdateHoursByDay(locals) {
+            var dialogProperties = locals.locals.dialogProperties;
+            var vm = this;
+            vm.content = dialogProperties.dialogContent.contentHTML;
+            vm.contentPath = dialogProperties.dialogContent.contentTemplateUrl;
+            vm.title = dialogProperties.title;
+            vm.submitText = dialogProperties.submitText;
+            vm.cancelText = dialogProperties.cancelText;
+            vm.hoursOfOperation = angular.copy(locals.locals.model.hoursOfOperation);
+            vm.cancel = cancel;
+            vm.submit = submit;
+
+            vm.openTime = moment(angular.copy(vm.hoursOfOperation).openTime || new Date()).toDate();
+            vm.closeTime = moment(angular.copy(vm.hoursOfOperation).closeTime || new Date()).toDate();
+
+            function cancel() {
+                $dialogHelper.hide();
+            }
+
+            function submit() {
+                vm.hoursOfOperation.openTime = moment(vm.openTime).valueOf();
+                vm.hoursOfOperation.closeTime = moment(vm.closeTime).valueOf();
+
+                $dialogHelper.hide(vm.hoursOfOperation);
+            }
+        }
+    }
+    //#endregion
+
+    //#region Phones
+    function showAddPhone(ev) {}
+
+    function showUpdatePhone(ev, model) {
+        var content = '<phone model="vm.phone"></phone>';
+
+        var locals = {
+            model: {
+                businessId: businessId,
+                phone: model
+            },
+            dialogProperties: {
+                dialogContent: {
+                    contentHTML: content
+                },
+                title: "Update Phone",
+                submitText: "Update",
+                cancelText: "Cancel"
+            }
+        };
+
+        var opts = {};
+        opts.controller = "UpdatePhoneController";
+        opts.template = dialogFormTemplate;
+        opts.target = ev;
+        opts.openFrom = angular.element(ev.toElement);
+        opts.closeTo = angular.element(ev.toElement);
+        opts.locals = {
+            locals: locals
+        };
+
+        $dialogHelper.showCustom(opts);
+    }
+    //#endregion
+
+    //#region Email
+    function showAddEmail(ev) {}
+
     function showUpdateEmail(ev, model) {
         var content = [
             '<md-input-container class="md-block" flex>',
@@ -220,95 +420,9 @@ export default function ProfileController(
         };
         $dialogHelper.showCustom(opts);
     }
+    //#endregion
 
-    function showUpdatePhone(ev, model) {
-        var content = '<phone model="vm.phone"></phone>';
-
-        var locals = {
-            model: {
-                businessId: businessId,
-                phone: model
-            },
-            dialogProperties: {
-                dialogContent: {
-                    contentHTML: content
-                },
-                title: "Update Phone",
-                submitText: "Update",
-                cancelText: "Cancel"
-            }
-        };
-
-        var opts = {};
-        opts.controller = "UpdatePhoneController";
-        opts.template = dialogFormTemplate;
-        opts.target = ev;
-        opts.openFrom = angular.element(ev.toElement);
-        opts.closeTo = angular.element(ev.toElement);
-        opts.locals = {
-            locals: locals
-        };
-
-        $dialogHelper.showCustom(opts);
-    }
-
-    function showUpdateAddress(ev, model) {
-        var locals = {
-            model: {
-                businessId: businessId,
-                address: model
-            },
-            dialogProperties: {
-                dialogContent: {
-                    contentHTML: "<address model='vm.address'></address>"
-                },
-                title: "Update Address",
-                submitText: "Update",
-                cancelText: "Cancel"
-            }
-        };
-
-        var opts = {};
-        opts.controller = "UpdateAddressController";
-        opts.template = dialogFormTemplate;
-        opts.target = ev;
-        opts.openFrom = angular.element(ev.toElement);
-        opts.closeTo = angular.element(ev.toElement);
-        opts.locals = {
-            locals: locals
-        };
-        $dialogHelper.showCustom(opts);
-    }
-
-    function showUpdateHoursOfOperation(ev, model) {
-        var content = require("./hours-of-operation/hours-of-operation.tmpl.html");
-
-        var locals = {
-            model: {
-                businessId: businessId,
-                hoursOfOperation: model
-            },
-            dialogProperties: {
-                dialogContent: {
-                    contentHTML: content
-                },
-                title: "Update hours of operation",
-                submitText: "Update",
-                cancelText: "Cancel"
-            }
-        };
-        var opts = {};
-        opts.controller = "UpdateHoursOfOperationController";
-        opts.template = dialogFormTemplate;
-        opts.target = ev;
-        opts.openFrom = angular.element(ev.toElement);
-        opts.closeTo = angular.element(ev.toElement);
-        opts.locals = {
-            locals: locals
-        };
-        $dialogHelper.showCustom(opts);
-    }
-
+    //#region Social Media
     function showAddSocialMedia(ev) {
         var content = [
             '<md-input-container class="md-block" flex>',
@@ -355,12 +469,6 @@ export default function ProfileController(
         };
         $dialogHelper.showCustom(opts);
     }
-
-    function showAddPhone(ev) {}
-
-    function showAddEmail(ev) {}
-
-    function showAddAddress(ev) {}
 
     function showUpdateSocialMedia(ev, model) {
         var content = [
@@ -429,4 +537,5 @@ export default function ProfileController(
             );
         }
     }
+    //#endregion
 }

@@ -144,18 +144,25 @@
             </md-card-title-text>
         </md-card-title>
         <md-card-content>
-            <md-list-item class="md-2-line md-long-text">
-                <div class="md-list-item-text" layout="column">
-                    <div layout ng-repeat="day in vm.daysOfTheWeek track by $index">
-                        <h6 flex layout layout-align="center center" class="h-no-margins md-subhead">{{::day}}</h6>
-                        <h6 ng-if="vm.businessProfile.hoursOfOperation[day].isOpen" flex layout layout-align="center center" class="h-no-margins md-subhead">{{::vm.businessProfile.hoursOfOperation[day].openTime}} &ndash; {{::vm.businessProfile.hoursOfOperation[day].closeTime}}</h6>
-                        <h6 ng-if="!vm.businessProfile.hoursOfOperation[day].isOpen" flex layout layout-align="center center" class="h-no-margins md-subhead">Closed</h6>
+            <md-list flex>
+                <md-list-item md-no-ink class="md-3-line" ng-repeat="day in vm.daysOfTheWeek track by $index">
+                    <md-switch ng-model="vm.businessProfile.hoursOfOperation[day].isOpen"></md-switch>
+
+                    <div class="md-list-item-text" layout="column">
+                        <h3>{{::day}}</h3>
+                        <p ng-if="vm.businessProfile.hoursOfOperation[day].isOpen">{{vm.businessProfile.hoursOfOperation[day].openTime | date: 'hh:mm a'}} &ndash; {{vm.businessProfile.hoursOfOperation[day].closeTime
+                            | date: 'hh:mm a'}}</p>
+                        <p ng-if="!vm.businessProfile.hoursOfOperation[day].isOpen">Closed</p>
                     </div>
-                </div>
-                <md-button class="md-icon-button md-secondary" aria-label="Update Hours of Operation" ng-click="vm.showUpdateHoursOfOperation($event, vm.businessProfile.hoursOfOperation)">
-                    <md-icon md-colors="{color: 'orange-500'}" aria-hidden="true">edit</md-icon>
-                </md-button>
-            </md-list-item>
+                    <md-button ng-click="vm.updateHoursByDay($event, vm.businessProfile.hoursOfOperation[day], day)" ng-disabled="!vm.businessProfile.hoursOfOperation[day].isOpen"
+                        class="md-icon-button md-secondary">
+                        <md-icon md-colors="{color: 'orange-500'}">edit</md-icon>
+                    </md-button>
+                </md-list-item>
+            </md-list>
+            <div layout flex layout-align="end start">
+                <md-button ng-click="vm.showUpdateHoursOfOperation($event)" class="md-accent" ng-disabled="vm.disableUpdateHoursOfOperationButton">Update Hours</md-button>
+            </div>
         </md-card-content>
     </md-card>
 </div>
