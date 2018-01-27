@@ -1,29 +1,15 @@
 <h1 class="md-title cursive h-center">Businesses</h1>
-<div layout="row" flex-xs="100" flex-sm="100" layout-xs="column" layout-wrap flex>
-    <md-card md-ink-ripple ui-sref="admin.root.business.profile({businessId:id})" ng-repeat="(id, business) in vm.businesses"
-        flex-xs="100" flex="33">
-        <!-- <img ng-src="{{::business.profilePhotoURL}}" class="md-card-image" alt="{{::business.name}}"> -->
+<div ng-repeat="(id, business) in vm.businesses" layout="row" layout-xs="column" flex-xs="100" flex-sm="100" flex="20" layout-wrap
+    flex>
+    <md-card md-ink-ripple ui-sref="admin.root.business.profile({businessId:id})" flex>
+        <img ng-src="{{::business.profilePhotoUrl}}" class="md-card-image" alt="{{::business.name}}">
         <md-card-title>
             <md-card-title-text>
-                {{::business.name}}
+                <span class="md-title">{{::business.name}}</span>
+                <span class="md-caption">{{::business.address.delivery_line_1}} {{::business.address.components.city_name}}, {{::business.address.components.state_abbreviation}}
+                </span>
             </md-card-title-text>
         </md-card-title>
-        <md-card-content>
-            <p class="md-body-1">
-                {{::business.address.delivery_line_1}} {{::business.address.last_line}}
-            </p>
-        </md-card-content>
-        <!-- <md-card-actions layout="row" layout-align="end center">
-            <md-button class="md-icon-button" aria-label="Favorite">
-                <md-icon class="material-icons">favorite</md-icon>
-            </md-button>
-            <md-button class="md-icon-button" aria-label="Settings">
-                <md-icon>menu</md-icon>
-            </md-button>
-            <md-button class="md-icon-button" aria-label="Share">
-                <md-icon>share_arrow</md-icon>
-            </md-button>
-        </md-card-actions> -->
     </md-card>
 </div>
 <span flex layout class="h-center" ng-if="!vm.businesses">No businesses defined</span>
