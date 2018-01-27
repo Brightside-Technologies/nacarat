@@ -7,16 +7,17 @@ export default function BusinessesService($http, config) {
 
     service.query = getAllBusinesses;
     service.get = getBusinessById;
-    service.profile.updateSocialMedia = updateSocialMedia;
     service.profile.updateName = updateBusinessName;
     service.profile.updateAbout = updateAbout;
     service.profile.updateType = updateBusinessType;
     service.profile.updateEmail = updateEmail;
     service.profile.updatePhone = updatePhone;
-    service.profile.updateHoursOfOperation = updateHoursOfOperation;
+    service.profile.addPhone = addPhone;
     service.profile.deleteSocialMedia = deleteSocialMedia;
     service.profile.addSocialMedia = addSocialMedia;
-    service.profile.addPhone = addPhone;
+    service.profile.updateSocialMedia = updateSocialMedia;
+    service.profile.updateHoursOfOperation = updateHoursOfOperation;
+    service.profile.putAddress = putAddress;
 
     function getAllBusinesses() {
         var url = baseUrl + "/businesses.json";
@@ -31,15 +32,6 @@ export default function BusinessesService($http, config) {
         return $http({
             url: url,
             method: "GET"
-        });
-    }
-
-    function updateSocialMedia(businessId, socialMediaType, data) {
-        var url = baseUrl + "/businesses/" + businessId + "/profile/socialMedias/" + socialMediaType + ".json";
-        return $http({
-            url: url,
-            method: "PUT",
-            data: data
         });
     }
 
@@ -79,15 +71,6 @@ export default function BusinessesService($http, config) {
         });
     }
 
-    function updatePhone(businessId, phoneObj) {
-        var url = baseUrl + "/businesses/" + businessId + "/profile/phone.json";
-        return $http({
-            url: url,
-            method: "PUT",
-            data: phoneObj
-        });
-    }
-
     function updateHoursOfOperation(businessId, hoursOfOperationObj) {
         var url = baseUrl + "/businesses/" + businessId + "/profile/hoursOfOperation.json";
         return $http({
@@ -105,6 +88,15 @@ export default function BusinessesService($http, config) {
         });
     }
 
+    function updateSocialMedia(businessId, socialMediaType, data) {
+        var url = baseUrl + "/businesses/" + businessId + "/profile/socialMedias/" + socialMediaType + ".json";
+        return $http({
+            url: url,
+            method: "PUT",
+            data: data
+        });
+    }
+
     function addSocialMedia(businessId, socialMediaObj) {
         var url = baseUrl + "/businesses/" + businessId + "/profile/socialMedias.json";
         return $http({
@@ -114,12 +106,30 @@ export default function BusinessesService($http, config) {
         });
     }
 
+    function updatePhone(businessId, phoneObj) {
+        var url = baseUrl + "/businesses/" + businessId + "/profile/phone.json";
+        return $http({
+            url: url,
+            method: "PUT",
+            data: phoneObj
+        });
+    }
+
     function addPhone(businessId, phoneObj) {
         var url = baseUrl + "/businesses/" + businessId + "/profile/phone.json";
         return $http({
             url: url,
             method: "PATCH",
             data: phoneObj
+        });
+    }
+
+    function putAddress(businessId, addressObj) {
+        var url = baseUrl + "/businesses/" + businessId + "/profile/address.json";
+        return $http({
+            url: url,
+            method: "PUT",
+            data: addressObj
         });
     }
 }

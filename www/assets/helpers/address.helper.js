@@ -1,4 +1,4 @@
-export default function $addressHelper($http) {
+export default function $addressHelper($http, $errorHandler) {
     //var authId = "34224525918469434";
     var authId = "3aced146-1319-b2ca-f7ab-6a7a2ac6d9df";
     var authToken = "RcuW3MB3mTQxKTBeXArr";
@@ -21,15 +21,11 @@ export default function $addressHelper($http) {
                 "auth-token": authToken,
                 prefix: value
             }
-        }).then(
-            function(response) {
-                //console.log("HTTP RESPONSE", response);
+        })
+            .then(function(response) {
                 return response.data.suggestions || [];
-            },
-            function error(err) {
-                console.log("HTTP ERROR", err);
-            }
-        );
+            })
+            .catch($errorHandler);
     }
 
     function getAddress(address) {
@@ -46,8 +42,8 @@ export default function $addressHelper($http) {
                 state: address.state,
                 candidates: 10
             }
-        }).then(
-            function(response) {
+        })
+            .then(function(response) {
                 var addressResponse = "";
                 if (response.data.length) {
                     //address is valid
@@ -57,11 +53,8 @@ export default function $addressHelper($http) {
                     addressResponse = "INVALID_ADDRESS";
                 }
                 return addressResponse;
-            },
-            function error(err) {
-                console.log("err", err);
-            }
-        );
+            })
+            .catch($errorHandler);
     }
 
     function validResponseToDTO(validAddressObject) {
