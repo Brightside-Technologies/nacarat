@@ -1,37 +1,43 @@
-export default function UpdateEmailController(locals, BusinessesService, $dialogHelper, $state) {
-  var dialogProperties = locals.locals.dialogProperties;
-  var vm = this;
-  vm.content = dialogProperties.dialogContent.contentHTML;
-  vm.contentPath = dialogProperties.dialogContent.contentTemplateUrl;
+import $errorHandler from "../../../../../../assets/helpers/error-handler";
 
-  vm.title = dialogProperties.title;
-  vm.submitText = dialogProperties.submitText;
-  vm.cancelText = dialogProperties.cancelText;
-  vm.model = locals.locals.model;
-  vm.flexGtMd = "33";
-  vm.flexMd = "33";
-  console.log(vm.model);
+export default function UpdateEmailController(
+    locals,
+    BusinessesService,
+    $dialogHelper,
+    $toastHelper,
+    $state,
+    $errorHandler
+) {
+    var dialogProperties = locals.locals.dialogProperties;
+    var vm = this;
+    vm.content = dialogProperties.dialogContent.contentHTML;
+    vm.contentPath = dialogProperties.dialogContent.contentTemplateUrl;
 
-  vm.form = {};
-  vm.submit = submit;
-  vm.cancel = cancel;
+    vm.title = dialogProperties.title;
+    vm.submitText = dialogProperties.submitText;
+    vm.cancelText = dialogProperties.cancelText;
+    vm.model = locals.locals.model;
 
-  //var originalForm = angular.copy(vm.model);
+    vm.form = {};
+    vm.submit = submit;
+    vm.cancel = cancel;
 
-  function submit() {
-    if (vm.form.$valid) {
-      BusinessesService.profile.updateEmail(vm.model.businessId, vm.model.email)
-        .then(function (response) {
-            $state.reload();
-          },
-          function error(err) {
-            console.log(err);
-          }
-        );
+    //var originalForm = angular.copy(vm.model);
+
+    function submit() {
+        if (vm.form.$valid) {
+            BusinessesService.profile
+                .updateEmail(vm.model.merchantId, vm.model.businessId, vm.model.email)
+                .then(function() {
+                    $state.reload();
+                    $dialogHelper.hide();
+                    $toastHelper.showSuccess("Business name has been updated sucessfully");
+                })
+                .catch($errorHandler);
+        }
     }
-  }
 
-  function cancel() {
-    $dialogHelper.hide();
-  }
+    function cancel() {
+        $dialogHelper.hide();
+    }
 }

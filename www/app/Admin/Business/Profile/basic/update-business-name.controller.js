@@ -7,7 +7,6 @@ export default function UpdateBusinessNameController(
     $dialogHelper,
     $toastHelper,
     $state,
-    $stateParams,
     $errorHandler
 ) {
     var dialogProperties = locals.locals.dialogProperties;

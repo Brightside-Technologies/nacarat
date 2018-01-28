@@ -68,12 +68,18 @@ export default function BusinessesService($http, config) {
         });
     }
 
-    function updateEmail(businessId, email) {
-        var url = baseUrl + "/businesses/" + businessId + "/profile/email.json";
+    function updateEmail(merchantId, businessId, email) {
+        var url = baseUrl;
+        var pathToBusinesses = "businesses/" + businessId + "/profile/email";
+        var pathToMerchants = "merchants/" + merchantId + "/businesses/" + businessId + "/email";
+        var data = {};
+        data[pathToBusinesses] = email;
+        data[pathToMerchants] = email;
+
         return $http({
-            url: url,
-            method: "PUT",
-            data: angular.toJson(email)
+            url: url + ".json",
+            method: "PATCH",
+            data: data
         });
     }
 
