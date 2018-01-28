@@ -53,12 +53,18 @@ export default function BusinessesService($http, config) {
         });
     }
 
-    function updateBusinessName(businessId, businessName) {
-        var url = baseUrl + "/businesses/" + businessId + "/profile/name.json";
+    function updateBusinessName(merchantId, businessId, businessName) {
+        var url = baseUrl;
+        var pathToBusinesses = "businesses/" + businessId + "/profile/name";
+        var pathToMerchants = "merchants/" + merchantId + "/businesses/" + businessId + "/name";
+        var data = {};
+        data[pathToBusinesses] = businessName;
+        data[pathToMerchants] = businessName;
+
         return $http({
-            url: url,
-            method: "PUT",
-            data: angular.toJson(businessName)
+            url: url + ".json",
+            method: "PATCH",
+            data: data
         });
     }
 

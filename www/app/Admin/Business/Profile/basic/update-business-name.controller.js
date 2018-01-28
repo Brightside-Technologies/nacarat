@@ -32,7 +32,7 @@ export default function UpdateBusinessNameController(
     function submit() {
         if (vm.form.$valid) {
             BusinessesService.profile
-                .updateName(vm.model.businessId, vm.businessName)
+                .updateName(vm.model.merchantId, vm.model.businessId, vm.businessName)
                 .then(function(response) {
                     $state.reload();
                     $dialogHelper.hide();

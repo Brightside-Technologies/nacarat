@@ -10,9 +10,11 @@ export default function ProfileController(
     $dialogHelper,
     $toastHelper,
     Business,
+    Merchant,
     BusinessesService
 ) {
     var businessId = Business.id;
+    var merchantId = Merchant.id;
     var vm = this;
     vm.disableUpdateHoursOfOperationButton = true;
     vm.showUpdateHoursOfOperation = showUpdateHoursOfOperation;
@@ -87,10 +89,6 @@ export default function ProfileController(
         true
     );
 
-    init();
-
-    function init() {}
-
     function showUpdateBusinessName(ev, model) {
         var content = [
             '<md-input-container class="md-block" flex>',
@@ -104,6 +102,7 @@ export default function ProfileController(
         var locals = {
             model: {
                 businessId: businessId,
+                merchantId: merchantId,
                 businessName: model
             },
             dialogProperties: {
