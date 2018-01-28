@@ -8,6 +8,7 @@ export default function UpdateAddressController(
 ) {
     var dialogProperties = locals.locals.dialogProperties;
     var businessId = locals.locals.model.businessId;
+    var merchantId = locals.locals.model.merchantId;
     var vm = this;
     vm.content = dialogProperties.dialogContent.contentHTML;
     vm.contentPath = dialogProperties.dialogContent.contentTemplateUrl;
@@ -24,7 +25,7 @@ export default function UpdateAddressController(
     function submit() {
         if (vm.form.$valid) {
             BusinessesService.profile
-                .putAddress(businessId, vm.address)
+                .putAddress(merchantId, businessId, vm.address)
                 .then(function() {
                     $dialogHelper.hide();
                     $toastHelper.showSuccess("Address updated successfully");

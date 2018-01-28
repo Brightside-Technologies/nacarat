@@ -211,6 +211,7 @@ export default function ProfileController(
         var locals = {
             model: {
                 businessId: businessId,
+                merchantId: merchantId,
                 address: model
             },
             dialogProperties: {

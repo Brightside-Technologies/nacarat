@@ -136,12 +136,17 @@ export default function BusinessesService($http, config) {
         });
     }
 
-    function putAddress(businessId, addressObj) {
-        var url = baseUrl + "/businesses/" + businessId + "/profile/address.json";
+    function putAddress(merchantId, businessId, addressObj) {
+        var url = baseUrl;
+        var pathToBusinesses = "businesses/" + businessId + "/profile/address";
+        var pathToMerchants = "merchants/" + merchantId + "/businesses/" + businessId + "/address";
+        var data = {};
+        data[pathToBusinesses] = addressObj;
+        data[pathToMerchants] = addressObj;
         return $http({
-            url: url,
-            method: "PUT",
-            data: addressObj
+            url: url + ".json",
+            method: "PATCH",
+            data: data
         });
     }
 }
