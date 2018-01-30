@@ -217,7 +217,12 @@ module.exports = (function makeWebpackConfig() {
             debug: false
         }),
         new webpack.ProvidePlugin({ _: "underscore" }),
-        new webpack.ProvidePlugin({ moment: "moment" })
+        new webpack.ProvidePlugin({ moment: "moment" }),
+        new CopyWebpackPlugin([
+            {
+                from: "./_redirects"
+            }
+        ])
     ];
 
     // Skip rendering index.html in test mode
