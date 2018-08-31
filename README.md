@@ -87,7 +87,7 @@ npm run build:development
 * [nodejs](https://nodejs.org/en/) - A JavaScript runtime built on Chrome's V8 JavaScript engine.
 * [AngularJS](https://angularjs.org/) - Declarative templates with data-binding, MVW, MVVM, MVC.
 * [Webpack](https://webpack.js.org/) - A module bundler for modern JavaScript applications.
-* [FireBase](https://firebase.google.com/) - A Free Platform to Help Develop and Grow Your Mobile Apps.
+* [Firebase](https://firebase.google.com/) - A Free Platform to Help Develop and Grow Your Mobile Apps.
 
 * [Netlify](https://www.netlify.com/) - Netlify is where the front end code is hosted. The code is checked into Github and is automatically deployed to Netlify. The latest version of the project can be seen at http://nacarat.netlify.com.
 
@@ -114,8 +114,6 @@ npm install gulp-sass
 ## Authors
 
 * **Diego Bernal** - _Lead Developer_ - [go-diego](https://github.com/go-diego)
-
-* **Juan Villagomez** - _Developer_ - [jvillagomez](https://github.com/jvillagomez)
 
 ## License
 
